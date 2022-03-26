@@ -1,0 +1,12 @@
+body {
+	font-family: arial;
+	font-size: small;
+	background: rgb(0, 162, 255);
+	background-image: url(/Steckbrief/2021-11-22_Linachtal.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+    background-position: center 60%;
+}
+p {
+    color: white;
+}
