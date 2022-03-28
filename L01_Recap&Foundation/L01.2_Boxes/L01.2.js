@@ -6,7 +6,7 @@ var Boxes;
     let x = 0;
     let y = 0;
     for (let i = 0; i < n; i++) {
-        y += (i == 2) ? 20 : 50;
+        y += (i == 2) ? 20 : 50; //y = y + (i == 2) ? 0,4; -> y = 0 + (0 == 2)
         x = (x + 170) % 400;
         switch (i) {
             case 0:
