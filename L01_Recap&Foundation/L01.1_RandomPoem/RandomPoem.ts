@@ -1,18 +1,18 @@
 
 
-namespace Worte{
+namespace Poem {
 
     // Inhalte
     let subjekt: string [] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
     let prädikat: string [] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
     let objekt: string [] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
     
-    console.log(subjekt);
-    console.log(prädikat);
-    console.log(objekt);
+    // console.log(subjekt);
+    // console.log(prädikat);
+    // console.log(objekt);
 
     for (let index: number = 6; index > 0; index--) {
-        console.log(index);
+        // console.log(index);
         console.log(getVerse(subjekt, prädikat, objekt));  
     }
 
@@ -23,9 +23,9 @@ namespace Worte{
         let numberSubjekt: number = Math.floor(Math.random() * _subjekt.length);
         let numberPrädikat: number = Math.floor(Math.random() * _prädikat.length);
         let numberObjekt: number = Math.floor(Math.random() * _objekt.length);
-        console.log("NumberSubjekt = " + numberSubjekt);
-        console.log("NumberPrädikat = " + numberPrädikat);
-        console.log("NumberObjekt = " + numberObjekt);
+        // console.log("NumberSubjekt = " + numberSubjekt);
+        // console.log("NumberPrädikat = " + numberPrädikat);
+        // console.log("NumberObjekt = " + numberObjekt);
  
           // Gedicht Array
         let gedicht: string  = " ";       
