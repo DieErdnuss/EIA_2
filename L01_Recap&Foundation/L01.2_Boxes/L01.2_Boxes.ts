@@ -1,26 +1,28 @@
 namespace Boxes {
+    window.addEventListener("load", function(): void {
     let n: number = 5;
-    let color: string;
+    let color: string;  
     let x: number = 0;
     let y: number = 0;
-
+     
+   
     for (let i: number = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;  //y = y + (i == 2) ? 0,4; -> y = 0 + (0 == 2)
-        x = (x + 170) % 400;
+        x = (x + 170) % 400;  //170 mod 400 = 170
         switch (i) {
             case 0:
-                color = "#ff0000";
+                color = "#ff0000"; //red
                 break;
             case 1:
             case 4:
-                color = "#00ff00";
+                color = "#00ff00"; //green
                 break;
             case 3:
                 continue;
             default:
-                color = "#0000ff";
+                color = "#0000ff"; //blue
         }
-        
+
         for (let size of ["big", "medium", "small"]) {
             createBox(color, x, y, size);
             if (i == 4)
@@ -36,5 +38,5 @@ namespace Boxes {
         div.style.backgroundColor = _color;
         div.style.left = _x + "px";
         div.style.top = _y + "px";
-    }
+    }});
 }
