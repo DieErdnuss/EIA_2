@@ -1,3 +1,18 @@
+
+document.addEventListener("")
+
+
+/*
+namespace L02_Load {
+    window.addEventListener("load", handleLoad);
+
+    function handleLoad(_event: Event): void {
+        console.log(_event);
+    }
+}
+
+
+
 //Deklaration von Variablen
 /*
 let v: number = 1;
@@ -51,7 +66,7 @@ function IsDivisible (dividend: number, divisor: number): boolean {
     return(dividend % divisor == 0)};
 
 IsDivisible(4, 3);
-*/
+
 let v1: number = [5, 8, 2];
 let v2: number = 5;
 
@@ -84,10 +99,7 @@ namespace Cows {
     }
 }
 
-
-
-
-
+*/
 
 
 

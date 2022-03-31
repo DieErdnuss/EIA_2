@@ -1,4 +1,16 @@
 "use strict";
+document.addEventListener("");
+/*
+namespace L02_Load {
+    window.addEventListener("load", handleLoad);
+
+    function handleLoad(_event: Event): void {
+        console.log(_event);
+    }
+}
+
+
+
 //Deklaration von Variablen
 /*
 let v: number = 1;
@@ -52,30 +64,38 @@ function IsDivisible (dividend: number, divisor: number): boolean {
     return(dividend % divisor == 0)};
 
 IsDivisible(4, 3);
-*/
-let v1 = [5, 8, 2];
-let v2 = 5;
+
+let v1: number = [5, 8, 2];
+let v2: number = 5;
+
 console.log(v1);
 console.log(v2);
+
 v2 = v1;
+
 console.log(v1);
 console.log(v2);
-var Cows;
-(function (Cows) {
-    let nums = [2, 6, 5];
-    let results = [];
-    for (let i = 0; i < nums.length; i++) {
-        let result = createCall("m", nums[i]);
+
+
+
+namespace Cows {
+    let nums: number[] = [2, 6, 5];
+    let results: string[] = [];
+    for (let i: number = 0; i < nums.length; i++) {
+        let result: string = createCall("m", nums[i]);
         results.push(result);
     }
     console.log(results);
-    function createCall(_start, _length) {
-        for (let k = _length; k > 0; k--) {
+
+    function createCall(_start: string, _length: number): string {
+        for (let k: number = _length; k > 0; k--) {
             if (k == 1 || k == _length / 2)
                 _start += "h";
             _start += "u";
         }
         return _start;
     }
-})(Cows || (Cows = {}));
+}
+
+*/
 //# sourceMappingURL=Test_Variablen.js.map
