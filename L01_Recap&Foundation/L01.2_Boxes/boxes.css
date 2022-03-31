@@ -1,6 +1,13 @@
+header {
+    font-family: Arial, Helvetica, sans-serif;
+    
+    color: grey;
+}
+
 div {
     border: thick solid black;
     position: absolute;
+    margin-top: 50px;
 }
 
 .big {
