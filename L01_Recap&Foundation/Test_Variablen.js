@@ -1,5 +1,4 @@
 "use strict";
-document.addEventListener("");
 /*
 namespace L02_Load {
     window.addEventListener("load", handleLoad);
