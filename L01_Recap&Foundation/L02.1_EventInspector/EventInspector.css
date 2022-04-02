@@ -1,0 +1,55 @@
+#wrapper {
+    display: grid;
+    grid-template-columns: 1fr 400px 1fr 400px 1fr;
+    grid-template-rows: 1fr 400px 1fr;
+    grid-template-areas: 
+        " h1 h1 . . . "
+        " . div0 . div1 . "
+        " . .... . .... . ";
+        
+}
+
+#div0 {
+    grid-area: div0;
+    place-self: center;
+    background-color: rgb(152, 212, 255);
+    height: 400px;
+    width: 400px;
+    
+}
+
+#div1 {
+    grid-area: div1;
+    place-self: center;
+    background-color: rgb(255, 230, 118);
+    height: 400px;
+    width: 400px;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+span {
+    font-size: 10px;
+    position: fixed;
+    background-color: rgba(79, 79, 79, 70%);
+    
+    
+    color: white;
+    padding: 20px;
+    z-index: 2;
+
+
+    
+}
+
+header {
+    grid-area: h1;
+    place-self: center;
+}
+
+header p {
+    line-height: 0px;
+}
