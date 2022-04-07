@@ -1,15 +1,18 @@
 "use strict";
-/*
-namespace L02_Load {
+var L02_Load;
+(function (L02_Load) {
     window.addEventListener("load", handleLoad);
-
-    function handleLoad(_event: Event): void {
-        console.log(_event);
+    function handleLoad(_event) {
+        let data = ["A", "B", "C", "D"];
+        console.log(data);
+        let pair = duplicate();
+        console.log(pair);
+        let rdmNumber = Math.floor(Math.random() * 4);
+        function duplicate() {
+            return (data.concat(data[rdmNumber]));
+        }
     }
-}
-
-
-
+})(L02_Load || (L02_Load = {}));
 //Deklaration von Variablen
 /*
 let v: number = 1;

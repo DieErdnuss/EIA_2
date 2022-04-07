@@ -7,19 +7,20 @@ function hndLoad(_event) {
     let slider = document.getElementById("slider");
     slider.addEventListener("change", hndChange);
     // slider.addEventListener("input", hndChange);
+    let sliderValue = parseInt(slider.value);
     function hndChange(_event) {
         console.log("Pair Value: " + slider.value);
         let output = document.getElementById("output");
         output.innerHTML = slider.value;
-        let CardAmount = slider.value;
+        let CardAmount = 2 * sliderValue;
         console.log("CardAmount: " + CardAmount);
         console.log("Data[]: " + data.length);
         console.log("Pair[]: " + pair.length);
         console.log();
         for (let i = 0; i < CardAmount; i++) {
             let rdmNumber = Math.floor(Math.random() * data.length);
-            // Zufallszahlen in Array pushen, dann Zahlenkette zum Splicen der Elemente aus data nutzen.
-            pair = data.splice(rdmNumber, 1);
+            // let spliced: string = data.splice(rdmNumber, 1);
+            let length = pair.push(data[rdmNumber]);
             // let outputPair: HTMLElement | null = document.getElementById("pair");
             // outputPair.innerHTML = pair[0];
         }

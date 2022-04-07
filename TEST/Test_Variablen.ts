@@ -2,12 +2,29 @@
 
 
 
-/*
+
 namespace L02_Load {
     window.addEventListener("load", handleLoad);
 
     function handleLoad(_event: Event): void {
-        console.log(_event);
+        let data: string[] = ["A", "B", "C", "D"];
+        console.log(data);
+
+        let pair: string[] = duplicate();
+        console.log(pair);
+        
+        let rdmNumber: number = Math.floor(Math.random() * 4);
+
+        function duplicate() {
+            return(data.concat(data[rdmNumber]));
+            
+        }
+
+
+
+
+
+
     }
 }
 
