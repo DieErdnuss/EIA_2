@@ -1,13 +1,35 @@
-window.addEventListener("load", hndLoad);
-function hndLoad(_event: Event): void {
-    let data: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];
-    let pair: string[] = [""];
+window.addEventListener("load", function (): void {
 
-    // debugger
+    let data: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"];
+    let pairAmount: string[] = [""];
+    let pair: string[] = duplicate();
+    console.log(data);
+    console.log(pair);
 
     let slider: HTMLInputElement = <HTMLInputElement>document.getElementById("slider");
+    let wrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("wrapper");
 
+    
+    // debugger
+
+    // DUPLIZIEREN von DATA in PAIR
+    function duplicate() {
+        return (data.concat(data));
+    }
+
+    // MISCHEN von PAIR
+    function shuffle(a: string): string {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+    shuffle(pair);
+
+    // SLIDER Listener
     slider.addEventListener("change", hndChange);
+    wrapper.addEventListener("click", hndClick);
     // slider.addEventListener("input", hndChange);
     let sliderValue: number = parseInt(slider.value);
 
@@ -15,34 +37,28 @@ function hndLoad(_event: Event): void {
         console.log("Pair Value: " + slider.value);
         let output: HTMLElement = <HTMLElement>document.getElementById("output");
         output.innerHTML = slider.value;
-        let CardAmount: number = 2 * sliderValue;
-        
+        let CardAmount: number = pair.length;
+
         console.log("CardAmount: " + CardAmount);
         console.log("Data[]: " + data.length);
         console.log("Pair[]: " + pair.length);
         console.log();
 
-        for (let i: number = 0; i < CardAmount; i++) {
-            let rdmNumber: number = Math.floor(Math.random() * data.length);
-            // let spliced: string = data.splice(rdmNumber, 1);
-
-            let length: string = pair.push(data[rdmNumber]);
-
-            // let outputPair: HTMLElement | null = document.getElementById("pair");
-            // outputPair.innerHTML = pair[0];
-
-        }
     }
 
+    // EINFÜGEN von PAIR Elementen in DIVs
+    for (let i: number = 0; i < pair.length; i++) {
+        let div: HTMLElement = document.createElement("div");
+        div.classList.add("cards");
+        wrapper.appendChild(div);
+        div.innerHTML = pair[i];
+    }
 
+    function hndClick(_event: Event) {
+        div.classList.remove("cards");
+        div.classList.add("cardsRevealed");
+    }
 
     console.log("Data[]: " + data.length);
     console.log("Pair[]: " + pair.length);
-
-
-
-
-
-
-
-}
+});

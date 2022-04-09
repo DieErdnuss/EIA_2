@@ -16,9 +16,12 @@ namespace L02_Load {
         let rdmNumber: number = Math.floor(Math.random() * 4);
 
         function duplicate() {
-            return(data.concat(data[rdmNumber]));
+            return(data.concat(data));
             
         }
+
+        let cards: HTMLDivElement= doci.getE(".cards");
+        cards
 
 
 

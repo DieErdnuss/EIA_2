@@ -9,8 +9,10 @@ var L02_Load;
         console.log(pair);
         let rdmNumber = Math.floor(Math.random() * 4);
         function duplicate() {
-            return (data.concat(data[rdmNumber]));
+            return (data.concat(data));
         }
+        let cards = doci.getE(".cards");
+        cards;
     }
 })(L02_Load || (L02_Load = {}));
 //Deklaration von Variablen
