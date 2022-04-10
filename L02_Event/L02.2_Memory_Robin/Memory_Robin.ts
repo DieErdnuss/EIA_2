@@ -28,8 +28,12 @@ window.addEventListener("load", function (): void {
     shuffle(pair);
 
     // SLIDER Listener
-    slider.addEventListener("change", hndChange);
+    slider.addEventListener("change", hndChange);   
     wrapper.addEventListener("click", hndClick);
+
+    // let chosenDiv: HTMLDivElement = document.getElementsByClassName("cards");
+    // chosenDiv.addEventListener("click", hndClick);
+    
     // slider.addEventListener("input", hndChange);
     let sliderValue: number = parseInt(slider.value);
 
@@ -43,23 +47,28 @@ window.addEventListener("load", function (): void {
         console.log("Data[]: " + data.length);
         console.log("Pair[]: " + pair.length);
         console.log();
-
+        
     }
 
     // EINFÜGEN von PAIR Elementen in DIVs
     for (let i: number = 0; i < pair.length; i++) {
-        let div: HTMLElement = document.createElement("div");
+        var div: HTMLDivElement = document.createElement("div");
         div.classList.add("cards");
         wrapper.appendChild(div);
         div.innerHTML = pair[i];
     }
 
-    function hndClick(_target: Element, _event: Event) {
-        _target.classList.remove("cards");
-        _target.classList.add("cardsRevealed");
-        console.log("Class changed");
-        
-    }
+    
+    
+
+    // function hndClick(_element: HTMLDivElement) {
+        // _element.classList.remove("cards");
+        // _element.classList.add("cardsRevealed");
+        // console.log("Class changed");
+        // console.log(_element);
+        // 
+        // 
+    // }
 
     console.log("Data[]: " + data.length);
     console.log("Pair[]: " + pair.length);

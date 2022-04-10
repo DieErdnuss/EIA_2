@@ -24,6 +24,8 @@ window.addEventListener("load", function () {
     // SLIDER Listener
     slider.addEventListener("change", hndChange);
     wrapper.addEventListener("click", hndClick);
+    // let chosenDiv: HTMLDivElement = document.getElementsByClassName("cards");
+    // chosenDiv.addEventListener("click", hndClick);
     // slider.addEventListener("input", hndChange);
     let sliderValue = parseInt(slider.value);
     function hndChange(_event) {
@@ -38,15 +40,19 @@ window.addEventListener("load", function () {
     }
     // EINFÜGEN von PAIR Elementen in DIVs
     for (let i = 0; i < pair.length; i++) {
-        let div = document.createElement("div");
+        var div = document.createElement("div");
         div.classList.add("cards");
         wrapper.appendChild(div);
         div.innerHTML = pair[i];
     }
-    function hndClick(_event) {
-        div.classList.remove("cards");
-        div.classList.add("cardsRevealed");
-    }
+    // function hndClick(_element: HTMLDivElement) {
+    // _element.classList.remove("cards");
+    // _element.classList.add("cardsRevealed");
+    // console.log("Class changed");
+    // console.log(_element);
+    // 
+    // 
+    // }
     console.log("Data[]: " + data.length);
     console.log("Pair[]: " + pair.length);
 });
