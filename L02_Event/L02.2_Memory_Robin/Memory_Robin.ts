@@ -54,9 +54,11 @@ window.addEventListener("load", function (): void {
         div.innerHTML = pair[i];
     }
 
-    function hndClick(_event: Event) {
-        div.classList.remove("cards");
-        div.classList.add("cardsRevealed");
+    function hndClick(_target: Element, _event: Event) {
+        _target.classList.remove("cards");
+        _target.classList.add("cardsRevealed");
+        console.log("Class changed");
+        
     }
 
     console.log("Data[]: " + data.length);
