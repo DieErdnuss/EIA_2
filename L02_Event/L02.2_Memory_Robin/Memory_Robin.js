@@ -49,7 +49,7 @@ window.addEventListener("load", function () {
     // KARTEN umdrehen bei CLICK
     function hndClick(_event) {
         let target = _event.target;
-        // console.log(_event);
+        console.log(target);
         if (lockCard == false) {
             if (target.classList.contains("cards")) {
                 target.classList.remove("cards");

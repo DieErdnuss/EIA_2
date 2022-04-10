@@ -65,7 +65,7 @@ window.addEventListener("load", function (): void {
     function hndClick(_event: Event) {
 
         let target: EventTarget = _event.target;
-        // console.log(_event);
+        console.log(target);
 
         if (lockCard == false) {
             if (target.classList.contains("cards")) {
