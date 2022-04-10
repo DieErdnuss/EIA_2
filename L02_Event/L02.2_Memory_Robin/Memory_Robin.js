@@ -7,6 +7,9 @@ window.addEventListener("load", function () {
     console.log(pair);
     let slider = document.getElementById("slider");
     let wrapper = document.getElementById("wrapper");
+    let lockCard = false;
+    let cardValue1 = "";
+    let cardValue2 = "";
     // debugger
     // DUPLIZIEREN von DATA in PAIR
     function duplicate() {
@@ -24,8 +27,6 @@ window.addEventListener("load", function () {
     // SLIDER Listener
     slider.addEventListener("change", hndChange);
     wrapper.addEventListener("click", hndClick);
-    // let chosenDiv: HTMLDivElement = document.getElementsByClassName("cards");
-    // chosenDiv.addEventListener("click", hndClick);
     // slider.addEventListener("input", hndChange);
     let sliderValue = parseInt(slider.value);
     function hndChange(_event) {
@@ -45,14 +46,57 @@ window.addEventListener("load", function () {
         wrapper.appendChild(div);
         div.innerHTML = pair[i];
     }
-    // function hndClick(_element: HTMLDivElement) {
-    // _element.classList.remove("cards");
-    // _element.classList.add("cardsRevealed");
-    // console.log("Class changed");
-    // console.log(_element);
-    // 
-    // 
-    // }
+    // KARTEN umdrehen bei CLICK
+    function hndClick(_event) {
+        let target = _event.target;
+        // console.log(_event);
+        if (lockCard == false) {
+            if (target.classList.contains("cards")) {
+                target.classList.remove("cards");
+                target.classList.add("cardsRevealed");
+                cardValue1 = target.innerText;
+                cardValue2 = target.innerText;
+                console.log(cardValue1);
+                startCountdown(2);
+            }
+        }
+        // if (lockCard == false) {
+        //     if (cardValue2 == null) {
+        //         if (target.classList.contains("cards")) {
+        //             target.classList.remove("cards");
+        //             target.classList.add("cardsRevealed");
+        //             cardValue2 = target.innerText;
+        //             cardValue1 = " ";
+        //             console.log(cardValue2);
+        //             startCountdown(2);
+        //         }
+        //     }
+        // }
+        if (cardValue1 == cardValue2) {
+            dissapearCards();
+        }
+        // TIMER Karten SICHTBAR
+        function startCountdown(seconds) {
+            let counter = seconds;
+            lockCard = true;
+            const interval = setInterval(() => {
+                console.log(counter);
+                counter--;
+                console.log(lockCard);
+                if (counter < 0) {
+                    clearInterval(interval);
+                    // console.log("timeUp!");
+                    target.classList.remove("cardsRevealed");
+                    target.classList.add("cards");
+                    lockCard = false;
+                    // } else {_event.stopImmediatePropagation();
+                }
+            }, 1000);
+        }
+    }
+    function dissapearCards() {
+        console.log("dissapear");
+    }
     console.log("Data[]: " + data.length);
     console.log("Pair[]: " + pair.length);
 });
