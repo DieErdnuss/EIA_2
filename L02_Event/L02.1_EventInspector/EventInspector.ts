@@ -33,6 +33,8 @@ namespace EventExercise {
         let span: HTMLSpanElement = <HTMLSpanElement> document.getElementById("span");
         let target: HTMLElement = <HTMLElement>document.getElementById("target");     
         let xy: HTMLElement = <HTMLElement>document.getElementById("xy");
+        console.log(_event);
+        
 
         x = _event.pageX;
         y = _event.pageY;
@@ -68,8 +70,7 @@ namespace EventExercise {
     }
 
     function hndClick(_event: MouseEvent): void {
-        console.log("clicked" );
-        
+        console.log("clicked", _event.path);
     }
 
 

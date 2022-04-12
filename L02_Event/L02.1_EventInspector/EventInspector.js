@@ -23,6 +23,7 @@ var EventExercise;
         let span = document.getElementById("span");
         let target = document.getElementById("target");
         let xy = document.getElementById("xy");
+        console.log(_event);
         x = _event.pageX;
         y = _event.pageY;
         target.innerHTML = String("Event Target: " + _event.target);
@@ -47,7 +48,7 @@ var EventExercise;
         console.log("keyUp: " + _event.key);
     }
     function hndClick(_event) {
-        console.log("clicked");
+        console.log("clicked", _event.path);
     }
 })(EventExercise || (EventExercise = {}));
 //# sourceMappingURL=EventInspector.js.map
