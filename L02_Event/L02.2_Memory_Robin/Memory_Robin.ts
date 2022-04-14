@@ -54,7 +54,7 @@ window.addEventListener("load", function (): void {
     // EINFÜGEN von PAIR Elementen in DIVs
     for (let i: number = 0; i < pair.length; i++) {
         var div: HTMLDivElement = document.createElement("div");
-        div.classList.add("cards");
+        div.classList.add("faceDown");
         wrapper.appendChild(div);
         div.innerHTML = pair[i];
     }
@@ -68,9 +68,9 @@ window.addEventListener("load", function (): void {
         console.log(target);
 
         if (lockCard == false) {
-            if (target.classList.contains("cards")) {
-                target.classList.remove("cards");
-                target.classList.add("cardsRevealed");
+            if (target.classList.contains("faceDown")) {
+                target.classList.remove("faceDown");
+                target.classList.add("faceUp");
                 cardValue1 = target.innerText;
                 cardValue2 = target.innerText;
                 console.log(cardValue1);
@@ -112,8 +112,8 @@ window.addEventListener("load", function (): void {
                 if (counter < 0) {
                     clearInterval(interval);
                     // console.log("timeUp!");
-                    target.classList.remove("cardsRevealed");
-                    target.classList.add("cards");
+                    target.classList.remove("faceUp");
+                    target.classList.add("faceDown");
                     lockCard = false;
 
                     // } else {_event.stopImmediatePropagation();
