@@ -13,6 +13,7 @@ window.addEventListener("load", function (): void {
     let cardValue2: string = "";
 
 
+
     // debugger
 
     // DUPLIZIEREN von DATA in PAIR
@@ -22,8 +23,8 @@ window.addEventListener("load", function (): void {
 
     // MISCHEN von PAIR
     function shuffle(a: string): string {
-        for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
+        for (let i: number = a.length - 1; i > 0; i--) {
+            const j: number = Math.floor(Math.random() * (i + 1));
             [a[i], a[j]] = [a[j], a[i]];
         }
         return a;
@@ -64,56 +65,68 @@ window.addEventListener("load", function (): void {
     // KARTEN umdrehen bei CLICK
     function hndClick(_event: Event) {
 
-        let target: EventTarget = _event.target;
+        let target: EventTarget = <EventTarget>_event.target;
         console.log(target);
+        console.log(target.innerHTML);
+
 
         if (lockCard == false) {
             if (target.classList.contains("faceDown")) {
                 target.classList.remove("faceDown");
                 target.classList.add("faceUp");
-                cardValue1 = target.innerText;
-                cardValue2 = target.innerText;
-                console.log(cardValue1);
+                // cardValue1 = target.innerText;
+                if (cardValue1 !== "") {
+                    cardValue2 = target.innerText;
+                } else {
+                    cardValue1 = target.innerText;
+                    cardValue2 = "";
+                }
+
+                // EQUAL Check 
+                if (cardValue1 !== "" && cardValue2 !== "") {
+                    if (cardValue1 == cardValue2) {
+                        console.log("CardValue1 = " + cardValue1);
+                        console.log("CardValue2 = " + cardValue2);
+                        console.log(cardValue1 + " = " + cardValue2);
+                        // dissapearCards();
+                    } else {
+                        console.log("CardValue1 = " + cardValue1);
+                        console.log("CardValue2 = " + cardValue2);
+                        console.log(cardValue1 + " != " + cardValue2);
+                    }
+
+                    cardValue1 = "";
+                    cardValue2 = "";
+                }
+
+                console.log("CardValue1 = " + cardValue1);
+                console.log("CardValue2 = " + cardValue2);
 
                 startCountdown(2);
+
+                
             }
         }
 
-        // if (lockCard == false) {
-        //     if (cardValue2 == null) {
-        //         if (target.classList.contains("cards")) {
-        //             target.classList.remove("cards");
-        //             target.classList.add("cardsRevealed");
-        //             cardValue2 = target.innerText;
-        //             cardValue1 = " ";
-        //             console.log(cardValue2);
-        //             startCountdown(2);
-        //         }
-        //     }
-        // }
-
-        if (cardValue1 == cardValue2) {
-            dissapearCards();
-        }
-
-
-
-
 
         // TIMER Karten SICHTBAR
-        function startCountdown(seconds) {
-            let counter = seconds;
+        function startCountdown(_seconds: number) {
+            let counter = _seconds;
             lockCard = true;
             const interval = setInterval(() => {
                 console.log(counter);
                 counter--;
-                console.log(lockCard);
+                // console.log(lockCard);
 
                 if (counter < 0) {
                     clearInterval(interval);
                     // console.log("timeUp!");
+
                     target.classList.remove("faceUp");
                     target.classList.add("faceDown");
+
+
+
                     lockCard = false;
 
                     // } else {_event.stopImmediatePropagation();
@@ -124,9 +137,14 @@ window.addEventListener("load", function (): void {
     }
 
 
-    function dissapearCards() {
+    function dissapearCards(): void {
         console.log("dissapear");
-        
+        div.classList.remove("facedown");
+        div.classList.add("faceup");
+
+
+
+
 
     }
 

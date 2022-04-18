@@ -50,39 +50,48 @@ window.addEventListener("load", function () {
     function hndClick(_event) {
         let target = _event.target;
         console.log(target);
+        console.log(target.innerHTML);
         if (lockCard == false) {
             if (target.classList.contains("faceDown")) {
                 target.classList.remove("faceDown");
                 target.classList.add("faceUp");
-                cardValue1 = target.innerText;
-                cardValue2 = target.innerText;
-                console.log(cardValue1);
+                // cardValue1 = target.innerText;
+                if (cardValue1 !== "") {
+                    cardValue2 = target.innerText;
+                }
+                else {
+                    cardValue1 = target.innerText;
+                    cardValue2 = "";
+                }
+                // EQUAL Check 
+                if (cardValue1 !== "" && cardValue2 !== "") {
+                    if (cardValue1 == cardValue2) {
+                        console.log("CardValue1 = " + cardValue1);
+                        console.log("CardValue2 = " + cardValue2);
+                        console.log(cardValue1 + " = " + cardValue2);
+                        // dissapearCards();
+                    }
+                    else {
+                        console.log("CardValue1 = " + cardValue1);
+                        console.log("CardValue2 = " + cardValue2);
+                        console.log(cardValue1 + " != " + cardValue2);
+                    }
+                    cardValue1 = "";
+                    cardValue2 = "";
+                }
+                console.log("CardValue1 = " + cardValue1);
+                console.log("CardValue2 = " + cardValue2);
                 startCountdown(2);
             }
         }
-        // if (lockCard == false) {
-        //     if (cardValue2 == null) {
-        //         if (target.classList.contains("cards")) {
-        //             target.classList.remove("cards");
-        //             target.classList.add("cardsRevealed");
-        //             cardValue2 = target.innerText;
-        //             cardValue1 = " ";
-        //             console.log(cardValue2);
-        //             startCountdown(2);
-        //         }
-        //     }
-        // }
-        if (cardValue1 == cardValue2) {
-            dissapearCards();
-        }
         // TIMER Karten SICHTBAR
-        function startCountdown(seconds) {
-            let counter = seconds;
+        function startCountdown(_seconds) {
+            let counter = _seconds;
             lockCard = true;
             const interval = setInterval(() => {
                 console.log(counter);
                 counter--;
-                console.log(lockCard);
+                // console.log(lockCard);
                 if (counter < 0) {
                     clearInterval(interval);
                     // console.log("timeUp!");
@@ -96,6 +105,8 @@ window.addEventListener("load", function () {
     }
     function dissapearCards() {
         console.log("dissapear");
+        div.classList.remove("facedown");
+        div.classList.add("faceup");
     }
     console.log("Data[]: " + data.length);
     console.log("Pair[]: " + pair.length);
