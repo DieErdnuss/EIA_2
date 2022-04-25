@@ -4,27 +4,28 @@ var Memory_2;
     window.addEventListener("load", hndLoad);
     let data = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"];
     let pairAmount = new Array();
-    let pair = duplicate();
+    let pair = new Array();
     // console.log(data);
-    // console.log(pair);
+    console.log(pair);
     let slider;
     let start;
-    let wrapper = document.getElementById("wrapper");
+    let wrapper;
     let lockCard = false;
     let cardValue1;
     let cardValue2;
     let sliderValue;
+    let output;
     // Handle LOAD
     function hndLoad() {
         // Listener
         slider = document.getElementById("slider");
         slider.addEventListener("change", hndChange);
         start = document.getElementById("start");
-        sliderValue = parseInt(slider.value);
         start.addEventListener("click", hndChange);
+        sliderValue = parseInt(slider.value);
+        wrapper = document.getElementById("wrapper");
         wrapper.addEventListener("click", hndClick);
-        // slider.addEventListener("input", hndChange);
-        let output = document.getElementById("output");
+        output = document.getElementById("output");
         output.innerHTML = slider.value;
     }
     //CHANGE HANDLER
@@ -32,42 +33,50 @@ var Memory_2;
         let target = _event.target;
         if (target.name == "slider") {
             console.log("Slider Value: " + slider.value);
+            output.innerHTML = slider.value;
+            console.log("EVENT: " + target);
         }
         if (target.name == "start") {
             console.log("Start Button");
-            pairAmount = data.slice(0, sliderValue);
+            DataToPairAmount();
+            duplicate();
             shuffle(pair);
+            displayCards();
+            console.log("Data[]: " + data);
+            console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
         }
-        let CardAmount = 2 * pair.length;
         // console.log("CardAmount: " + CardAmount);
-        console.log("Data[]: " + data);
-        console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
-        console.log("Pair[]: " + pair);
-        console.log();
+        console.log("------------------------");
+    }
+    function DataToPairAmount() {
+        pairAmount = data.slice(0, sliderValue);
     }
     // DUPLIZIEREN von PAIR AMOUNT in PAIR
     function duplicate() {
-        return (pairAmount.concat(pairAmount));
+        pair = pairAmount.concat(pairAmount);
     }
     // MISCHEN von PAIR
     function shuffle(a) {
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [a[i], a[j]] = [a[j], a[i]];
+            console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
+            console.log("Pair[]: " + pair);
         }
         return a;
     }
     // EINFÜGEN von PAIR Elementen in DIVs
-    for (let i = 0; i < pair.length; i++) {
-        var div = document.createElement("div");
-        div.classList.add("faceDown");
-        wrapper.appendChild(div);
-        div.innerHTML = pair[i];
+    function displayCards() {
+        for (let i = 0; i < pair.length; i++) {
+            var div = document.createElement("div");
+            div.classList.add("faceDown");
+            wrapper.appendChild(div);
+            div.innerHTML = pair[i];
+        }
     }
     // KARTEN umdrehen bei CLICK
     function hndClick(_event) {
         let target = _event.target;
-        // console.log(target);
         // console.log(target.innerHTML);
         if (lockCard == false) {
             if (target.classList.contains("faceDown")) {
@@ -83,7 +92,7 @@ var Memory_2;
                 }
                 // EQUAL Check 
                 if (cardValue1 !== null && cardValue2 !== null) {
-                    if (cardValue1 == cardValue2) {
+                    if (cardValue1.innerHTML == cardValue2.innerHTML) {
                         console.log("CardValue1 = " + cardValue1);
                         console.log("CardValue2 = " + cardValue2);
                         console.log(cardValue1 + " = " + cardValue2);
@@ -130,7 +139,5 @@ var Memory_2;
         div.classList.remove("facedown");
         div.classList.add("faceup");
     }
-    console.log("Data[]: " + data.length);
-    console.log("Pair[]: " + pair.length);
 })(Memory_2 || (Memory_2 = {}));
 //# sourceMappingURL=Memory_Robin_2.js.map

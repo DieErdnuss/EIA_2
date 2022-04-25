@@ -3,17 +3,19 @@ namespace Memory_2 {
 
     let data: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"];
     let pairAmount: string[] = new Array();
-    let pair: string[] = duplicate();
+    let pair: string[] = new Array();
     // console.log(data);
-    // console.log(pair);
+    console.log(pair);
 
     let slider: HTMLInputElement;
     let start: HTMLButtonElement;
-    let wrapper: HTMLDivElement = <HTMLDivElement>document.getElementById("wrapper");
+    let wrapper: HTMLDivElement;
     let lockCard: boolean = false;
-    let cardValue1: EventTarget;
-    let cardValue2: EventTarget;
+    let cardValue1: EventTarget | null;
+    let cardValue2: EventTarget | null;
     let sliderValue: number;
+    let output: HTMLElement;
+
 
     // Handle LOAD
     function hndLoad(): void {
@@ -21,13 +23,14 @@ namespace Memory_2 {
         slider = <HTMLInputElement>document.getElementById("slider");
         slider.addEventListener("change", hndChange);
         start = <HTMLButtonElement>document.getElementById("start");
+        start.addEventListener("click", hndChange);
+
         sliderValue = parseInt(slider.value);
 
-
-        start.addEventListener("click", hndChange);
+        wrapper = <HTMLDivElement>document.getElementById("wrapper");
         wrapper.addEventListener("click", hndClick);
-        // slider.addEventListener("input", hndChange);
-        let output: HTMLElement = <HTMLElement>document.getElementById("output");
+
+        output = <HTMLElement>document.getElementById("output");
         output.innerHTML = slider.value;
     }
 
@@ -37,45 +40,61 @@ namespace Memory_2 {
 
         if (target.name == "slider") {
             console.log("Slider Value: " + slider.value);
+            output.innerHTML = slider.value;
+            console.log("EVENT: " + target);
         }
 
         if (target.name == "start") {
             console.log("Start Button");
-            pairAmount = data.slice(0, sliderValue);
+            DataToPairAmount();
+            duplicate();
             shuffle(pair);
+            displayCards();
+
+            console.log("Data[]: " + data);
+            console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
         }
 
-        let CardAmount: number = 2 * pair.length;
-
         // console.log("CardAmount: " + CardAmount);
-        console.log("Data[]: " + data);
-        console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
-        console.log("Pair[]: " + pair);
-        console.log();
+
+
+        console.log("------------------------");
 
     }
+
+    function DataToPairAmount() {
+        pairAmount = data.slice(0, sliderValue);
+        
+    } 
 
     // DUPLIZIEREN von PAIR AMOUNT in PAIR
     function duplicate() {
-        return (pairAmount.concat(pairAmount));
+        pair = pairAmount.concat(pairAmount);
+
     }
 
+
     // MISCHEN von PAIR
-    function shuffle(a: string): string {
+    function shuffle(a: string) {
         for (let i: number = a.length - 1; i > 0; i--) {
             const j: number = Math.floor(Math.random() * (i + 1));
             [a[i], a[j]] = [a[j], a[i]];
+            console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
+            console.log("Pair[]: " + pair);
+
         }
         return a;
     }
 
 
     // EINFÜGEN von PAIR Elementen in DIVs
-    for (let i: number = 0; i < pair.length; i++) {
-        var div: HTMLDivElement = document.createElement("div");
-        div.classList.add("faceDown");
-        wrapper.appendChild(div);
-        div.innerHTML = pair[i];
+    function displayCards(): void {
+        for (let i: number = 0; i < pair.length; i++) {
+            var div: HTMLDivElement = document.createElement("div");
+            div.classList.add("faceDown");
+            wrapper.appendChild(div);
+            div.innerHTML = pair[i];
+        }
     }
 
 
@@ -83,8 +102,8 @@ namespace Memory_2 {
     // KARTEN umdrehen bei CLICK
     function hndClick(_event: Event): void {
         let target: HTMLDivElement = <HTMLDivElement>_event.target;
-        
-        // console.log(target);
+
+
         // console.log(target.innerHTML);
 
 
@@ -102,7 +121,7 @@ namespace Memory_2 {
 
                 // EQUAL Check 
                 if (cardValue1 !== null && cardValue2 !== null) {
-                    if (cardValue1 == cardValue2) {
+                    if (cardValue1.innerHTML == cardValue2.innerHTML) {
                         console.log("CardValue1 = " + cardValue1);
                         console.log("CardValue2 = " + cardValue2);
                         console.log(cardValue1 + " = " + cardValue2);
@@ -169,10 +188,5 @@ namespace Memory_2 {
 
 
     }
-
-
-
-    console.log("Data[]: " + data.length);
-    console.log("Pair[]: " + pair.length);
 
 }
