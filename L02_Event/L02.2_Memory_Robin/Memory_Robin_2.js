@@ -10,6 +10,7 @@ var Memory_2;
     let slider;
     let start;
     let wrapper;
+    let memory;
     let lockCard = false;
     let cardValue1;
     let cardValue2;
@@ -25,6 +26,7 @@ var Memory_2;
         sliderValue = parseInt(slider.value);
         wrapper = document.getElementById("wrapper");
         wrapper.addEventListener("click", hndClick);
+        memory = document.getElementById("memory");
         output = document.getElementById("output");
         output.innerHTML = slider.value;
     }
@@ -42,10 +44,10 @@ var Memory_2;
             duplicate();
             shuffle(pair);
             displayCards();
-            console.log("Data[]: " + data);
-            console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
         }
         // console.log("CardAmount: " + CardAmount);
+        console.log("Data[]: " + data);
+        console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
         console.log("------------------------");
     }
     function DataToPairAmount() {
@@ -70,51 +72,52 @@ var Memory_2;
         for (let i = 0; i < pair.length; i++) {
             var div = document.createElement("div");
             div.classList.add("faceDown");
-            wrapper.appendChild(div);
+            memory.appendChild(div);
             div.innerHTML = pair[i];
         }
     }
     // KARTEN umdrehen bei CLICK
     function hndClick(_event) {
         let target = _event.target;
+        console.log("Clicked");
         // console.log(target.innerHTML);
-        if (lockCard == false) {
-            if (target.classList.contains("faceDown")) {
-                // target.classList.remove("faceDown");
-                // target.classList.add("faceUp");
-                // cardValue1 = target.innerText;
-                if (cardValue1 !== null) {
-                    cardValue2 = target;
+        // if (lockCard == false) {
+        if (target.classList.contains("faceDown")) {
+            // target.classList.remove("faceDown");
+            // target.classList.add("faceUp");
+            // cardValue1 = target.innerText;
+            if (cardValue1 !== null) {
+                cardValue2 = target;
+            }
+            else {
+                cardValue1 = target;
+                cardValue2 = null;
+            }
+            // EQUAL Check 
+            if (cardValue1 !== null && cardValue2 !== null) {
+                if (cardValue1.innerHTML == cardValue2.innerHTML) {
+                    console.log("CardValue1 = " + cardValue1);
+                    console.log("CardValue2 = " + cardValue2);
+                    console.log(cardValue1 + " = " + cardValue2);
+                    target.classList.remove("faceDown");
+                    target.classList.add("faceUp");
+                    // dissapearCards();
                 }
                 else {
-                    cardValue1 = target;
-                    cardValue2 = null;
+                    div.classList.remove("faceUp");
+                    div.classList.add("faceDown");
+                    console.log("CardValue1 = " + cardValue1);
+                    console.log("CardValue2 = " + cardValue2);
+                    console.log(cardValue1 + " != " + cardValue2);
                 }
-                // EQUAL Check 
-                if (cardValue1 !== null && cardValue2 !== null) {
-                    if (cardValue1.innerHTML == cardValue2.innerHTML) {
-                        console.log("CardValue1 = " + cardValue1);
-                        console.log("CardValue2 = " + cardValue2);
-                        console.log(cardValue1 + " = " + cardValue2);
-                        target.classList.remove("faceDown");
-                        target.classList.add("faceUp");
-                        // dissapearCards();
-                    }
-                    else {
-                        div.classList.remove("faceUp");
-                        div.classList.add("faceDown");
-                        console.log("CardValue1 = " + cardValue1);
-                        console.log("CardValue2 = " + cardValue2);
-                        console.log(cardValue1 + " != " + cardValue2);
-                    }
-                    cardValue1 = null;
-                    cardValue2 = null;
-                }
-                console.log("CardValue1 = " + cardValue1);
-                console.log("CardValue2 = " + cardValue2);
-                // startCountdown(2);
+                cardValue1 = null;
+                cardValue2 = null;
             }
+            console.log("CardValue1 = " + cardValue1);
+            console.log("CardValue2 = " + cardValue2);
+            // startCountdown(2);
         }
+        // }
         // TIMER Karten SICHTBAR
         // function startCountdown(_seconds: number) {
         // let counter = _seconds;

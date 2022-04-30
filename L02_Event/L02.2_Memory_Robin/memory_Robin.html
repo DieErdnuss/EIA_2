@@ -13,13 +13,24 @@
 
 <body>
     <div id="wrapper">
-        <a href="../L02.2_Memory_Robin/L02.2_Memory_Konzept_RobinKnüttel.pdf">Konzept</a><br>
+        <fieldset id="form">
+            <a href="../L02.2_Memory_Robin/L02.2_Memory_Konzept_RobinKnüttel.pdf">Konzept</a>
 
-        Set Pair Value <br>
-        <input type="range" name="slider" id="slider" min="5" max="25" step="1" value="5">
-        Selected Pair Amount:<div id="output"></div>
-        <button id="start" name="start">START GAME</button>
+            <label for="slider">Set Pair Amount</label>
+            <input type="range" name="slider" id="slider" min="5" max="25" step="1" value="5">
+            Selected Pair Amount:<div id="output"></div>
+
+            <button id="start" name="start">START GAME</button>
+        </fieldset>
+
+        <div id="memory">
+
+        </div>
     </div>
 </body>
+
+
+
+
 
 </html>

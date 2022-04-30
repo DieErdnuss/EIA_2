@@ -1,0 +1,60 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(45, 45, 45);
+    color: white;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 3fr;
+    grid-template-areas: 
+        ". imgMemory ."
+        ". formular  . "
+        ". start . ";
+
+}
+
+#formular {
+    grid-area: formular;
+    
+}
+
+#PairAmount {
+    text-align: center;
+}
+
+#CardSize {
+    text-align: center;
+}
+
+#ColorPicker {
+    text-align: end;
+}
+
+#Font {
+    text-align: end;
+}
+
+#imgMemory {
+    grid-area: imgMemory;
+    place-self: center;
+    
+}
+
+#start {
+    grid-area: start;
+    height: 50px;
+    width: 200px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    border-radius: 20px;
+    place-self: center;
+    margin: 20px;
+}
+
+#start:active {
+    background-color: rgb(198, 198, 198);
+    color: black;
+}

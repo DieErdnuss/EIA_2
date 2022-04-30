@@ -10,6 +10,7 @@ namespace Memory_2 {
     let slider: HTMLInputElement;
     let start: HTMLButtonElement;
     let wrapper: HTMLDivElement;
+    let memory: HTMLDivElement;
     let lockCard: boolean = false;
     let cardValue1: EventTarget | null;
     let cardValue2: EventTarget | null;
@@ -29,6 +30,8 @@ namespace Memory_2 {
 
         wrapper = <HTMLDivElement>document.getElementById("wrapper");
         wrapper.addEventListener("click", hndClick);
+        memory = <HTMLDivElement>document.getElementById("memory");
+
 
         output = <HTMLElement>document.getElementById("output");
         output.innerHTML = slider.value;
@@ -51,12 +54,12 @@ namespace Memory_2 {
             shuffle(pair);
             displayCards();
 
-            console.log("Data[]: " + data);
-            console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
+            
         }
 
         // console.log("CardAmount: " + CardAmount);
-
+        console.log("Data[]: " + data);
+        console.log("pairAmount[]: " + pairAmount.length + " " + pairAmount);
 
         console.log("------------------------");
 
@@ -92,7 +95,7 @@ namespace Memory_2 {
         for (let i: number = 0; i < pair.length; i++) {
             var div: HTMLDivElement = document.createElement("div");
             div.classList.add("faceDown");
-            wrapper.appendChild(div);
+            memory.appendChild(div);
             div.innerHTML = pair[i];
         }
     }
@@ -102,12 +105,14 @@ namespace Memory_2 {
     // KARTEN umdrehen bei CLICK
     function hndClick(_event: Event): void {
         let target: HTMLDivElement = <HTMLDivElement>_event.target;
+        console.log("Clicked");
+        
 
 
         // console.log(target.innerHTML);
 
 
-        if (lockCard == false) {
+        // if (lockCard == false) {
             if (target.classList.contains("faceDown")) {
                 // target.classList.remove("faceDown");
                 // target.classList.add("faceUp");
@@ -147,7 +152,7 @@ namespace Memory_2 {
 
 
             }
-        }
+        // }
 
 
         // TIMER Karten SICHTBAR

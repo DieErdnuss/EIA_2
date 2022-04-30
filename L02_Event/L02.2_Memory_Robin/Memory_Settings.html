@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../L02.2_Memory_Robin/Memory_Settings.css">
+    <script src="../L02.2_Memory_Robin/Memory_Robin_2.ts"></script>
+    <link rel="shortcut icon" href="../L02.2_Memory_Robin/img/favicon_memory_Alpha.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory_Settings</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="imgMemory">
+            <img src="../L02.2_Memory_Robin/img/favicon_memory_Alpha.png" alt="Memory">
+        </div>
+        <div id="formular">
+            <fieldset id="PairAmount">
+                <legend>Paaranzahl</legend>
+                <input type="number" name="pairAmount" min="5" max="25" step="1" value="5">
+            </fieldset>
+            <fieldset id="CardSize">
+                <legend>Kartengröße</legend>
+                50px
+                <input type="range" name="cardSize" min="50" max="100" step="10" value="50">
+                100px
+            </fieldset>
+            <fieldset id="ColorPicker">
+                <legend>Farben</legend>
+                <label for="backgroundColor">Hintergrundfarbe:</label>
+                <input type="color" name="backgroundColor" value="#ffffff">
+                <br>
+                <label for="cardBackColor">Kartenrückseite:</label>
+                <input type="color" name="cardBackColor" value="#ff0000">
+                <br>
+                <label for="fontColor">Schriftfarbe:</label>
+                <input type="color" name="fontColor" value="#000000">
+            </fieldset>
+            <fieldset id="Font">
+                <legend>Schriftarten</legend>
+                <label for="Arial">Arial</label>
+                <input type="radio" name="fontFamily" id="Arial" value="Arial" checked="">
+                <br>
+                <label for="fontTimesNewRomanLabel" >Times New Roman</label>
+                <input type="radio" name="fontFamily" value="Times New Roman" id="fontTimesNewRomanLabel">
+                <br>
+                <label for="fontCourier" >Courier</label>
+                <input type="radio" name="fontFamily" id="fontCourier" value="Courier">
+            </fieldset>
+        </div>
+        <button id="start">SPIEL STARTEN</button>
+    </div>
+
+   
+
+</body>
+
+</html>
