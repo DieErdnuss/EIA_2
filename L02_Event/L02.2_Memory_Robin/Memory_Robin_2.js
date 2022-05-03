@@ -78,6 +78,8 @@ var Memory_2;
     }
     // KARTEN umdrehen bei CLICK
     function hndClick(_event) {
+        if (this.div.classList.contains("faceDown"))
+            ;
         let target = _event.target;
         console.log("Clicked");
         // console.log(target.innerHTML);

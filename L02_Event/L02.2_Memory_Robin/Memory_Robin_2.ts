@@ -104,6 +104,9 @@ namespace Memory_2 {
 
     // KARTEN umdrehen bei CLICK
     function hndClick(_event: Event): void {
+        if (this.div.classList.contains("faceDown"));
+
+
         let target: HTMLDivElement = <HTMLDivElement>_event.target;
         console.log("Clicked");
         
