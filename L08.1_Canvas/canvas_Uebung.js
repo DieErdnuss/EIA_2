@@ -1,8 +1,10 @@
 "use strict";
 window.addEventListener("load", hndLoad);
+let canvas;
+let crc2;
 function hndLoad() {
-    let canvas = document.querySelector("canvas");
-    let crc2 = canvas.getContext("2d");
+    canvas = document.querySelector("canvas");
+    crc2 = canvas.getContext("2d");
     canvas.addEventListener("click", hndClick);
     crc2.fillStyle = "#f999";
     crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
