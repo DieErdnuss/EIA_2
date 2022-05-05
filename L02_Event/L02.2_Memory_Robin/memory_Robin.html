@@ -13,15 +13,41 @@
 
 <body>
     <div id="wrapper">
-        <fieldset id="form">
-            <a href="../L02.2_Memory_Robin/L02.2_Memory_Konzept_RobinKnüttel.pdf">Konzept</a>
-
-            <label for="slider">Set Pair Amount</label>
-            <input type="range" name="slider" id="slider" min="5" max="25" step="1" value="5">
-            Selected Pair Amount:<div id="output"></div>
-
-            <button id="start" name="start">START GAME</button>
-        </fieldset>
+        <form id="formular">
+            <fieldset id="PairAmount">
+                <legend>Paaranzahl</legend>
+                <input type="number" name="pairAmount" min="5" max="25" step="1" value="5">
+            </fieldset>
+            <fieldset id="CardSize">
+                <legend>Kartengröße</legend>
+                50px
+                <input type="range" name="cardSize" min="50" max="100" step="10" value="50">
+                100px
+            </fieldset>
+            <fieldset id="ColorPicker">
+                <legend>Farben</legend>
+                <label for="backgroundColor">Hintergrundfarbe:</label>
+                <input type="color" name="backgroundColor" value="#ffffff">
+                <br>
+                <label for="cardBackColor">Kartenrückseite:</label>
+                <input type="color" name="cardBackColor" value="#ff0000">
+                <br>
+                <label for="fontColor">Schriftfarbe:</label>
+                <input type="color" name="fontColor" value="#000000">
+            </fieldset>
+            <fieldset id="Font">
+                <legend>Schriftarten</legend>
+                <label for="Arial">Arial</label>
+                <input type="radio" name="fontFamily" id="Arial" value="Arial" checked="">
+                <br>
+                <label for="fontTimesNewRomanLabel">Times New Roman</label>
+                <input type="radio" name="fontFamily" value="Times New Roman" id="fontTimesNewRomanLabel">
+                <br>
+                <label for="fontCourier">Courier</label>
+                <input type="radio" name="fontFamily" id="fontCourier" value="Courier">
+            </fieldset>
+        </form>
+        <button id="start">SPIEL STARTEN</button>
 
         <div id="memory">
 

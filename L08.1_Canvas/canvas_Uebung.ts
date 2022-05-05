@@ -26,6 +26,8 @@ function hndLoad(): void {
     crc2.lineTo(200, 20);
     crc2.stroke();
     crc2.closePath();
+
+    crc2.fillText()
 }
 
 function hndClick(_event: Event): void {
