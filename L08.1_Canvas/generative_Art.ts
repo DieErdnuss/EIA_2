@@ -15,7 +15,7 @@ namespace BobRossAtelier {
 
         fillCanvas();
         triangle();
-        circle();
+        // circle();
     }
 
     function fillCanvas(): void {
@@ -27,6 +27,7 @@ namespace BobRossAtelier {
 
         for (let i: number = 1; i <= 30; i++) {
             values.push(randomNumber());
+            // let gradient = crc2.createRadialGradient(100,110,15,100,110,45);
 
             crc2.beginPath();
             crc2.lineWidth = rndmStroke();
@@ -35,10 +36,15 @@ namespace BobRossAtelier {
             crc2.lineTo(randomNumber(), randomNumber());
             crc2.closePath();
             crc2.stroke();
-            crc2.strokeStyle = "rgb(" + 0 + "," + rndmRGB() + "," + rndmRGB() + ")";
+            // gradient.addColorStop(0, 'red');
+            // gradient.addColorStop(1, 'green');
+            // crc2.strokeStyle = gradient;
+            crc2.strokeStyle = "hsl(" + rndmH + "," + rndmS() + "," + rndmL() + "," + 0 + ")";
 
         }
         console.log(values);
+
+
     }
 
     function circle(): void {
@@ -52,22 +58,32 @@ namespace BobRossAtelier {
 
             crc2.closePath();
             crc2.stroke();
-            crc2.strokeStyle = "rgb(" + 0 + "," + rndmRGB() + "," + rndmRGB() + ")";
+            crc2.strokeStyle = "hsl(" + rndmH + "," + rndmS() + "," + rndmL() + ")";
         }
         console.log(values);
     }
 
 
     function rndmStroke(): number {
-        return (Math.floor(Math.random() * 50));
+        return (Math.floor(Math.random() * 30));
     }
 
-    function rndmRGB(): number {
-        return (Math.floor(Math.random() * 255));
+    // Random Color Hue
+    function rndmH(): number {
+        return (Math.floor(Math.random() * 359));
+    }
+    // Random Color Saturation
+    function rndmS(): number {
+        return (Math.floor(Math.random() * 500));
+    }
+
+    // Random Color Lumetri
+    function rndmL(): number {
+        return (Math.floor(Math.random() * 1000));
     }
 
     function randomNumber(): number {
-        return (Math.floor(Math.random() * (1000 - 400) + 100));
+        return (Math.floor(Math.random() * (1000 - 100) + 100));
     }
 
 
