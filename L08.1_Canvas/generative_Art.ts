@@ -15,13 +15,18 @@ namespace BobRossAtelier {
 
         fillCanvas();
         triangle();
+        
         // circle();
     }
 
     function fillCanvas(): void {
         crc2.fillStyle = "#ffffff";
-        crc2.fillRect(25, 25, 1000, 1000);
+        crc2.fillRect(0, 0, 700, 700);
+        
+        
     }
+
+   
 
     function triangle(): void {
 
@@ -39,12 +44,36 @@ namespace BobRossAtelier {
             // gradient.addColorStop(0, 'red');
             // gradient.addColorStop(1, 'green');
             // crc2.strokeStyle = gradient;
-            crc2.strokeStyle = "hsl(" + rndmH + "," + rndmS() + "," + rndmL() + "," + 0 + ")";
+            // crc2.strokeStyle = "hsl(" + rndmH + "," + rndmS() + "," + rndmL() + "," + 0 + ")";
+            crc2.strokeStyle = "rgb(" + 0 + "," + rndmRGB() + "," + rndmRGB() + 0 + ")";
+            crc2.shadowOffsetX = 5;
+            crc2.shadowOffsetY = 5;
+            crc2.shadowBlur = 5;
+            // crc2.shadowColor = "grey";
+            frame();
 
         }
         console.log(values);
 
+        
 
+
+    }
+
+    function frame(): void {
+        crc2.beginPath();
+        crc2.lineWidth = 20;
+        crc2.moveTo(100, 100);
+        crc2.lineTo(800,100);
+        crc2.lineTo(800, 800);
+        crc2.lineTo(100, 800);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.shadowOffsetX = rndmShadow();
+        crc2.shadowOffsetY = rndmShadow();
+        crc2.shadowBlur = 5;
+        crc2.shadowColor = String(rndmRGB());
+     
     }
 
     function circle(): void {
@@ -65,7 +94,7 @@ namespace BobRossAtelier {
 
 
     function rndmStroke(): number {
-        return (Math.floor(Math.random() * 30));
+        return (Math.floor(Math.random() * 15));
     }
 
     // Random Color Hue
@@ -79,11 +108,21 @@ namespace BobRossAtelier {
 
     // Random Color Lumetri
     function rndmL(): number {
-        return (Math.floor(Math.random() * 1000));
+        return (Math.floor(Math.random() * 100));
+    }
+
+    // Random Color RGB
+    function rndmRGB(): number {
+        return (Math.floor(Math.random() * 255));
     }
 
     function randomNumber(): number {
-        return (Math.floor(Math.random() * (1000 - 100) + 100));
+        return (Math.floor(Math.random() * (700 - 200) + 200));
+    }
+
+    // Shadow Offset
+    function rndmShadow(): number {
+        return (Math.floor(Math.random() * 20));
     }
 
 
