@@ -16,7 +16,7 @@ namespace BobRossAtelier {
         fillCanvas();
         triangle();
         
-        // circle();
+        circle();
     }
 
     function fillCanvas(): void {
@@ -44,8 +44,10 @@ namespace BobRossAtelier {
             // gradient.addColorStop(0, 'red');
             // gradient.addColorStop(1, 'green');
             // crc2.strokeStyle = gradient;
-            // crc2.strokeStyle = "hsl(" + rndmH + "," + rndmS() + "," + rndmL() + "," + 0 + ")";
-            crc2.strokeStyle = "rgb(" + 0 + "," + rndmRGB() + "," + rndmRGB() + 0 + ")";
+            // crc2.strokeStyle = "HSL(" + rndmH + "," + rndmS() + "%," + rndmL() + "%,)";
+            crc2.strokeStyle = "HSL(23, 85%, 50%)";
+
+            // crc2.strokeStyle = "rgb(" + 0 + "," + rndmRGB() + "," + rndmRGB() + 0 + ")";
             crc2.shadowOffsetX = 5;
             crc2.shadowOffsetY = 5;
             crc2.shadowBlur = 5;
@@ -87,7 +89,7 @@ namespace BobRossAtelier {
 
             crc2.closePath();
             crc2.stroke();
-            crc2.strokeStyle = "hsl(" + rndmH + "," + rndmS() + "," + rndmL() + ")";
+            crc2.strokeStyle = "rgb(" + rndmH + "," + rndmS() + "," + rndmL() + ")";
         }
         console.log(values);
     }
@@ -99,11 +101,11 @@ namespace BobRossAtelier {
 
     // Random Color Hue
     function rndmH(): number {
-        return (Math.floor(Math.random() * 359));
+        return (Math.floor(Math.random() * 100));
     }
     // Random Color Saturation
     function rndmS(): number {
-        return (Math.floor(Math.random() * 500));
+        return (Math.floor(Math.random() * 100));
     }
 
     // Random Color Lumetri

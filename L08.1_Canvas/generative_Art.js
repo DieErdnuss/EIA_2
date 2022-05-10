@@ -10,7 +10,7 @@ var BobRossAtelier;
         crc2 = canvas.getContext("2d");
         fillCanvas();
         triangle();
-        // circle();
+        circle();
     }
     function fillCanvas() {
         crc2.fillStyle = "#ffffff";
@@ -30,8 +30,9 @@ var BobRossAtelier;
             // gradient.addColorStop(0, 'red');
             // gradient.addColorStop(1, 'green');
             // crc2.strokeStyle = gradient;
-            // crc2.strokeStyle = "hsl(" + rndmH + "," + rndmS() + "," + rndmL() + "," + 0 + ")";
-            crc2.strokeStyle = "rgb(" + 0 + "," + rndmRGB() + "," + rndmRGB() + 0 + ")";
+            // crc2.strokeStyle = "HSL(" + rndmH + "," + rndmS() + "%," + rndmL() + "%,)";
+            crc2.strokeStyle = "HSL(23, 85%, 50%)";
+            // crc2.strokeStyle = "rgb(" + 0 + "," + rndmRGB() + "," + rndmRGB() + 0 + ")";
             crc2.shadowOffsetX = 5;
             crc2.shadowOffsetY = 5;
             crc2.shadowBlur = 5;
@@ -63,7 +64,7 @@ var BobRossAtelier;
             crc2.arc(randomNumber(), randomNumber(), randomNumber(), randomNumber(), 1.2 + Math.PI);
             crc2.closePath();
             crc2.stroke();
-            crc2.strokeStyle = "hsl(" + rndmH + "," + rndmS() + "," + rndmL() + ")";
+            crc2.strokeStyle = "rgb(" + rndmH + "," + rndmS() + "," + rndmL() + ")";
         }
         console.log(values);
     }
@@ -72,11 +73,11 @@ var BobRossAtelier;
     }
     // Random Color Hue
     function rndmH() {
-        return (Math.floor(Math.random() * 359));
+        return (Math.floor(Math.random() * 100));
     }
     // Random Color Saturation
     function rndmS() {
-        return (Math.floor(Math.random() * 500));
+        return (Math.floor(Math.random() * 100));
     }
     // Random Color Lumetri
     function rndmL() {
