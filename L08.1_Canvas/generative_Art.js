@@ -2,20 +2,50 @@
 var BobRossAtelier;
 (function (BobRossAtelier) {
     window.addEventListener("load", hndLoad);
+    window.addEventListener("resize", hndResize);
     let canvas;
     let crc2;
     let values = new Array();
+    let resizeW;
+    let resizeH;
+    let beginW = 1500;
+    let w;
+    let h;
+    // LOAD
     function hndLoad() {
         canvas = document.querySelector("canvas");
         crc2 = canvas.getContext("2d");
         fillCanvas();
-        triangle();
-        circle();
+        single();
+        // triangle();
+        // circle();
     }
+    // -------------------------
+    // RESIZE
+    function hndResize() {
+        resizeW = window.innerWidth;
+        resizeH = window.innerHeight;
+        console.log("W= " + resizeW + " H= " + resizeH);
+        crc2.transform(1, 0.5, -0.5, 1, 30, 10);
+    }
+    // -------------------------
+    // CANVAS
     function fillCanvas() {
         crc2.fillStyle = "#ffffff";
         crc2.fillRect(0, 0, 700, 700);
+        crc2.save();
     }
+    // EINZELNES ELEMENT
+    function single() {
+        crc2.beginPath();
+        crc2.lineWidth = 20;
+        crc2.moveTo(50, 50);
+        crc2.lineTo(400, 400);
+        crc2.lineTo(200, 400);
+        crc2.closePath();
+        crc2.stroke();
+    }
+    // TRIANGLE GENERATOR
     function triangle() {
         for (let i = 1; i <= 30; i++) {
             values.push(randomNumber());
@@ -41,6 +71,7 @@ var BobRossAtelier;
         }
         console.log(values);
     }
+    // FRAME GENERATOR
     function frame() {
         crc2.beginPath();
         crc2.lineWidth = 20;
@@ -55,6 +86,7 @@ var BobRossAtelier;
         crc2.shadowBlur = 5;
         crc2.shadowColor = String(rndmRGB());
     }
+    // CIRCLE GENERATOR
     function circle() {
         for (let i = 1; i <= 30; i++) {
             values.push(randomNumber());
@@ -68,6 +100,8 @@ var BobRossAtelier;
         }
         console.log(values);
     }
+    // -----------------------------------
+    // RANDOM NUMBER GENERATOR
     function rndmStroke() {
         return (Math.floor(Math.random() * 15));
     }
