@@ -70,7 +70,7 @@ namespace EventExercise {
     }
 
     function hndClick(_event: MouseEvent): void {
-        console.log("clicked", _event.path);
+        // console.log("clicked", _event.path);
     }
 
 

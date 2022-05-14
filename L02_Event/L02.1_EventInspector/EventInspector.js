@@ -48,7 +48,7 @@ var EventExercise;
         console.log("keyUp: " + _event.key);
     }
     function hndClick(_event) {
-        console.log("clicked", _event.path);
+        // console.log("clicked", _event.path);
     }
 })(EventExercise || (EventExercise = {}));
 //# sourceMappingURL=EventInspector.js.map

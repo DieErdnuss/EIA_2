@@ -1,20 +1,19 @@
 "use strict";
-window.addEventListener("load", hndLoad);
-let button;
-let checkbox;
-function hndLoad(_event) {
-    button = document.getElementById("button");
-    button.addEventListener("click", hndClick);
-    checkbox = document.getElementById("checkbox");
-    checkbox.addEventListener("change", hndChange);
-}
-function hndClick(_click) {
-    console.log(_click);
-    let formData = new FormData(document.forms[0]);
-}
-function hndChange(_event) {
-    console.log("changed");
-    for (let entry of FormData.entries)
-        ;
-}
+// window.addEventListener("load", hndLoad);
+// let button: HTMLDivElement;
+// let checkbox: HTMLInputElement;
+// function hndLoad(_event: Event) {
+//     button = <HTMLDivElement> document.getElementById("button");
+//     button.addEventListener("click", hndClick);
+//     checkbox = <HTMLInputElement> document.getElementById("checkbox");
+//     checkbox.addEventListener("change", hndChange);
+// }
+// function hndClick(_click: Event) {
+//     console.log(_click);
+//     let formData: FormData = new FormData(document.forms[0]);
+// }
+// function hndChange(_event: Event) {
+//     console.log("changed");
+//     for (let entry of FormData.entries);
+// }
 //# sourceMappingURL=PointerEvent.js.map
