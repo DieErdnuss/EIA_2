@@ -2,49 +2,57 @@
 var RobBossAtelier;
 (function (RobBossAtelier) {
     window.addEventListener("load", hndLoad);
-    // window.addEventListener("resize", hndResize);
+    window.addEventListener("resize", hndResize);
     let canvas;
     let crc2;
     // let rndmX: number;
     // let rndmY: number;
-    // let resizeW: number;
-    // let resizeH: number;
+    let resizeW;
+    let resizeH;
     let palmPosX;
     let palmPosY;
     let palmScale;
+    let winWidth;
+    let winHeight;
+    let reload;
     // LOAD
     function hndLoad() {
         canvas = document.querySelector("canvas");
         crc2 = canvas.getContext("2d");
+        winWidth = document.getElementById("windowWidth");
+        winHeight = document.getElementById("windowHeight");
+        reload = document.getElementById("reload");
+        reload.addEventListener("click", hndClick);
         // debugger;
-        // hndResize(); 
+        hndResize();
         sky();
         sun();
         clouds();
         rock();
         ship();
+        water();
         mountain();
         coast();
-        water();
         shark();
         people();
         gull();
         towel();
         palmTree();
-        // Circle();
     }
     // -------------------------
+    function hndClick() {
+        window.location.reload();
+    }
     // RESIZE
-    // function hndResize(): void {
-    //     resizeW = window.innerWidth;
-    //     resizeH = window.innerHeight;
-    //     console.log("W= " + resizeW + " H= " + resizeH);
-    //     canvas.width = resizeW - 50;
-    //     canvas.height = (resizeW / 16) * 9;
-    //     circle();
-    //     horizon();
-    //     single();
-    // }
+    function hndResize() {
+        resizeW = window.innerWidth;
+        resizeH = window.innerHeight;
+        console.log("W= " + resizeW + " H= " + resizeH);
+        canvas.style.width = String(resizeW - 50 + "px");
+        // canvas.style.height = String(resizeH);
+        winWidth.innerHTML = String(resizeW + " W");
+        winHeight.innerHTML = String(resizeH + " H");
+    }
     function sky() {
         crc2.save();
         crc2.translate(0, 0);
@@ -81,10 +89,10 @@ var RobBossAtelier;
     function mountain() {
         crc2.beginPath();
         crc2.moveTo(300, 0);
-        crc2.bezierCurveTo(350, 150, 650, 450, 900, 450);
-        crc2.bezierCurveTo(950, 450, 950, 440, 1000, 440);
-        crc2.bezierCurveTo(1050, 440, 1100, 500, 1150, 500);
-        crc2.lineTo(0, 500);
+        crc2.bezierCurveTo(350, 150, 650, 450, 900, 550);
+        crc2.bezierCurveTo(950, 450, 950, 440, 1000, 540);
+        crc2.bezierCurveTo(1050, 440, 1100, 500, 1150, 600);
+        crc2.lineTo(0, 600);
         crc2.lineTo(0, 0);
         crc2.closePath();
         let gradient = crc2.createLinearGradient(100, 100, 100, 500);
@@ -95,10 +103,10 @@ var RobBossAtelier;
     }
     function coast() {
         crc2.beginPath();
-        crc2.moveTo(1150, 500);
-        crc2.bezierCurveTo(1150, 500, -350, 600, 2000, 1200);
+        crc2.moveTo(1150, 600);
+        crc2.bezierCurveTo(1150, 630, -350, 700, 2000, 1400);
         crc2.lineTo(0, 1200);
-        crc2.lineTo(0, 500);
+        crc2.lineTo(0, 600);
         crc2.closePath();
         let gradient = crc2.createLinearGradient(0, 700, 1000, 1000);
         gradient.addColorStop(1, "#FAD456");
@@ -126,8 +134,12 @@ var RobBossAtelier;
     }
     function water() {
         crc2.beginPath();
-        crc2.moveTo(1150, 500);
-        crc2.bezierCurveTo(1150, 500, -350, 600, 2000, 1200);
+        crc2.moveTo(0, 500);
+        crc2.lineTo(2000, 500);
+        crc2.lineTo(2000, 1200);
+        crc2.lineTo(0, 1200);
+        crc2.closePath();
+        // crc2.bezierCurveTo(1150, 500, -350, 600, 2000, 1200);
         crc2.lineTo(2000, 500);
         crc2.closePath();
         let gradient = crc2.createLinearGradient(2000, 500, 500, 1000);
@@ -216,7 +228,7 @@ var RobBossAtelier;
     // LAND OBJEKTE
     // ----------------------------
     function towel() {
-        let j = 600;
+        let j = 700;
         let posTowelX = 260;
         for (let i = 0; i < 3; i++) {
             crc2.save();
@@ -377,7 +389,7 @@ var RobBossAtelier;
     }
     function shark() {
         crc2.save();
-        crc2.translate(1500, 600);
+        crc2.translate(1500, 800);
         crc2.beginPath();
         crc2.moveTo(0, 0);
         crc2.bezierCurveTo(10, -10, 30, -50, 70, -50);

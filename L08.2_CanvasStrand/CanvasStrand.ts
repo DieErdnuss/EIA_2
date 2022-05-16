@@ -1,7 +1,7 @@
 namespace RobBossAtelier {
 
     window.addEventListener("load", hndLoad);
-    // window.addEventListener("resize", hndResize);
+    window.addEventListener("resize", hndResize);
 
     let canvas: HTMLCanvasElement;
     let crc2: CanvasRenderingContext2D;
@@ -11,31 +11,42 @@ namespace RobBossAtelier {
     // let rndmY: number;
 
 
-    // let resizeW: number;
-    // let resizeH: number;
+    let resizeW: number;
+    let resizeH: number;
 
     let palmPosX: number;
     let palmPosY: number;
     let palmScale: number;
+
+    let winWidth: HTMLElement;
+    let winHeight: HTMLElement;
+
+    let reload: HTMLElement;
 
 
     // LOAD
     function hndLoad(): void {
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
+
+        winWidth = <HTMLElement>document.getElementById("windowWidth");
+        winHeight = <HTMLElement>document.getElementById("windowHeight");
+         
+        reload = <HTMLElement>document.getElementById("reload");
+        reload.addEventListener("click", hndClick);
         // debugger;
 
-        // hndResize(); 
+        hndResize();
 
         sky();
-
         sun();
         clouds();
         rock();
         ship();
-        mountain();
-        coast();
         water();
+        mountain();
+        
+        coast();
         shark();
         people();
 
@@ -43,28 +54,25 @@ namespace RobBossAtelier {
         towel();
         palmTree();
 
-
-        // Circle();
-
-
-
     }
     // -------------------------
 
+    function hndClick(): void {
+        window.location.reload();
+    }
+
     // RESIZE
-    // function hndResize(): void {
-    //     resizeW = window.innerWidth;
-    //     resizeH = window.innerHeight;
-    //     console.log("W= " + resizeW + " H= " + resizeH);
+    function hndResize(): void {
+        resizeW = window.innerWidth;
+        resizeH = window.innerHeight;
+        console.log("W= " + resizeW + " H= " + resizeH);
 
-    //     canvas.width = resizeW - 50;
-    //     canvas.height = (resizeW / 16) * 9;
+        canvas.style.width = String(resizeW - 50 + "px");
+        // canvas.style.height = String(resizeH);
 
-    //     circle();
-    //     horizon();
-    //     single();
-
-    // }
+        winWidth.innerHTML = String(resizeW + " W");
+        winHeight.innerHTML = String(resizeH + " H");
+    }
 
     function sky(): void {
         crc2.save();
@@ -80,7 +88,6 @@ namespace RobBossAtelier {
         gradient.addColorStop(0, "#f18d00");
         gradient.addColorStop(0.5, "#d8dadd");
         gradient.addColorStop(1, "#71739a");
-
 
         crc2.fillStyle = gradient;
 
@@ -114,10 +121,10 @@ namespace RobBossAtelier {
     function mountain(): void {
         crc2.beginPath();
         crc2.moveTo(300, 0);
-        crc2.bezierCurveTo(350, 150, 650, 450, 900, 450);
-        crc2.bezierCurveTo(950, 450, 950, 440, 1000, 440);
-        crc2.bezierCurveTo(1050, 440, 1100, 500, 1150, 500);
-        crc2.lineTo(0, 500);
+        crc2.bezierCurveTo(350, 150, 650, 450, 900, 550);
+        crc2.bezierCurveTo(950, 450, 950, 440, 1000, 540);
+        crc2.bezierCurveTo(1050, 440, 1100, 500, 1150, 600);
+        crc2.lineTo(0, 600);
         crc2.lineTo(0, 0);
         crc2.closePath();
 
@@ -131,10 +138,10 @@ namespace RobBossAtelier {
     function coast(): void {
 
         crc2.beginPath();
-        crc2.moveTo(1150, 500);
-        crc2.bezierCurveTo(1150, 500, -350, 600, 2000, 1200);
+        crc2.moveTo(1150, 600);
+        crc2.bezierCurveTo(1150, 630, -350, 700, 2000, 1400);
         crc2.lineTo(0, 1200);
-        crc2.lineTo(0, 500);
+        crc2.lineTo(0, 600);
         crc2.closePath();
 
         let gradient = crc2.createLinearGradient(0, 700, 1000, 1000);
@@ -166,8 +173,12 @@ namespace RobBossAtelier {
 
     function water(): void {
         crc2.beginPath();
-        crc2.moveTo(1150, 500);
-        crc2.bezierCurveTo(1150, 500, -350, 600, 2000, 1200);
+        crc2.moveTo(0, 500);
+        crc2.lineTo(2000, 500);
+        crc2.lineTo(2000, 1200);
+        crc2.lineTo(0,1200);
+        crc2.closePath();
+        // crc2.bezierCurveTo(1150, 500, -350, 600, 2000, 1200);
         crc2.lineTo(2000, 500);
         crc2.closePath();
 
@@ -279,7 +290,7 @@ namespace RobBossAtelier {
     // ----------------------------
 
     function towel(): void {
-        let j: number = 600;
+        let j: number = 700;
         let posTowelX: number = 260;
 
 
@@ -349,15 +360,15 @@ namespace RobBossAtelier {
         // Arms
         crc2.beginPath();
         crc2.moveTo(30, 10);
-        crc2.lineTo(60, 40); 
-        crc2.moveTo(30,10);       
+        crc2.lineTo(60, 40);
+        crc2.moveTo(30, 10);
         crc2.lineTo(60, -20);
         crc2.strokeStyle = "#7A6145";
         crc2.lineWidth = 6;
         crc2.stroke();
         crc2.closePath();
         // Body
-        
+
         crc2.beginPath();
         crc2.moveTo(10, 10);
         crc2.lineTo(100, 10);
@@ -483,7 +494,7 @@ namespace RobBossAtelier {
 
     function shark(): void {
         crc2.save();
-        crc2.translate(1500, 600);
+        crc2.translate(1500, 800);
         crc2.beginPath();
         crc2.moveTo(0, 0);
         crc2.bezierCurveTo(10, -10, 30, -50, 70, -50);
