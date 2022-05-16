@@ -5,10 +5,7 @@ namespace RobBossAtelier {
 
     let canvas: HTMLCanvasElement;
     let crc2: CanvasRenderingContext2D;
-    // let sliderX: HTMLInputElement;
-    // let sliderY: HTMLInputElement;
-    // let positionX: number;
-    // let positionY: number;
+
 
     // let rndmX: number;
     // let rndmY: number;
@@ -22,26 +19,14 @@ namespace RobBossAtelier {
     let palmScale: number;
 
 
-
-
-
     // LOAD
     function hndLoad(): void {
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
         // debugger;
-        // sliderX = <HTMLInputElement>document.getElementById("SliderX");
-        // sliderY = <HTMLInputElement>document.getElementById("SliderY");
-        // sliderX.addEventListener("change", hndChange);
-        // sliderY.addEventListener("change", hndChange);
 
-        // fillCanvas();
         // hndResize(); 
 
-        // rndmX = rndPosX();
-        // rndmY = rndPosY();
-
-        // horizon();
         sky();
 
         sun();
@@ -51,15 +36,15 @@ namespace RobBossAtelier {
         mountain();
         coast();
         water();
-
+        shark();
+        people();
 
         gull();
         towel();
         palmTree();
+        
+        
         // Circle();
-
-
-
 
 
 
@@ -81,57 +66,28 @@ namespace RobBossAtelier {
 
     // }
 
-    // function hndChange(_event: Event): void {
-
-    //     positionX = Number(sliderX.value);
-    //     positionY = Number(sliderY.value);
-    //     console.log(positionX);
-    //     console.log(positionY);
-    //     // crc2.setTransform(1, 0, 0, 1, positionX, positionY);
-
-    //     // scale(positionX, positionY);
-
-
-    // }
-
-    // -------------------------
-
-
-
-    // // CANVAS
-    // function fillCanvas(): void {
-    //     crc2.fillStyle = "#000";
-    //     crc2.fillRect(0, 0, 700, 700);
-    // }
-
-    // ---------------------------------------
-    // SZENE
-
-    // function horizon(): void {
-    //     crc2.beginPath;
-    //     crc2.lineWidth = 2;
-    //     crc2.moveTo(0, 500);
-    //     crc2.lineTo(0, 500);
-    //     crc2.lineTo(2000, 500);
-    //     crc2.strokeStyle = "#000"
-    //     crc2.stroke();
-    //     crc2.closePath;
-
-    // }
-
     function sky(): void {
         crc2.save();
         crc2.translate(0, 0);
         crc2.beginPath();
         crc2.moveTo(0, 0);
         crc2.lineTo(2000, 0);
-        crc2.lineTo(2000, 500);
-        crc2.lineTo(0, 500);
-        crc2.fillStyle = "#B0E3F0";
-        crc2.fill();
-        crc2.strokeStyle = "#B0E3F0";
-        crc2.stroke();
+        crc2.lineTo(2000, 700);
+        crc2.lineTo(0, 700);
         crc2.closePath();
+
+        let gradient = crc2.createRadialGradient(1100, 400, 50, 1000, 400, 1000);
+        gradient.addColorStop(0, "#f18d00");
+        gradient.addColorStop(0.5, "#d8dadd");
+        gradient.addColorStop(1, "#71739a");
+
+
+        crc2.fillStyle = gradient;
+
+        // crc2.fillStyle = "#E080BD";
+        crc2.fill();
+
+
         crc2.restore();
     }
 
@@ -146,19 +102,14 @@ namespace RobBossAtelier {
         crc2.arc(1100, 400, 300, 0, Math.PI * 2);
 
 
-        let gradient = crc2.createRadialGradient(1100, 400, 1, 1100, 400, 300);
-        gradient.addColorStop(0, "#ffb300");
-        gradient.addColorStop(1, "#B0E3F0");
+        let gradient = crc2.createRadialGradient(1100, 400, 200, 1100, 400, 500);
+        gradient.addColorStop(0, "#FDC90D");
+        gradient.addColorStop(1, "#f18d00");
+
         crc2.fillStyle = gradient;
         crc2.fill();
         // crc2.stroke();
-
-
-
-
     }
-
-
 
     function mountain(): void {
         crc2.beginPath();
@@ -168,20 +119,13 @@ namespace RobBossAtelier {
         crc2.bezierCurveTo(1050, 440, 1100, 500, 1150, 500);
         crc2.lineTo(0, 500);
         crc2.lineTo(0, 0);
-
-        crc2.strokeStyle = "#416139";
-        crc2.stroke();
-        crc2.fillStyle = "#416139";
-        crc2.fill();
         crc2.closePath();
 
-
-        // crc2.beginPath();
-        // crc2.moveTo(300, 0);
-        // crc2.lineTo(100, 100);
-        // crc2.lineTo(100, 200);
-        // crc2.closePath;
-        // crc2.stroke();
+        let gradient = crc2.createLinearGradient(100, 100, 100, 500);
+        gradient.addColorStop(0, "#5C6144");
+        gradient.addColorStop(1, "#416139");
+        crc2.fillStyle = gradient;
+        crc2.fill();
     }
 
     function coast(): void {
@@ -192,10 +136,12 @@ namespace RobBossAtelier {
         crc2.lineTo(0, 1200);
         crc2.lineTo(0, 500);
         crc2.closePath();
-        crc2.fillStyle = "#E0C782";
+
+        let gradient = crc2.createLinearGradient(0, 700, 1000, 1000);
+        gradient.addColorStop(1, "#FAD456");
+        gradient.addColorStop(0, "#E0B249");
+        crc2.fillStyle = gradient;
         crc2.fill();
-        crc2.strokeStyle = "#416139";
-        crc2.stroke();
     }
 
     function rock(): void {
@@ -224,10 +170,13 @@ namespace RobBossAtelier {
         crc2.bezierCurveTo(1150, 500, -350, 600, 2000, 1200);
         crc2.lineTo(2000, 500);
         crc2.closePath();
-        crc2.fillStyle = "#70B6E6";
+
+        let gradient = crc2.createLinearGradient(2000, 500, 500, 1000);
+        gradient.addColorStop(0, "#4C8DAD");
+        gradient.addColorStop(1, "#61C6FA");
+        crc2.fillStyle = gradient;
         crc2.fill();
-        crc2.strokeStyle = "#70B6E6";
-        crc2.stroke();
+
     }
 
 
@@ -258,9 +207,7 @@ namespace RobBossAtelier {
             crc2.arc(50, 15, 40, 0, Math.PI * 2);
             crc2.closePath();
             crc2.lineWidth = 5;
-            crc2.strokeStyle = "white";
-            crc2.stroke();
-            crc2.fillStyle = "white";
+            crc2.fillStyle = "rgba(235, 78, 72, 0.5)";
             crc2.fill();
             crc2.restore();
         }
@@ -292,10 +239,11 @@ namespace RobBossAtelier {
     }
 
     function ship(): void {
-        let posX: number = rndShipPosX();
+        let posXShip: number = rndShipPosX();
+        let j: number = 30;
 
         crc2.save();
-        crc2.translate(posX, 500);
+        crc2.translate(posXShip, 500);
         crc2.beginPath();
         crc2.moveTo(0, 0);
         crc2.lineTo(-10, -20);
@@ -308,62 +256,37 @@ namespace RobBossAtelier {
         crc2.stroke();
         crc2.closePath();
 
-        // Schornstein 1
-        crc2.beginPath();
-        crc2.moveTo(50, -20);
-        crc2.lineTo(55, -50);
-        crc2.lineTo(70, -50);
-        crc2.lineTo(65, -20);
-        crc2.fillStyle = "#212121";
-        crc2.fill();
-        crc2.strokeStyle = "#212121";
-        crc2.stroke();
+        // Schornstein 
+        for (let i: number = 1; i <= 4; i++) {
 
-        // Schornstein 2
-        crc2.beginPath();
-        crc2.moveTo(80, -20);
-        crc2.lineTo(85, -50);
-        crc2.lineTo(100, -50);
-        crc2.lineTo(95, -20);
-        crc2.fillStyle = "#212121";
-        crc2.fill();
-        crc2.strokeStyle = "#212121";
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.moveTo(j, -20);
+            crc2.lineTo(j + 5, -50);
+            crc2.lineTo(j + 20, -50);
+            crc2.lineTo(j + 15, -20);
+            crc2.fillStyle = "#212121";
+            crc2.fill();
+            crc2.strokeStyle = "#212121";
+            crc2.stroke();
 
-        // Schornstein 3
-        crc2.beginPath();
-        crc2.moveTo(110, -20);
-        crc2.lineTo(115, -50);
-        crc2.lineTo(130, -50);
-        crc2.lineTo(125, -20);
-        crc2.fillStyle = "#212121";
-        crc2.fill();
-        crc2.strokeStyle = "#212121";
-        crc2.stroke();
-
-        // Schornstein 4
-        crc2.beginPath();
-        crc2.moveTo(140, -20);
-        crc2.lineTo(145, -50);
-        crc2.lineTo(160, -50);
-        crc2.lineTo(155, -20);
-        crc2.fillStyle = "#212121";
-        crc2.fill();
-        crc2.strokeStyle = "#212121";
-        crc2.stroke();
-
+            j += 30;
+        }
         crc2.restore();
-
     }
+
     // LAND OBJEKTE
 
     // ----------------------------
 
     function towel(): void {
+        let j: number = 600;
+        let posTowelX: number = 260;
+
+
 
         for (let i: number = 0; i < 3; i++) {
             crc2.save();
-            crc2.translate(260, 700);
+            crc2.translate(posTowelX, j);
             crc2.beginPath();
             crc2.moveTo(-20, -20);
             crc2.lineTo(200, -10);
@@ -376,31 +299,68 @@ namespace RobBossAtelier {
             crc2.fill();
             crc2.stroke();
             crc2.closePath();
-
-            // Head
-            crc2.beginPath();
-            crc2.moveTo(10, 10);
-            crc2.arc(0, 10, 10, 0, 2 * Math.PI);
-            // Arms
-            crc2.lineTo(50, 30);
-            crc2.moveTo(10, 10);
-            crc2.lineTo(60, 0);
-            crc2.moveTo(10, 10);
-            // Body
-            crc2.lineTo(100, 10);
-            crc2.lineTo(150, 30);
-            // Legs
-            crc2.moveTo(100, 10);
-            crc2.lineTo(160, 0)
-            crc2.strokeStyle = "#fff";
-            crc2.stroke();
             crc2.restore();
+
+            towelPerson(posTowelX, j);
+            j += 100;
+
         }
+    }
+
+    function towelPerson(_posX: number, _posY: number): void {
+
+        crc2.save();
+        crc2.translate(_posX, _posY);
+        // Head
+        crc2.moveTo(0, 0);
+        crc2.beginPath();
+        crc2.arc(0, 10, 10, 0, 2 * Math.PI);
+        // Arms
+        crc2.lineTo(50, 30);
+        crc2.moveTo(10, 10);
+        crc2.lineTo(60, 0);
+        crc2.moveTo(10, 10);
+        // Body
+        crc2.lineTo(100, 10);
+        crc2.lineTo(150, 30);
+        // Legs
+        crc2.moveTo(100, 10);
+        crc2.lineTo(160, 0)
+        crc2.strokeStyle = "#fff";
+        crc2.stroke();
+        crc2.restore();
+
+    }
+
+    function people(): void {
+
+        crc2.save();
+        crc2.translate(1000, 700);
+        crc2.rotate(Math.PI * 1/2)
+        // Head
+        crc2.moveTo(0, 0);
+        crc2.beginPath();
+        crc2.arc(0, 10, 10, 0, 2 * Math.PI);
+        // Arms
+        crc2.lineTo(50, 30);
+        crc2.moveTo(10, 10);
+        crc2.lineTo(60, 0);
+        crc2.moveTo(10, 10);
+        // Body
+        crc2.lineTo(100, 10);
+        crc2.lineTo(150, 30);
+        // Legs
+        crc2.moveTo(100, 10);
+        crc2.lineTo(160, 0)
+        crc2.strokeStyle = "#fff";
+        crc2.stroke();
+        crc2.restore();
+
     }
 
     function palmTree(): void {
 
-        for (let i: number = 0; i < 5; i++) {
+        for (let i: number = 0; i < 20; i++) {
 
             palmPosX = rndPalmPosX();
             palmPosY = rndPalmPosY();
@@ -412,7 +372,7 @@ namespace RobBossAtelier {
 
             crc2.moveTo(0, 0);
             crc2.beginPath();
-            // crc2.arc(100, -300, 20, 0, 2 * Math.PI);
+            crc2.arc(100, -300, 20, 0, 2 * Math.PI);
             crc2.closePath();
             crc2.stroke();
 
@@ -420,95 +380,97 @@ namespace RobBossAtelier {
             crc2.beginPath();
             crc2.moveTo(0, 0);
             crc2.bezierCurveTo(0, -200, 100, -200, 100, -300);
-            crc2.lineWidth = 10;
+            crc2.lineWidth = 15;
             crc2.strokeStyle = "#2e1600";
             crc2.stroke();
             crc2.closePath();
 
             crc2.restore();
 
-            palmLeaves(palmPosX, palmPosY);
 
-        }
+            let j: number = 5.5;
+            let k: number = 6;
 
-
-
-    }
-
-    function palmLeaves(_posX: number, _posY: number): void {
-
-        let j: number = 5.5;
-        let k: number = 6;
-
-        crc2.save();
-        crc2.translate(_posX + 100, _posY - 300);
+            crc2.save();
+            crc2.translate(palmPosX + 100, palmPosY - 300);
 
 
-        // crc2.moveTo(0, 0);
+            // crc2.moveTo(0, 0);
 
-        // crc2.arc(0, 0, 10, 0, Math.PI * 2);
-        // crc2.closePath();
-        // Blätter 
+            // crc2.arc(0, 0, 10, 0, Math.PI * 2);
+            // crc2.closePath();
+            // Blätter 
 
-        // crc2.scale(palmScale / 10, palmScale / 10);
+            // crc2.scale(palmScale / 10, palmScale / 10);
 
-        for (let i: number = 0; i < 3; i++) {
+            for (let i: number = 0; i < 3; i++) {
 
-            crc2.beginPath();
-            crc2.moveTo(0, 0);
-            crc2.rotate(j);
-            crc2.lineTo(50, 10);
-            crc2.lineTo(100, 50);
-            crc2.lineTo(110, 100);
-            crc2.lineTo(90, 80);
-            crc2.lineTo(80, 60);
-            crc2.lineTo(50, 20);
-            crc2.lineTo(0, 0);
-            crc2.closePath();
+                crc2.beginPath();
+                crc2.moveTo(0, 0);
+                crc2.rotate(j);
+                crc2.lineTo(50, 10);
+                crc2.lineTo(100, 50);
+                crc2.lineTo(110, 100);
+                crc2.lineTo(90, 80);
+                crc2.lineTo(80, 60);
+                crc2.lineTo(50, 20);
+                crc2.lineTo(0, 0);
+                crc2.closePath();
 
-            crc2.lineWidth = 5;
-            crc2.strokeStyle = "#264014";
-            crc2.fillStyle = "#264014";
-            crc2.fill();
-            crc2.stroke();
-            crc2.fill();
+                crc2.lineWidth = 5;
+                crc2.strokeStyle = "#264014";
+                crc2.fillStyle = "#264014";
+                crc2.fill();
+                crc2.stroke();
+                crc2.fill();
 
-            j = + 0.5;
-        }
+                j = + 0.5;
+            }
 
-        crc2.scale(-1, 1);
+            crc2.scale(-1, 1);
 
-        for (let i: number = 0; i < 3; i++) {
-
-
-            crc2.beginPath();
-            crc2.moveTo(0, 0);
-            crc2.rotate(Math.PI * k / 4);
+            for (let i: number = 0; i < 3; i++) {
 
 
-            crc2.lineTo(50, 10);
-            crc2.lineTo(100, 50);
-            crc2.lineTo(110, 100);
-            crc2.lineTo(90, 80);
-            crc2.lineTo(80, 60);
-            crc2.lineTo(50, 20);
-            crc2.lineTo(0, 0);
-            crc2.closePath();
+                crc2.beginPath();
+                crc2.moveTo(0, 0);
+                crc2.rotate(Math.PI * k / 4);
 
-            crc2.lineWidth = 5;
-            crc2.strokeStyle = "#264014";
-            crc2.fillStyle = "#264014";
-            crc2.fill();
-            crc2.stroke();
-            crc2.fill();
 
-            k = + 1;
+                crc2.lineTo(50, 10);
+                crc2.lineTo(100, 50);
+                crc2.lineTo(110, 100);
+                crc2.lineTo(90, 80);
+                crc2.lineTo(80, 60);
+                crc2.lineTo(50, 20);
+                crc2.lineTo(0, 0);
+                crc2.closePath();
+
+                crc2.lineWidth = 5;
+                crc2.strokeStyle = "#264014";
+                crc2.fillStyle = "#264014";
+                crc2.fill();
+                crc2.stroke();
+                crc2.fill();
+
+                k = + 1;
+            }
         }
 
         crc2.restore();
-
-
     }
+
+    function shark(): void {
+        crc2.save();
+        crc2.translate(1500, 600);
+        crc2.beginPath();
+        crc2.moveTo(0, 0);
+        crc2.arc(0, 0, 100, 0, Math.PI * 2);
+        crc2.stroke();
+        crc2.restore();
+    }
+
+
 
 
 
@@ -552,11 +514,11 @@ namespace RobBossAtelier {
 
     // Palm Position
     function rndPalmPosX(): number {
-        return Math.floor(Math.random() * 300);
+        return Math.floor(Math.random() * 600);
     }
 
     function rndPalmPosY(): number {
-        return Math.floor(Math.random() * (1000 - 500) + 500);
+        return Math.floor(Math.random() * (1000 - 200) + 200);
     }
 }
 
