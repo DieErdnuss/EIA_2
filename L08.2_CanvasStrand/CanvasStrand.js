@@ -384,6 +384,7 @@ var RobBossAtelier;
                 crc2.fill();
                 k = +1;
             }
+            crc2.resetTransform();
         }
         crc2.restore();
     }

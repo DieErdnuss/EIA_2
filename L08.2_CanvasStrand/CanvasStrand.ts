@@ -31,7 +31,7 @@ namespace RobBossAtelier {
 
         winWidth = <HTMLElement>document.getElementById("windowWidth");
         winHeight = <HTMLElement>document.getElementById("windowHeight");
-         
+
         reload = <HTMLElement>document.getElementById("reload");
         reload.addEventListener("click", hndClick);
         // debugger;
@@ -45,7 +45,7 @@ namespace RobBossAtelier {
         ship();
         water();
         mountain();
-        
+
         coast();
         shark();
         people();
@@ -176,7 +176,7 @@ namespace RobBossAtelier {
         crc2.moveTo(0, 500);
         crc2.lineTo(2000, 500);
         crc2.lineTo(2000, 1200);
-        crc2.lineTo(0,1200);
+        crc2.lineTo(0, 1200);
         crc2.closePath();
         // crc2.bezierCurveTo(1150, 500, -350, 600, 2000, 1200);
         crc2.lineTo(2000, 500);
@@ -487,6 +487,7 @@ namespace RobBossAtelier {
 
                 k = + 1;
             }
+            crc2.resetTransform()
         }
 
         crc2.restore();
