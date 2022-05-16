@@ -42,8 +42,8 @@ namespace RobBossAtelier {
         gull();
         towel();
         palmTree();
-        
-        
+
+
         // Circle();
 
 
@@ -156,7 +156,7 @@ namespace RobBossAtelier {
         crc2.lineTo(70, -50);
         crc2.lineTo(80, 0);
 
-        crc2.fillStyle = "grey";
+        crc2.fillStyle = "#242424";
         crc2.fill();
         crc2.strokeStyle = "grey";
         crc2.stroke();
@@ -230,7 +230,7 @@ namespace RobBossAtelier {
             crc2.bezierCurveTo(posX + 20, posY - 20, posX + 40, posY - 30, posX + 50, posY);
             crc2.bezierCurveTo(posX + 60, posY - 30, posX + 70, posY - 20, posX + 100, posY);
             crc2.lineWidth = 5;
-            crc2.strokeStyle = "#000";
+            crc2.strokeStyle = "#fff";
             crc2.fillStyle = "transparent";
             crc2.fill();
             crc2.stroke();
@@ -321,8 +321,10 @@ namespace RobBossAtelier {
         crc2.lineTo(60, 0);
         crc2.moveTo(10, 10);
         // Body
+
         crc2.lineTo(100, 10);
         crc2.lineTo(150, 30);
+
         // Legs
         crc2.moveTo(100, 10);
         crc2.lineTo(160, 0)
@@ -336,24 +338,43 @@ namespace RobBossAtelier {
 
         crc2.save();
         crc2.translate(1000, 700);
-        crc2.rotate(Math.PI * 1/2)
+        crc2.rotate(Math.PI * 1 / 2)
         // Head
         crc2.moveTo(0, 0);
         crc2.beginPath();
-        crc2.arc(0, 10, 10, 0, 2 * Math.PI);
+        crc2.arc(0, 10, 15, 0, 2 * Math.PI);
+        crc2.closePath();
+        crc2.fillStyle = "#7A6145";
+        crc2.fill();
         // Arms
-        crc2.lineTo(50, 30);
-        crc2.moveTo(10, 10);
-        crc2.lineTo(60, 0);
-        crc2.moveTo(10, 10);
+        crc2.beginPath();
+        crc2.moveTo(30, 10);
+        crc2.lineTo(60, 40); 
+        crc2.moveTo(30,10);       
+        crc2.lineTo(60, -20);
+        crc2.strokeStyle = "#7A6145";
+        crc2.lineWidth = 6;
+        crc2.stroke();
+        crc2.closePath();
         // Body
+        
+        crc2.beginPath();
+        crc2.moveTo(10, 10);
         crc2.lineTo(100, 10);
         crc2.lineTo(150, 30);
+        crc2.strokeStyle = "#7A6145";
+        crc2.lineWidth = 6;
+        crc2.stroke();
+        crc2.closePath();
         // Legs
         crc2.moveTo(100, 10);
+        crc2.beginPath();
+        crc2.moveTo(100, 10);
         crc2.lineTo(160, 0)
-        crc2.strokeStyle = "#fff";
+        crc2.strokeStyle = "#7A6145";
+        crc2.lineWidth = 6;
         crc2.stroke();
+        crc2.closePath();
         crc2.restore();
 
     }
@@ -372,7 +393,7 @@ namespace RobBossAtelier {
 
             crc2.moveTo(0, 0);
             crc2.beginPath();
-            crc2.arc(100, -300, 20, 0, 2 * Math.PI);
+            // crc2.arc(100, -300, 20, 0, 2 * Math.PI);
             crc2.closePath();
             crc2.stroke();
 
@@ -465,8 +486,12 @@ namespace RobBossAtelier {
         crc2.translate(1500, 600);
         crc2.beginPath();
         crc2.moveTo(0, 0);
-        crc2.arc(0, 0, 100, 0, Math.PI * 2);
-        crc2.stroke();
+        crc2.bezierCurveTo(10, -10, 30, -50, 70, -50);
+        crc2.lineTo(60, 0);
+        crc2.closePath();
+        crc2.fillStyle = "gray";
+        crc2.fill();
+
         crc2.restore();
     }
 
@@ -514,11 +539,11 @@ namespace RobBossAtelier {
 
     // Palm Position
     function rndPalmPosX(): number {
-        return Math.floor(Math.random() * 600);
+        return Math.floor(Math.random() * 300);
     }
 
     function rndPalmPosY(): number {
-        return Math.floor(Math.random() * (1000 - 200) + 200);
+        return Math.floor(Math.random() * (1000 - 500) + 500);
     }
 }
 
