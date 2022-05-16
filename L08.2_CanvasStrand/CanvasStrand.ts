@@ -17,6 +17,13 @@ namespace RobBossAtelier {
     // let resizeW: number;
     // let resizeH: number;
 
+    let palmPosX: number;
+    let palmPosY: number;
+    let palmScale: number;
+
+
+
+
 
     // LOAD
     function hndLoad(): void {
@@ -393,69 +400,71 @@ namespace RobBossAtelier {
 
     function palmTree(): void {
 
-        for (let i: number = 0; i < 10; i++) {
+        for (let i: number = 0; i < 5; i++) {
 
-            let posX: number = rndPalmPosX();
-            let posY: number = rndPalmPosY();
-            let scale: number = rndmPalmScale();
+            palmPosX = rndPalmPosX();
+            palmPosY = rndPalmPosY();
+            palmScale = rndmPalmScale();
 
             crc2.save();
-            crc2.translate(posX, posY);
-            crc2.scale(scale / 10, scale / 10);
+            crc2.translate(palmPosX, palmPosY);
+            // crc2.scale(palmScale / 10, palmScale / 10);
+
+            crc2.moveTo(0, 0);
+            crc2.beginPath();
+            // crc2.arc(100, -300, 20, 0, 2 * Math.PI);
+            crc2.closePath();
+            crc2.stroke();
+
+
             crc2.beginPath();
             crc2.moveTo(0, 0);
-            crc2.bezierCurveTo(0, -200, 100, -270, 150, -300);
-            crc2.lineWidth = 15;
+            crc2.bezierCurveTo(0, -200, 100, -200, 100, -300);
+            crc2.lineWidth = 10;
             crc2.strokeStyle = "#2e1600";
             crc2.stroke();
             crc2.closePath();
+
             crc2.restore();
 
-            // Blätter 
+            palmLeaves(palmPosX, palmPosY);
 
-            let j: number = 5.5;
-            let k: number = 6;
+        }
 
 
-            crc2.save();
-            crc2.translate(posX + 150, posY - 300);
-            crc2.scale(scale / 10, scale / 10);
+
+    }
+
+    function palmLeaves(_posX: number, _posY: number): void {
+
+        let j: number = 5.5;
+        let k: number = 6;
+
+        crc2.save();
+        crc2.translate(_posX + 100, _posY - 300);
+
+
+        // crc2.moveTo(0, 0);
+
+        // crc2.arc(0, 0, 10, 0, Math.PI * 2);
+        // crc2.closePath();
+        // Blätter 
+
+        // crc2.scale(palmScale / 10, palmScale / 10);
+
+        for (let i: number = 0; i < 3; i++) {
+
             crc2.beginPath();
             crc2.moveTo(0, 0);
-            // crc2.arc(0, 0, 10, 0, Math.PI * 2);
-            // crc2.closePath();
-
-            for (let i: number = 0; i < 3; i++) {
-                // crc2.beginPath();
-                crc2.rotate(j);
-                crc2.lineTo(50, 10);
-                crc2.lineTo(100, 50);
-                crc2.lineTo(110, 100);
-                crc2.lineTo(90, 80);
-                crc2.lineTo(80, 60);
-                crc2.lineTo(50, 20);
-                crc2.lineTo(0, 0);
-                crc2.closePath();
-
-                j = + 0.5;
-            }
-
-            for (let i: number = 0; i < 3; i++) {
-                // crc2.beginPath();
-                crc2.scale(-1, 1);
-                crc2.rotate(k);
-                crc2.lineTo(50, 10);
-                crc2.lineTo(100, 50);
-                crc2.lineTo(110, 100);
-                crc2.lineTo(90, 80);
-                crc2.lineTo(80, 60);
-                crc2.lineTo(50, 20);
-                crc2.lineTo(0, 0);
-                crc2.closePath();
-
-                k = + 0.5;
-            }
-
+            crc2.rotate(j);
+            crc2.lineTo(50, 10);
+            crc2.lineTo(100, 50);
+            crc2.lineTo(110, 100);
+            crc2.lineTo(90, 80);
+            crc2.lineTo(80, 60);
+            crc2.lineTo(50, 20);
+            crc2.lineTo(0, 0);
+            crc2.closePath();
 
             crc2.lineWidth = 5;
             crc2.strokeStyle = "#264014";
@@ -463,12 +472,40 @@ namespace RobBossAtelier {
             crc2.fill();
             crc2.stroke();
             crc2.fill();
-            crc2.restore();
 
-
-
+            j = + 0.5;
         }
 
+        crc2.scale(-1, 1);
+
+        for (let i: number = 0; i < 3; i++) {
+
+
+            crc2.beginPath();
+            crc2.moveTo(0, 0);
+            crc2.rotate(Math.PI * k / 4);
+
+
+            crc2.lineTo(50, 10);
+            crc2.lineTo(100, 50);
+            crc2.lineTo(110, 100);
+            crc2.lineTo(90, 80);
+            crc2.lineTo(80, 60);
+            crc2.lineTo(50, 20);
+            crc2.lineTo(0, 0);
+            crc2.closePath();
+
+            crc2.lineWidth = 5;
+            crc2.strokeStyle = "#264014";
+            crc2.fillStyle = "#264014";
+            crc2.fill();
+            crc2.stroke();
+            crc2.fill();
+
+            k = + 1;
+        }
+
+        crc2.restore();
 
 
     }
