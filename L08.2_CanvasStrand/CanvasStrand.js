@@ -32,6 +32,7 @@ var RobBossAtelier;
         ship();
         water();
         mountain();
+        mountainPalmTree();
         coast();
         shark();
         people();
@@ -313,14 +314,87 @@ var RobBossAtelier;
         crc2.closePath();
         crc2.restore();
     }
+    function mountainPalmTree() {
+        for (let i = 0; i < 15; i++) {
+            // palmPosX = rndPalmPosX();
+            // palmPosY = rndPalmPosY();
+            // palmScale = rndmPalmScale();
+            crc2.save();
+            crc2.translate(850, 600);
+            crc2.moveTo(0, 0);
+            crc2.beginPath();
+            // crc2.arc(100, -300, 20, 0, 2 * Math.PI);
+            crc2.closePath();
+            crc2.stroke();
+            crc2.beginPath();
+            crc2.moveTo(0, 0);
+            crc2.bezierCurveTo(0, -200, 100, -200, 100, -300);
+            crc2.lineWidth = 15;
+            crc2.strokeStyle = "#2e1600";
+            crc2.stroke();
+            crc2.closePath();
+            crc2.restore();
+            let j = 5.5;
+            let k = 6;
+            crc2.save();
+            crc2.translate(850 + 100, 600 - 300);
+            // crc2.moveTo(0, 0);
+            // crc2.arc(0, 0, 10, 0, Math.PI * 2);
+            // crc2.closePath();
+            // Blätter 
+            // crc2.scale(palmScale / 10, palmScale / 10);
+            for (let i = 0; i < 3; i++) {
+                crc2.beginPath();
+                crc2.moveTo(0, 0);
+                crc2.rotate(j);
+                crc2.lineTo(50, 10);
+                crc2.lineTo(100, 50);
+                crc2.lineTo(110, 100);
+                crc2.lineTo(90, 80);
+                crc2.lineTo(80, 60);
+                crc2.lineTo(50, 20);
+                crc2.lineTo(0, 0);
+                crc2.closePath();
+                crc2.lineWidth = 5;
+                crc2.strokeStyle = "#264014";
+                crc2.fillStyle = "#264014";
+                crc2.fill();
+                crc2.stroke();
+                crc2.fill();
+                j = +0.5;
+            }
+            crc2.scale(-1, 1);
+            for (let i = 0; i < 3; i++) {
+                crc2.beginPath();
+                crc2.moveTo(0, 0);
+                crc2.rotate(Math.PI * k / 4);
+                crc2.lineTo(50, 10);
+                crc2.lineTo(100, 50);
+                crc2.lineTo(110, 100);
+                crc2.lineTo(90, 80);
+                crc2.lineTo(80, 60);
+                crc2.lineTo(50, 20);
+                crc2.lineTo(0, 0);
+                crc2.closePath();
+                crc2.lineWidth = 5;
+                crc2.strokeStyle = "#264014";
+                crc2.fillStyle = "#264014";
+                crc2.fill();
+                crc2.stroke();
+                crc2.fill();
+                k = +1;
+            }
+            crc2.resetTransform();
+        }
+        crc2.restore();
+    }
     function palmTree() {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 15; i++) {
             palmPosX = rndPalmPosX();
             palmPosY = rndPalmPosY();
             palmScale = rndmPalmScale();
             crc2.save();
             crc2.translate(palmPosX, palmPosY);
-            // crc2.scale(palmScale / 10, palmScale / 10);
             crc2.moveTo(0, 0);
             crc2.beginPath();
             // crc2.arc(100, -300, 20, 0, 2 * Math.PI);
@@ -428,14 +502,14 @@ var RobBossAtelier;
     // PALM TREES------------------------
     // Palm Size
     function rndmPalmScale() {
-        return Math.floor(Math.random() * (20 - 10) + 10);
+        return Math.floor(Math.random() * (15 - 5) + 5);
     }
     // Palm Position
     function rndPalmPosX() {
-        return Math.floor(Math.random() * 300);
+        return Math.floor(Math.random() * (300 - 100) - 100);
     }
     function rndPalmPosY() {
-        return Math.floor(Math.random() * (1000 - 500) + 500);
+        return Math.floor(Math.random() * (1500 - 700) + 700);
     }
 })(RobBossAtelier || (RobBossAtelier = {}));
 //# sourceMappingURL=CanvasStrand.js.map
