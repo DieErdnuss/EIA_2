@@ -69,7 +69,6 @@ namespace RobBossAtelier {
         console.log("W= " + resizeW + " H= " + resizeH);
 
         canvas.style.width = String(resizeW - 50 + "px");
-        // canvas.style.height = String(resizeH);
 
         winWidth.innerHTML = String(resizeW + " W");
         winHeight.innerHTML = String(resizeH + " H");
@@ -401,7 +400,7 @@ namespace RobBossAtelier {
 
             crc2.save();
             crc2.translate(850, 600);
-            
+
             crc2.moveTo(0, 0);
             crc2.beginPath();
             // crc2.arc(100, -300, 20, 0, 2 * Math.PI);
@@ -410,7 +409,7 @@ namespace RobBossAtelier {
 
             crc2.beginPath();
             crc2.moveTo(0, 0);
-            
+
             crc2.bezierCurveTo(0, -200, 100, -200, 100, -300);
             crc2.lineWidth = 15;
             crc2.strokeStyle = "#2e1600";
@@ -440,7 +439,7 @@ namespace RobBossAtelier {
                 crc2.beginPath();
                 crc2.moveTo(0, 0);
                 crc2.rotate(j);
-                
+
                 crc2.lineTo(50, 10);
                 crc2.lineTo(100, 50);
                 crc2.lineTo(110, 100);
@@ -468,7 +467,7 @@ namespace RobBossAtelier {
                 crc2.beginPath();
                 crc2.moveTo(0, 0);
                 crc2.rotate(Math.PI * k / 4);
-               
+
 
                 crc2.lineTo(50, 10);
                 crc2.lineTo(100, 50);
@@ -504,7 +503,7 @@ namespace RobBossAtelier {
 
             crc2.save();
             crc2.translate(palmPosX, palmPosY);
-            
+
 
             crc2.moveTo(0, 0);
             crc2.beginPath();
@@ -515,7 +514,7 @@ namespace RobBossAtelier {
 
             crc2.beginPath();
             crc2.moveTo(0, 0);
-            
+
             crc2.bezierCurveTo(0, -200, 100, -200, 100, -300);
             crc2.lineWidth = 15;
             crc2.strokeStyle = "#2e1600";
@@ -545,7 +544,7 @@ namespace RobBossAtelier {
                 crc2.beginPath();
                 crc2.moveTo(0, 0);
                 crc2.rotate(j);
-                
+
                 crc2.lineTo(50, 10);
                 crc2.lineTo(100, 50);
                 crc2.lineTo(110, 100);
@@ -573,7 +572,7 @@ namespace RobBossAtelier {
                 crc2.beginPath();
                 crc2.moveTo(0, 0);
                 crc2.rotate(Math.PI * k / 4);
-               
+
 
                 crc2.lineTo(50, 10);
                 crc2.lineTo(100, 50);
@@ -599,7 +598,7 @@ namespace RobBossAtelier {
         crc2.restore();
     }
 
-    
+
 
     function shark(): void {
         crc2.save();
@@ -655,7 +654,7 @@ namespace RobBossAtelier {
 
     // Palm Position
     function rndPalmPosX(): number {
-        return Math.floor(Math.random() * (300 - 100) -100);
+        return Math.floor(Math.random() * (300 - 100) - 100);
     }
 
     function rndPalmPosY(): number {
