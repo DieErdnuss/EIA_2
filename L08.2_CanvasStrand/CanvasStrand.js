@@ -49,12 +49,7 @@ var RobBossAtelier;
         resizeW = window.innerWidth;
         resizeH = window.innerHeight;
         console.log("W= " + resizeW + " H= " + resizeH);
-        if (resizeH > 700) {
-            canvas.style.height = String(resizeH);
-        }
-        else {
-            canvas.style.width = String(resizeW - 50 + "px");
-        }
+        canvas.style.width = String(resizeW - 50 + "px");
         winWidth.innerHTML = String(resizeW + " W");
         winHeight.innerHTML = String(resizeH + " H");
     }
