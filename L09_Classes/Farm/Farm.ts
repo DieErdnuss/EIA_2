@@ -1,38 +1,21 @@
 namespace McDonaldFarm {
-    export class Animal {
-        type: string;
-        food: string;
-        foodAmount: number;
-        size: number;
-        sound: string;
-        lyrics: string;
 
-        constructor(_type: string, _food: string, _foodAmount: number, _size: number, _sound: string, _lyrics: string) {
-            this.type = _type;
-            this.food = _food;
-            this.foodAmount = _foodAmount;
-            this.size = _size;
-            this.sound = _sound;
-            this.lyrics = _lyrics;
-        }
 
-        eat(_food: string, _foodAmount: number): void {
-            this.food = ;
-        }
-
-        sing(_sound: string): void {
-     
-        }
-
-        draw(): void{
-            
-        }
-
+    interface FoodStorage {
+        [key: string]: number;
     }
 
-    let cow: Animal = new Animal("cow", "corn", 100, 10, "muuh", "HiaHiaHo");
+    
+    let foodStorage: FoodStorage = { "weed": 100, "grain": 100, "carrots": 100, "meat": 100, "fish": 100 };
+    console.log("Foodstorage remains " + foodStorage.food + " kg of the food" + foodStorage.food);
+
+    let cow: Animal = new Animal("cow", "Berta", "weed", 10, "muuh");
+    cow.eat();
 
     console.log(cow);
+
+    console.log("Storage = " + foodStorage);
+
 
 }
 
