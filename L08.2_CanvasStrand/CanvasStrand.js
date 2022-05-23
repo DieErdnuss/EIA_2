@@ -11,7 +11,6 @@ var RobBossAtelier;
     let resizeH;
     let palmPosX;
     let palmPosY;
-    let palmScale;
     let winWidth;
     let winHeight;
     let reload;
@@ -391,7 +390,6 @@ var RobBossAtelier;
         for (let i = 0; i < 15; i++) {
             palmPosX = rndPalmPosX();
             palmPosY = rndPalmPosY();
-            palmScale = rndmPalmScale();
             crc2.save();
             crc2.translate(palmPosX, palmPosY);
             crc2.moveTo(0, 0);
@@ -499,10 +497,6 @@ var RobBossAtelier;
         return Math.floor(Math.random() * (2000 - 1400) + 1400);
     }
     // PALM TREES------------------------
-    // Palm Size
-    function rndmPalmScale() {
-        return Math.floor(Math.random() * (15 - 5) + 5);
-    }
     // Palm Position
     function rndPalmPosX() {
         return Math.floor(Math.random() * (300 - 100) - 100);

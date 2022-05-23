@@ -16,7 +16,6 @@ namespace RobBossAtelier {
 
     let palmPosX: number;
     let palmPosY: number;
-    let palmScale: number;
 
     let winWidth: HTMLElement;
     let winHeight: HTMLElement;
@@ -84,7 +83,7 @@ namespace RobBossAtelier {
         crc2.lineTo(0, 700);
         crc2.closePath();
 
-        let gradient = crc2.createRadialGradient(1100, 400, 50, 1000, 400, 1000);
+        let gradient: CanvasGradient = crc2.createRadialGradient(1100, 400, 50, 1000, 400, 1000);
         gradient.addColorStop(0, "#f18d00");
         gradient.addColorStop(0.5, "#d8dadd");
         gradient.addColorStop(1, "#71739a");
@@ -109,7 +108,7 @@ namespace RobBossAtelier {
         crc2.arc(1100, 400, 300, 0, Math.PI * 2);
 
 
-        let gradient = crc2.createRadialGradient(1100, 400, 200, 1100, 400, 500);
+        let gradient: CanvasGradient = crc2.createRadialGradient(1100, 400, 200, 1100, 400, 500);
         gradient.addColorStop(0, "#FDC90D");
         gradient.addColorStop(1, "#f18d00");
 
@@ -128,7 +127,7 @@ namespace RobBossAtelier {
         crc2.lineTo(0, 0);
         crc2.closePath();
 
-        let gradient = crc2.createLinearGradient(100, 100, 100, 500);
+        let gradient: CanvasGradient = crc2.createLinearGradient(100, 100, 100, 500);
         gradient.addColorStop(0, "#5C6144");
         gradient.addColorStop(1, "#416139");
         crc2.fillStyle = gradient;
@@ -144,7 +143,7 @@ namespace RobBossAtelier {
         crc2.lineTo(0, 600);
         crc2.closePath();
 
-        let gradient = crc2.createLinearGradient(0, 700, 1000, 1000);
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, 700, 1000, 1000);
         gradient.addColorStop(1, "#FAD456");
         gradient.addColorStop(0, "#E0B249");
         crc2.fillStyle = gradient;
@@ -182,7 +181,7 @@ namespace RobBossAtelier {
         crc2.lineTo(2000, 500);
         crc2.closePath();
 
-        let gradient = crc2.createLinearGradient(2000, 500, 500, 1000);
+        let gradient: CanvasGradient = crc2.createLinearGradient(2000, 500, 500, 1000);
         gradient.addColorStop(0, "#4C8DAD");
         gradient.addColorStop(1, "#61C6FA");
         crc2.fillStyle = gradient;
@@ -338,7 +337,7 @@ namespace RobBossAtelier {
 
         // Legs
         crc2.moveTo(100, 10);
-        crc2.lineTo(160, 0)
+        crc2.lineTo(160, 0);
         crc2.strokeStyle = "#fff";
         crc2.stroke();
         crc2.restore();
@@ -349,7 +348,7 @@ namespace RobBossAtelier {
 
         crc2.save();
         crc2.translate(1000, 700);
-        crc2.rotate(Math.PI * 1 / 2)
+        crc2.rotate(Math.PI * 1 / 2);
         // Head
         crc2.moveTo(0, 0);
         crc2.beginPath();
@@ -381,7 +380,7 @@ namespace RobBossAtelier {
         crc2.moveTo(100, 10);
         crc2.beginPath();
         crc2.moveTo(100, 10);
-        crc2.lineTo(160, 0)
+        crc2.lineTo(160, 0);
         crc2.strokeStyle = "#7A6145";
         crc2.lineWidth = 6;
         crc2.stroke();
@@ -487,7 +486,7 @@ namespace RobBossAtelier {
 
                 k = + 1;
             }
-            crc2.resetTransform()
+            crc2.resetTransform();
         }
 
         crc2.restore();
@@ -499,7 +498,7 @@ namespace RobBossAtelier {
 
             palmPosX = rndPalmPosX();
             palmPosY = rndPalmPosY();
-            palmScale = rndmPalmScale();
+            
 
             crc2.save();
             crc2.translate(palmPosX, palmPosY);
@@ -592,7 +591,7 @@ namespace RobBossAtelier {
 
                 k = + 1;
             }
-            crc2.resetTransform()
+            crc2.resetTransform();
         }
 
         crc2.restore();
@@ -646,12 +645,7 @@ namespace RobBossAtelier {
         return Math.floor(Math.random() * (2000 - 1400) + 1400);
     }
     // PALM TREES------------------------
-
-    // Palm Size
-    function rndmPalmScale(): number {
-        return Math.floor(Math.random() * (15 - 5) + 5);
-    }
-
+     
     // Palm Position
     function rndPalmPosX(): number {
         return Math.floor(Math.random() * (300 - 100) - 100);
