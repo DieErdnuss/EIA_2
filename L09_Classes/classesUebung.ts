@@ -1,10 +1,14 @@
 namespace ClassesUebung {
 
-    debugger;
-
+    
     class Vector {
-        x: number = 0;
-        y: number = 0;
+        x: number;
+        y: number;
+
+        constructor(_x: number, _y: number) {
+            this.x = _x;
+            this.y = _y;
+        }
 
         scale(_factor: number): void {
             this.x *= _factor;
@@ -24,9 +28,10 @@ namespace ClassesUebung {
     }
 
 
-    let v1: Vector = new Vector();
-    v1.scale(2);
+    let v1: Vector = new Vector(0,0);
+    
     v1.set(3, 5);
+    v1.scale(10);
     console.log(v1);
 
 
