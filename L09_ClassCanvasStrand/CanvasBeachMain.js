@@ -3,6 +3,7 @@ var CanvasBeach;
 (function (CanvasBeach) {
     window.addEventListener("load", hndLoad);
     window.addEventListener("resize", hndResize);
+    let clouds = [];
     let resizeW;
     let resizeH;
     let winWidth;
@@ -20,7 +21,7 @@ var CanvasBeach;
         sun();
         water();
         rock();
-        cloud(11);
+        cloud(10);
         mountain();
         window.setInterval(update, 20);
     }
@@ -40,7 +41,17 @@ var CanvasBeach;
         winHeight.innerHTML = String(resizeH + " H");
     }
     function update() {
-        console.log("update");
+        sky();
+        sun();
+        rock();
+        // console.log("update");
+        for (let cloud of clouds) {
+            cloud.move(1 / 50);
+            cloud.draw();
+            water();
+            mountain();
+            coast();
+        }
         // canvas.style.backgroundColor = 
     }
     function sky() {
@@ -125,11 +136,25 @@ var CanvasBeach;
         CanvasBeach.crc2.closePath();
         CanvasBeach.crc2.restore();
     }
+    function coast() {
+        CanvasBeach.crc2.beginPath();
+        CanvasBeach.crc2.moveTo(1150, 600);
+        CanvasBeach.crc2.bezierCurveTo(1150, 630, -350, 700, 2000, 1400);
+        CanvasBeach.crc2.lineTo(0, 1200);
+        CanvasBeach.crc2.lineTo(0, 600);
+        CanvasBeach.crc2.closePath();
+        let gradient = CanvasBeach.crc2.createLinearGradient(0, 700, 1000, 1000);
+        gradient.addColorStop(1, "#FAD456");
+        gradient.addColorStop(0, "#E0B249");
+        CanvasBeach.crc2.fillStyle = gradient;
+        CanvasBeach.crc2.fill();
+    }
     function cloud(_n) {
         for (let i = 0; i < _n; i++) {
-            let cloud = new CanvasBeach.Cloud();
-            console.log(cloud);
-            cloud.draw();
+            let rndmSize = Math.random() * (0.5 - 0.1) + 1;
+            let cloud = new CanvasBeach.Cloud(rndmSize);
+            // console.log(cloud);
+            clouds.push(cloud);
         }
     }
 })(CanvasBeach || (CanvasBeach = {}));

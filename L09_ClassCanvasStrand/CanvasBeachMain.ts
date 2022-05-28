@@ -5,6 +5,8 @@ namespace CanvasBeach {
     export let canvas: HTMLCanvasElement;
     export let crc2: CanvasRenderingContext2D;
 
+    let clouds: Cloud[] = [];
+
     let resizeW: number;
     let resizeH: number;
 
@@ -28,7 +30,7 @@ namespace CanvasBeach {
         sun();
         water();
         rock();
-        cloud(11);
+        cloud(10);
         mountain();
 
         window.setInterval(update, 20);
@@ -54,7 +56,19 @@ namespace CanvasBeach {
     }
 
     function update(): void {
-        console.log("update");
+        sky();
+        sun();
+        rock();
+        // console.log("update");
+
+        for (let cloud of clouds) {
+            cloud.move(1 / 50);
+            cloud.draw();
+            water();
+            mountain();
+            coast();
+
+        }
         // canvas.style.backgroundColor = 
 
     }
@@ -144,11 +158,28 @@ namespace CanvasBeach {
         crc2.restore();
     }
 
+    function coast(): void {
+
+        crc2.beginPath();
+        crc2.moveTo(1150, 600);
+        crc2.bezierCurveTo(1150, 630, -350, 700, 2000, 1400);
+        crc2.lineTo(0, 1200);
+        crc2.lineTo(0, 600);
+        crc2.closePath();
+
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, 700, 1000, 1000);
+        gradient.addColorStop(1, "#FAD456");
+        gradient.addColorStop(0, "#E0B249");
+        crc2.fillStyle = gradient;
+        crc2.fill();
+    }
+
     function cloud(_n: number): void {
         for (let i: number = 0; i < _n; i++) {
-            let cloud: Cloud = new Cloud();
-            console.log(cloud);
-            cloud.draw();
+            let rndmSize: number = Math.random() * (0.5 - 0.1) + 1;
+            let cloud: Cloud = new Cloud(rndmSize);
+            // console.log(cloud);
+            clouds.push(cloud);
         }
     }
 }
