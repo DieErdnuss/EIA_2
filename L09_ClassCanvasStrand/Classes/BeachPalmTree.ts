@@ -44,12 +44,12 @@ namespace CanvasBeach{
 
                 for (let i: number = 0; i < 15; i++) {
         
-                    palmPosX = rndPalmPosX();
-                    palmPosY = rndPalmPosY();
+                    // palmPosX = rndPalmPosX();
+                    // palmPosY = rndPalmPosY();
                     
         
                     crc2.save();
-                    crc2.translate(palmPosX, palmPosY);
+                    crc2.translate(this.position.x, this.position.y);
         
         
                     crc2.moveTo(0, 0);
