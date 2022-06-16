@@ -2,9 +2,8 @@
 var vererbung;
 (function (vererbung) {
     class Circle extends vererbung.Vector {
-        super() { }
-        ;
         draw() {
+            console.log("Draw Circle");
             // crc.save();
             vererbung.crc.beginPath();
             vererbung.crc.arc(this.x, this.y, 100, 0, Math.PI * 2);
@@ -14,4 +13,4 @@ var vererbung;
     }
     vererbung.Circle = Circle;
 })(vererbung || (vererbung = {}));
-//# sourceMappingURL=circle.js.map
+//# sourceMappingURL=Circle.js.map

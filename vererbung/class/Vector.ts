@@ -8,6 +8,8 @@ namespace vererbung {
             this.x = _x;
             this.y = _y;
         }
+        
+        draw(): void{}
 
         
     }
