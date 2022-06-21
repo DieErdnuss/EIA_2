@@ -13,4 +13,4 @@ var vererbung;
     }
     vererbung.Circle = Circle;
 })(vererbung || (vererbung = {}));
-//# sourceMappingURL=Circle.js.map
+//# sourceMappingURL=circle.js.map

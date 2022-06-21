@@ -1,7 +1,7 @@
 "use strict";
 // namespace Memory_2 {
 //     window.addEventListener("load", hndLoad);
-//     let data: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"];
+//     // let data: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"];
 //     let pairAmount: string[] = new Array();
 //     let pair: string[] = new Array();
 //     console.log(pair);
@@ -14,10 +14,10 @@
 //     let backgroundColor: string;
 //     let cardBackColor: string;
 //     let fontColor: string;
-//     let font: string;
+//     // let font: string;
 //     let wrapper: HTMLDivElement;
 //     let memory: HTMLDivElement;
-//     let lockCard: boolean = false;
+//     // let lockCard: boolean = false;
 //     let cardValue1: EventTarget | null;
 //     let cardValue2: EventTarget | null;
 //     // Handle LOAD
