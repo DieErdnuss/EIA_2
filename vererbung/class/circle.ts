@@ -1,6 +1,16 @@
 namespace vererbung {
 
-    export class Circle extends Vector {
+    export class Circle {
+            x: number;
+            y: number;
+
+        constructor(_x: number, _y: number) {
+            // super(_x, _y);
+            this.x = _x;
+            this.y = _y;
+
+        }
+
 
         draw(): void {
 
@@ -11,8 +21,6 @@ namespace vererbung {
             crc.arc(this.x, this.y, 100, 0, Math.PI * 2);
             crc.closePath();
             crc.stroke();
-
-
         }
 
     }

@@ -8,7 +8,6 @@ var vererbung;
             this.x = _x;
             this.y = _y;
         }
-        draw() { }
     }
     vererbung.Vector = Vector;
 })(vererbung || (vererbung = {}));

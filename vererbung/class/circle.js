@@ -1,7 +1,14 @@
 "use strict";
 var vererbung;
 (function (vererbung) {
-    class Circle extends vererbung.Vector {
+    class Circle {
+        x;
+        y;
+        constructor(_x, _y) {
+            // super(_x, _y);
+            this.x = _x;
+            this.y = _y;
+        }
         draw() {
             console.log("Draw Circle");
             // crc.save();

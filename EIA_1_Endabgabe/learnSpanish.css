@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    background-color: rgb(45, 45, 45);
+    width: 375px;
+    height: 667px;
+    overflow: hidden;
+    color: white;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 100px 100px; */
+    /* grid-row-gap: 10px; */
+    /* grid-column-gap: 10px; */
+    grid-template-areas:
+        "heading1 heading1 heading1 heading1 heading1 heading1"
+        "heading2 heading2 heading2 heading2 heading2 heading2"
+        "lvlBtnOne lvlBtnOne lvlBtnTwo lvlBtnTwo lvlBtnThree lvlBtnThree"
+        "lvlOutput lvlOutput lvlOutput pointsOutput pointsOutput pointsOutput";
+
+    width: 375px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 6, 1fr;
+    grid-template-rows: 100px 100px 100px 100px;
+    grid-auto-rows: 100px;
+    grid-template-areas:
+        "GerSentence GerSentence GerSentence GerSentence GerSentence GerSentence"
+        "spanOutput spanOutput spanOutput spanOutput spanOutput spanOutput"
+        "rndmSpanSentence rndmSpanSentence rndmSpanSentence rndmSpanSentence rndmSpanSentence rndmSpanSentence"
+        "footer footer footer footer footer footer";
+}
+
+
+#heading1 {
+    grid-area: heading1;
+
+    margin: 0;
+    padding: 10px;
+    width: 375px;
+    text-align: center;
+    font-size: 25px;
+    place-self: center;
+    background-color: rgb(0, 20, 48);
+}
+
+#heading2 {
+    grid-area: heading2;
+    place-self: center;
+
+    font-size: 10px;
+    margin: 0 0 0 10px;
+}
+
+#levelBtn {}
+
+#levelBtnOne {
+    grid-area: lvlBtnOne;
+    place-self: center;
+    width: 100px;
+    border-radius: 50px;
+    border: 0;
+    display: inline-block;
+
+
+}
+
+#levelBtnTwo {
+    grid-area: lvlBtnTwo;
+    place-self: center;
+    width: 100px;
+    border-radius: 50px;
+    border: 0;
+    display: inline;
+}
+
+#levelBtnThree {
+    grid-area: lvlBtnThree;
+    place-self: center;
+    width: 100px;
+    border-radius: 50px;
+    border: 0;
+    display: inline;
+}
+
+#levelOutput {
+    grid-area: lvlOutput;
+    font-size: 10px;
+}
+
+#pointsOutput {
+    grid-area: pointsOutput;
+}
+
+/* ---------------------------- */
+
+#GerSentence {
+    grid-area: GerSentence;
+    place-self: center;
+    font-size: 20px;
+}
+
+#spanOutput {
+    grid-area: spanOutput;
+    place-self: center;
+}
+
+#rndmSpanSentence {
+    grid-area: rndmSpanSentence;
+    place-self: center;
+}
+
+/* -----------------------------*/
+
+
+footer {
+    
+    position: fixed;
+    width: 375px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 2%;
+    background-color: rgb(74, 74, 74);
+    font-size: 10px;
+    font-weight: lighter;
+    color: white;
+}
+
+/* --------------------------- */
+
+.brightblue {
+    background-color: rgb(26, 44, 122);
+    color: white;
+}
+
+.brightblue:active {
+    background-color: rgb(74, 91, 167);
+    color: white;
+}

@@ -1,6 +1,6 @@
 namespace vererbung {
 
-    export class Vector {
+    export abstract class Vector {
         x: number;
         y: number;
 
@@ -8,10 +8,8 @@ namespace vererbung {
             this.x = _x;
             this.y = _y;
         }
-        
-        draw(): void{}
 
-        
+        abstract draw(): void;
     }
 
 
