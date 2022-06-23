@@ -23,4 +23,4 @@ var McDonaldFarm;
     }
     McDonaldFarm.Animal = Animal;
 })(McDonaldFarm || (McDonaldFarm = {}));
-//# sourceMappingURL=FarmAnimals.js.map
+//# sourceMappingURL=Animal.js.map

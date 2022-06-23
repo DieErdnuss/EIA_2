@@ -12,7 +12,7 @@ namespace CanvasBeach {
 
             this.size = _size;
             // this.size.scale();
-            console.log(this.size);
+            // console.log(this.size);
 
         }
 

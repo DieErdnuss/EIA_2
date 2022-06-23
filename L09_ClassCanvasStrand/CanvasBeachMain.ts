@@ -6,6 +6,7 @@ namespace CanvasBeach {
     export let crc2: CanvasRenderingContext2D;
 
     let clouds: Cloud[] = [];
+    let palmtrees: Palmtree[] = [];
 
     let resizeW: number;
     let resizeH: number;
@@ -28,10 +29,12 @@ namespace CanvasBeach {
 
         sky();
         sun();
-        water();
         rock();
         cloud(10);
-        mountain();
+        palmtree(20);
+
+
+
 
         window.setInterval(update, 20);
     }
@@ -49,7 +52,7 @@ namespace CanvasBeach {
         // canvas.style.height = String(resizeH - 50 + "px");
         // } else canvas.style.width = String(resizeW - 200 + "px");
 
-        console.log("W= " + resizeW + " H= " + resizeH);
+        // console.log("W= " + resizeW + " H= " + resizeH);
         canvas.style.width = String(resizeW - 200 + "px");
         winWidth.innerHTML = String(resizeW + " W");
         winHeight.innerHTML = String(resizeH + " H");
@@ -64,11 +67,18 @@ namespace CanvasBeach {
         for (let cloud of clouds) {
             cloud.move(1 / 50);
             cloud.draw();
-            water();
-            mountain();
-            coast();
 
         }
+
+        water();
+        mountain();
+        coast();
+
+        for (let palmtree of palmtrees) {
+            // palmtree.move(1 / 50);
+            palmtree.draw();
+        }
+
         // canvas.style.backgroundColor = 
 
     }
@@ -180,6 +190,13 @@ namespace CanvasBeach {
             let cloud: Cloud = new Cloud(rndmSize);
             // console.log(cloud);
             clouds.push(cloud);
+        }
+    }
+
+    function palmtree(_n: number): void {
+        for (let i: number = 0; i < _n; i++) {
+            let palmtree: Palmtree = new Palmtree(1);
+            palmtrees.push(palmtree);
         }
     }
 }

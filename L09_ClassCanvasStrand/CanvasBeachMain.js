@@ -4,6 +4,7 @@ var CanvasBeach;
     window.addEventListener("load", hndLoad);
     window.addEventListener("resize", hndResize);
     let clouds = [];
+    let palmtrees = [];
     let resizeW;
     let resizeH;
     let winWidth;
@@ -19,10 +20,9 @@ var CanvasBeach;
         hndResize();
         sky();
         sun();
-        water();
         rock();
         cloud(10);
-        mountain();
+        palmtree(20);
         window.setInterval(update, 20);
     }
     function hndClick() {
@@ -35,7 +35,7 @@ var CanvasBeach;
         // if (resizeH >= resizeW) {
         // canvas.style.height = String(resizeH - 50 + "px");
         // } else canvas.style.width = String(resizeW - 200 + "px");
-        console.log("W= " + resizeW + " H= " + resizeH);
+        // console.log("W= " + resizeW + " H= " + resizeH);
         CanvasBeach.canvas.style.width = String(resizeW - 200 + "px");
         winWidth.innerHTML = String(resizeW + " W");
         winHeight.innerHTML = String(resizeH + " H");
@@ -48,9 +48,13 @@ var CanvasBeach;
         for (let cloud of clouds) {
             cloud.move(1 / 50);
             cloud.draw();
-            water();
-            mountain();
-            coast();
+        }
+        water();
+        mountain();
+        coast();
+        for (let palmtree of palmtrees) {
+            // palmtree.move(1 / 50);
+            palmtree.draw();
         }
         // canvas.style.backgroundColor = 
     }
@@ -155,6 +159,12 @@ var CanvasBeach;
             let cloud = new CanvasBeach.Cloud(rndmSize);
             // console.log(cloud);
             clouds.push(cloud);
+        }
+    }
+    function palmtree(_n) {
+        for (let i = 0; i < _n; i++) {
+            let palmtree = new CanvasBeach.Palmtree(1);
+            palmtrees.push(palmtree);
         }
     }
 })(CanvasBeach || (CanvasBeach = {}));

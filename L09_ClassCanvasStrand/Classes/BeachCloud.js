@@ -12,7 +12,7 @@ var CanvasBeach;
             this.velocity.random(20, 100);
             this.size = _size;
             // this.size.scale();
-            console.log(this.size);
+            // console.log(this.size);
         }
         move(_timeslice) {
             // console.log("Cloud move");

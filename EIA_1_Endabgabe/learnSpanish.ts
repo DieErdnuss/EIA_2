@@ -1,88 +1,96 @@
-// namespace leraningSpanish {
-//     window.addEventListener("load", hndLoad);
+namespace leraningSpanish {
+    window.addEventListener("load", hndLoad);
 
-//     let lvlBtn: HTMLDivElement;
-//     let lvlBtnOne: HTMLButtonElement;
-//     let lvlBtnTwo: HTMLButtonElement;
-//     let lvlBtnThree: HTMLButtonElement;
+    let lvlBtn: HTMLDivElement;
+    let lvlBtnOne: HTMLButtonElement;
+    let lvlBtnTwo: HTMLButtonElement;
+    let lvlBtnThree: HTMLButtonElement;
 
-//     // let lvlOne: string[] = [];
-//     let lvlTwo: string[] = [];
-//     let lvlThree: string[] = [];
+    let lvlOne: Sentences = [];
+    let lvlTwo: string[] = [];
+    let lvlThree: string[] = [];
 
-//     let germanSentences: string[] = [];
-//     let germanSentenceOutput: HTMLDivElement;
+    let germanSentences: string[] = [];
+    let germanSentenceOutput: HTMLDivElement;
 
-//     let spanOutput: string[] = [];
-//     let spanOutputArea: HTMLDivElement;
+    let spanOutput: string[] = [];
+    let spanOutputArea: HTMLDivElement;
 
-//     let tmpSelectWords: string[] = [];
-//     let tmpSelectWordsOutput: HTMLDivElement;
+    let tmpSelectWords: string[] = [];
+    let tmpSelectWordsOutput: HTMLDivElement;
 
-//     function hndLoad(): void {
-//         lvlBtnOne = <HTMLButtonElement>document.getElementById("levelBtnOne");
-//         lvlBtnTwo = <HTMLButtonElement>document.getElementById("levelBtnTwo");
-//         lvlBtnThree = <HTMLButtonElement>document.getElementById("levelBtnThree");
-//         lvlBtn = <HTMLDivElement>document.getElementById("lvlBtn");
+    function hndLoad(): void {
+        lvlBtnOne = <HTMLButtonElement>document.getElementById("levelBtnOne");
+        lvlBtnTwo = <HTMLButtonElement>document.getElementById("levelBtnTwo");
+        lvlBtnThree = <HTMLButtonElement>document.getElementById("levelBtnThree");
+        lvlBtn = <HTMLDivElement>document.getElementById("lvlBtn");
 
-//         lvlBtn.addEventListener("click", hndClick);
+        lvlBtn.addEventListener("click", hndClick);
 
-//         interface sentences {
-//             [sentence: string]: string;
-//         }
+        interface Sentences {
+        [sentence: string]: string;
+        }
 
-//         let lvlOne: sentences = {"s1": "Im", "driving", "a", "car"};
-//         lvlTwo = ["Im", "waitn", "for", "the", "bus"];
-//         lvlThree = ["Im", "driving", "the", "Bus"];
+        lvlOne = {"s1": "Im", "driving", "a", "car"};
 
-//         germanSentences = ["Ich fahre ein Auto.", "Ich warte auf den Bus.", "Ich fahre einen Bus."];
-//         germanSentenceOutput = <HTMLDivElement>document.getElementById("GerSentence");
-    
-//         spanOutput = [];
-//         spanOutputArea = <HTMLDivElement>document.getElementById("spanOutput");
+        lvlTwo = ["Im", "waitn", "for", "the", "bus"];
+        lvlThree = ["Im", "driving", "the", "Bus"];
 
-//         tmpSelectWords = [];
-//         tmpSelectWordsOutput = <HTMLDivElement>document.getElementById("rndmSpanSentence");
-//     }
+        germanSentences = ["Ich fahre ein Auto.", "Ich warte auf den Bus.", "Ich fahre einen Bus."];
+        germanSentenceOutput = <HTMLDivElement>document.getElementById("GerSentence");
 
-//     function hndClick(_event: Event): void {
-//         let target: EventTarget = <EventTarget>_event.target;
-//         // console.log(target);
+        spanOutput = [];
+        spanOutputArea = <HTMLDivElement>document.getElementById("spanOutput");
 
-//         if (target == lvlBtnOne) {
-//             console.log("Level One");
-//             // location.reload();
-//             paste(0);
+        tmpSelectWords = [];
+        tmpSelectWordsOutput = <HTMLDivElement>document.getElementById("rndmSpanSentence");
+    }
 
-//         }
+    function hndClick(_event: Event): void {
+        let target: EventTarget = <EventTarget>_event.target;
+        // console.log(target);
 
-//         if (target == lvlBtnTwo) {
-//             console.log("Level Two");
-//             // location.reload();
-//             paste(1);
-//         }
+        if (target == lvlBtnOne) {
+            console.log("Level One");
+            // location.reload();
+            paste(0);
 
-//         if (target == lvlBtnThree) {
-//             console.log("Level Tree");
-//             // location.reload();
-//             paste(2);
-//         }
+        }
 
-//     }
+        if (target == lvlBtnTwo) {
+            console.log("Level Two");
+            // location.reload();
+            paste(1);
+        }
 
-//     function paste(_i: number): void {
-//         germanSentenceOutput.innerText = germanSentences[_i];
-//         tmpSelectWords.splice(0, 10);
+        if (target == lvlBtnThree) {
+            console.log("Level Tree");
+            // location.reload();
+            paste(2);
+        }
 
-//         for (let i: number; i <)
-//         tmpSelectWords.push(lvlOne[]);
-//         console.log(tmpSelectWords);
+    }
+
+    function paste(_i: number): void {
+        germanSentenceOutput.innerText = germanSentences[_i];
+        tmpSelectWords.splice(0, 10);
+
+        for (let i: number = 0; i < lvlTwo.length; i++) {
+            tmpSelectWords.push(lvlOne[i]);
+            console.log(tmpSelectWords);
+        }
+
         
 
-//     }
+        
 
 
 
-// }
+
+    }
+
+
+
+}
 
 

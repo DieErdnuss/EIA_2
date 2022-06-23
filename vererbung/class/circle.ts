@@ -1,13 +1,11 @@
 namespace vererbung {
 
-    export class Circle {
-            x: number;
-            y: number;
+    export class Circle extends Vector {
 
         constructor(_x: number, _y: number) {
-            // super(_x, _y);
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y);
+            // this.x = _x;
+            // this.y = _y;
 
         }
 

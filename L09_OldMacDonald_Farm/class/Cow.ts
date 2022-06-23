@@ -13,6 +13,7 @@ namespace McDonaldFarm {
             // console.log(foodStorage[food]);
             console.log("There are " + foodStorage[food] + " kg of " + this.food + " remaining.");
             console.log();
-            
+
+        }
     }
 }
