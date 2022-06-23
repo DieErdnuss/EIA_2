@@ -7,6 +7,7 @@ namespace CanvasBeach {
 
     let clouds: Cloud[] = [];
     let palmtrees: Palmtree[] = [];
+    let peoples: People[] = [];
 
     let resizeW: number;
     let resizeH: number;
@@ -32,6 +33,7 @@ namespace CanvasBeach {
         rock();
         cloud(10);
         palmtree(20);
+        people(3);
 
 
 
@@ -78,6 +80,12 @@ namespace CanvasBeach {
             // palmtree.move(1 / 50);
             palmtree.draw();
         }
+
+        for (let people of peoples) {
+            people.draw();
+        }
+
+
 
         // canvas.style.backgroundColor = 
 
@@ -197,6 +205,13 @@ namespace CanvasBeach {
         for (let i: number = 0; i < _n; i++) {
             let palmtree: Palmtree = new Palmtree(1);
             palmtrees.push(palmtree);
+        }
+    }
+
+    function people(_n: number): void {
+        for (let i: number = 0; i < _n; i++) {
+            let people: People = new People(3);
+            peoples.push(people);
         }
     }
 }

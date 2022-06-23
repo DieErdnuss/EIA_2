@@ -28,10 +28,10 @@ namespace leraningSpanish {
         lvlBtn.addEventListener("click", hndClick);
 
         interface Sentences {
-        [sentence: string]: string;
+            [sentence: string]: string;
         }
 
-        lvlOne = {"s1": "Im", "driving", "a", "car"};
+        lvlOne = { "s1": "Im", "driving", "a", "car"};
 
         lvlTwo = ["Im", "waitn", "for", "the", "bus"];
         lvlThree = ["Im", "driving", "the", "Bus"];
@@ -80,16 +80,7 @@ namespace leraningSpanish {
             console.log(tmpSelectWords);
         }
 
-        
-
-        
-
-
-
-
     }
-
-
 
 }
 

@@ -5,6 +5,7 @@ var CanvasBeach;
     window.addEventListener("resize", hndResize);
     let clouds = [];
     let palmtrees = [];
+    let peoples = [];
     let resizeW;
     let resizeH;
     let winWidth;
@@ -23,6 +24,7 @@ var CanvasBeach;
         rock();
         cloud(10);
         palmtree(20);
+        people(3);
         window.setInterval(update, 20);
     }
     function hndClick() {
@@ -55,6 +57,9 @@ var CanvasBeach;
         for (let palmtree of palmtrees) {
             // palmtree.move(1 / 50);
             palmtree.draw();
+        }
+        for (let people of peoples) {
+            people.draw();
         }
         // canvas.style.backgroundColor = 
     }
@@ -165,6 +170,12 @@ var CanvasBeach;
         for (let i = 0; i < _n; i++) {
             let palmtree = new CanvasBeach.Palmtree(1);
             palmtrees.push(palmtree);
+        }
+    }
+    function people(_n) {
+        for (let i = 0; i < _n; i++) {
+            let people = new CanvasBeach.People(3);
+            peoples.push(people);
         }
     }
 })(CanvasBeach || (CanvasBeach = {}));
