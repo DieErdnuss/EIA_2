@@ -83,6 +83,7 @@ namespace CanvasBeach {
 
         for (let people of peoples) {
             people.draw();
+            people.move(1 / 50);
         }
 
 
