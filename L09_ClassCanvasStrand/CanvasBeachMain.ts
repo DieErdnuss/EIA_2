@@ -31,9 +31,6 @@ namespace CanvasBeach {
 
         hndResize();
 
-        sky();
-        sun();
-        rock();
         cloud(10);
         palmtree(20);
         people(3);
