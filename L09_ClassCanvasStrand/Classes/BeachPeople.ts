@@ -5,10 +5,10 @@ namespace CanvasBeach {
         size: number;
 
         constructor(_size: number) {
-            this.position = new Vector(1000 + Math.random() * (700 - 1000), 400 + Math.random() * (1500 - 400));
+            this.position = new Vector(1000 + Math.random() * (700 - 1000), 500 + Math.random() * (1200 - 500));
             // this.position.random(1000,80);
             this.velocity = new Vector(0, 0);
-            this.velocity.random(20, 100);
+            this.velocity.random(200, 100);
             this.size = _size;
             // this.size.scale();
             // console.log(this.size);
@@ -27,7 +27,7 @@ namespace CanvasBeach {
                 this.position.y += canvas.height;
             }
             if (this.position.x > canvas.width) {
-                this.position.x -= canvas.width;
+                this.position.x -= canvas.width / 2;
             }
             if (this.position.y > canvas.height) {
                 this.position.y -= canvas.height;
@@ -40,7 +40,7 @@ namespace CanvasBeach {
         draw(): void {
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
-            crc2.rotate(Math.PI * 1 / 2);
+            crc2.rotate(Math.PI * 1);
             // Head
             crc2.moveTo(0, 0);
             crc2.beginPath();

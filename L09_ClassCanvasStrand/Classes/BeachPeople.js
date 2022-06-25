@@ -6,10 +6,10 @@ var CanvasBeach;
         velocity;
         size;
         constructor(_size) {
-            this.position = new CanvasBeach.Vector(1000 + Math.random() * (700 - 1000), 400 + Math.random() * (1500 - 400));
+            this.position = new CanvasBeach.Vector(1000 + Math.random() * (700 - 1000), 500 + Math.random() * (1200 - 500));
             // this.position.random(1000,80);
             this.velocity = new CanvasBeach.Vector(0, 0);
-            this.velocity.random(20, 100);
+            this.velocity.random(200, 100);
             this.size = _size;
             // this.size.scale();
             // console.log(this.size);
@@ -26,7 +26,7 @@ var CanvasBeach;
                 this.position.y += CanvasBeach.canvas.height;
             }
             if (this.position.x > CanvasBeach.canvas.width) {
-                this.position.x -= CanvasBeach.canvas.width;
+                this.position.x -= CanvasBeach.canvas.width / 2;
             }
             if (this.position.y > CanvasBeach.canvas.height) {
                 this.position.y -= CanvasBeach.canvas.height;
@@ -35,7 +35,7 @@ var CanvasBeach;
         draw() {
             CanvasBeach.crc2.save();
             CanvasBeach.crc2.translate(this.position.x, this.position.y);
-            CanvasBeach.crc2.rotate(Math.PI * 1 / 2);
+            CanvasBeach.crc2.rotate(Math.PI * 1);
             // Head
             CanvasBeach.crc2.moveTo(0, 0);
             CanvasBeach.crc2.beginPath();

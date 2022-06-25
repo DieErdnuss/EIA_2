@@ -8,6 +8,8 @@ namespace CanvasBeach {
     let clouds: Cloud[] = [];
     let palmtrees: Palmtree[] = [];
     let peoples: People[] = [];
+    let ships: Ship[] = [];
+
 
     let resizeW: number;
     let resizeH: number;
@@ -25,6 +27,7 @@ namespace CanvasBeach {
         winHeight = <HTMLElement>document.getElementById("windowHeight");
         reload = <HTMLElement>document.getElementById("reload");
         reload.addEventListener("click", hndClick);
+        canvas.addEventListener("click", hndClick);
 
         hndResize();
 
@@ -34,6 +37,7 @@ namespace CanvasBeach {
         cloud(10);
         palmtree(20);
         people(3);
+        ship(1);
 
 
 
@@ -41,8 +45,10 @@ namespace CanvasBeach {
         window.setInterval(update, 20);
     }
 
-    function hndClick(): void {
-        window.location.reload();
+    function hndClick(_event: Event): void {
+        let target: EventTarget = <EventTarget> _event.target;
+        console.log(target);
+        
     }
 
     // RESIZE
@@ -63,7 +69,7 @@ namespace CanvasBeach {
     function update(): void {
         sky();
         sun();
-        rock();
+
         // console.log("update");
 
         for (let cloud of clouds) {
@@ -72,21 +78,27 @@ namespace CanvasBeach {
 
         }
 
+        for (let ship of ships) {
+            ship.draw();
+            ship.move(1 / 100);
+        }
+
+        rock();
         water();
         mountain();
-        coast();
-
-        for (let palmtree of palmtrees) {
-            // palmtree.move(1 / 50);
-            palmtree.draw();
-        }
 
         for (let people of peoples) {
             people.draw();
             people.move(1 / 50);
         }
 
+        coast();
 
+
+        for (let palmtree of palmtrees) {
+            // palmtree.move(1 / 50);
+            palmtree.draw();
+        }
 
         // canvas.style.backgroundColor = 
 
@@ -214,5 +226,14 @@ namespace CanvasBeach {
             let people: People = new People(3);
             peoples.push(people);
         }
+    }
+
+    function ship(_n: number): void {
+        for (let i: number = 0; i < _n; i++) {
+            let ship: Ship = new Ship(1);
+            ships.push(ship);
+
+        }
+
     }
 }

@@ -6,7 +6,7 @@ var CanvasBeach;
         velocity;
         size;
         constructor(_size) {
-            this.position = new CanvasBeach.Vector(400 + Math.random() * (0 - 400), 500 + Math.random() * (1500 - 500));
+            this.position = new CanvasBeach.Vector(300 + Math.random() * (-100 - 300), 600 + Math.random() * (1500 - 600));
             // this.position.random(800, 700);
             console.log(this.position);
             this.velocity = new CanvasBeach.Vector(0, 0);

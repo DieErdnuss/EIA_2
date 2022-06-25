@@ -6,6 +6,7 @@ var CanvasBeach;
     let clouds = [];
     let palmtrees = [];
     let peoples = [];
+    let ships = [];
     let resizeW;
     let resizeH;
     let winWidth;
@@ -18,6 +19,7 @@ var CanvasBeach;
         winHeight = document.getElementById("windowHeight");
         reload = document.getElementById("reload");
         reload.addEventListener("click", hndClick);
+        CanvasBeach.canvas.addEventListener("click", hndClick);
         hndResize();
         sky();
         sun();
@@ -25,10 +27,12 @@ var CanvasBeach;
         cloud(10);
         palmtree(20);
         people(3);
+        ship(1);
         window.setInterval(update, 20);
     }
-    function hndClick() {
-        window.location.reload();
+    function hndClick(_event) {
+        let target = _event.target;
+        console.log(target);
     }
     // RESIZE
     function hndResize() {
@@ -45,22 +49,26 @@ var CanvasBeach;
     function update() {
         sky();
         sun();
-        rock();
         // console.log("update");
         for (let cloud of clouds) {
             cloud.move(1 / 50);
             cloud.draw();
         }
+        for (let ship of ships) {
+            ship.draw();
+            ship.move(1 / 100);
+        }
+        rock();
         water();
         mountain();
+        for (let people of peoples) {
+            people.draw();
+            people.move(1 / 50);
+        }
         coast();
         for (let palmtree of palmtrees) {
             // palmtree.move(1 / 50);
             palmtree.draw();
-        }
-        for (let people of peoples) {
-            people.draw();
-            people.move(1 / 50);
         }
         // canvas.style.backgroundColor = 
     }
@@ -177,6 +185,12 @@ var CanvasBeach;
         for (let i = 0; i < _n; i++) {
             let people = new CanvasBeach.People(3);
             peoples.push(people);
+        }
+    }
+    function ship(_n) {
+        for (let i = 0; i < _n; i++) {
+            let ship = new CanvasBeach.Ship(1);
+            ships.push(ship);
         }
     }
 })(CanvasBeach || (CanvasBeach = {}));
