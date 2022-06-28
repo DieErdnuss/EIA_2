@@ -6,7 +6,11 @@ namespace leraningSpanish {
     let lvlBtnTwo: HTMLButtonElement;
     let lvlBtnThree: HTMLButtonElement;
 
-    let lvlOne: Sentences = [];
+    interface Sentences {
+        [sentence: string]: string;
+    }
+
+    let lvlOne: Sentences[] = [];
     let lvlTwo: string[] = [];
     let lvlThree: string[] = [];
 
@@ -27,14 +31,17 @@ namespace leraningSpanish {
 
         lvlBtn.addEventListener("click", hndClick);
 
-        interface Sentences {
-            [sentence: string]: string;
-        }
-
-        lvlOne = { "s1": "Im", "driving", "a", "car"};
+    
+        lvlOne = [{ "1": "Im"}];
+        console.log(lvlOne);
+        
 
         lvlTwo = ["Im", "waitn", "for", "the", "bus"];
+        console.log(lvlTwo);
+        
         lvlThree = ["Im", "driving", "the", "Bus"];
+        console.log(lvlThree);
+        
 
         germanSentences = ["Ich fahre ein Auto.", "Ich warte auf den Bus.", "Ich fahre einen Bus."];
         germanSentenceOutput = <HTMLDivElement>document.getElementById("GerSentence");
@@ -53,32 +60,42 @@ namespace leraningSpanish {
         if (target == lvlBtnOne) {
             console.log("Level One");
             // location.reload();
-            paste(0);
+            paste("germanSentenceOutput.innerText", "germanSentences", 0);
 
         }
 
         if (target == lvlBtnTwo) {
             console.log("Level Two");
             // location.reload();
-            paste(1);
+            paste("germanSentenceOutput.innerText", "germanSentences", 1);
+
         }
 
         if (target == lvlBtnThree) {
             console.log("Level Tree");
             // location.reload();
-            paste(2);
+            paste("germanSentenceOutput.innerText", "germanSentences", 2);
+
         }
 
     }
 
-    function paste(_i: number): void {
-        germanSentenceOutput.innerText = germanSentences[_i];
+    function paste(_arrayOutput: string, _array: string, _i: number): void {
+        _arrayOutput = _array[_i];
         tmpSelectWords.splice(0, 10);
+        console.log(_array[_i]);
+        
+        
+        // console.log(tmpSelectWords);
+        
 
-        for (let i: number = 0; i < lvlTwo.length; i++) {
-            tmpSelectWords.push(lvlOne[i]);
+        for (let i: number = 0; i < 1; i++) {
+            tmpSelectWords.push(lvlOne[1]);
             console.log(tmpSelectWords);
+            // pro WOrt soll ein neues Div erstellt werden, in die das Wort gespasted wird.
         }
+
+        tmpSelectWordsOutput.innerHTML = tmpSelectWords[_i];
 
     }
 

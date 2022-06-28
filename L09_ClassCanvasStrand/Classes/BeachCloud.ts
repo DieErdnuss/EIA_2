@@ -13,7 +13,7 @@ namespace CanvasBeach {
             this.size = _size;
             // this.size.scale();
             // console.log(this.size);
-
+            
         }
 
         move(_timeslice: number): void {

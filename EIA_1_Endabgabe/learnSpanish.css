@@ -58,7 +58,7 @@ main {
     margin: 0 0 0 10px;
 }
 
-#levelBtn {}
+
 
 #levelBtnOne {
     grid-area: lvlBtnOne;
@@ -114,6 +114,9 @@ main {
 #rndmSpanSentence {
     grid-area: rndmSpanSentence;
     place-self: center;
+    background-color: brown;
+    width: 50px;
+    height: 20px;
 }
 
 /* -----------------------------*/

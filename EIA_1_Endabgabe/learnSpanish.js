@@ -21,9 +21,12 @@ var leraningSpanish;
         lvlBtnThree = document.getElementById("levelBtnThree");
         lvlBtn = document.getElementById("lvlBtn");
         lvlBtn.addEventListener("click", hndClick);
-        lvlOne = { "s1": "Im", "driving": , "a": , "car":  };
+        lvlOne = [{ "1": "Im" }];
+        console.log(lvlOne);
         lvlTwo = ["Im", "waitn", "for", "the", "bus"];
+        console.log(lvlTwo);
         lvlThree = ["Im", "driving", "the", "Bus"];
+        console.log(lvlThree);
         germanSentences = ["Ich fahre ein Auto.", "Ich warte auf den Bus.", "Ich fahre einen Bus."];
         germanSentenceOutput = document.getElementById("GerSentence");
         spanOutput = [];
@@ -37,26 +40,30 @@ var leraningSpanish;
         if (target == lvlBtnOne) {
             console.log("Level One");
             // location.reload();
-            paste(0);
+            paste("germanSentenceOutput.innerText", "germanSentences", 0);
         }
         if (target == lvlBtnTwo) {
             console.log("Level Two");
             // location.reload();
-            paste(1);
+            paste("germanSentenceOutput.innerText", "germanSentences", 1);
         }
         if (target == lvlBtnThree) {
             console.log("Level Tree");
             // location.reload();
-            paste(2);
+            paste("germanSentenceOutput.innerText", "germanSentences", 2);
         }
     }
-    function paste(_i) {
-        germanSentenceOutput.innerText = germanSentences[_i];
+    function paste(_arrayOutput, _array, _i) {
+        _arrayOutput = _array[_i];
         tmpSelectWords.splice(0, 10);
-        for (let i = 0; i < lvlTwo.length; i++) {
-            tmpSelectWords.push(lvlOne[i]);
+        console.log(_array[_i]);
+        // console.log(tmpSelectWords);
+        for (let i = 0; i < 1; i++) {
+            tmpSelectWords.push(lvlOne[1]);
             console.log(tmpSelectWords);
+            // pro WOrt soll ein neues Div erstellt werden, in die das Wort gespasted wird.
         }
+        tmpSelectWordsOutput.innerHTML = tmpSelectWords[_i];
     }
 })(leraningSpanish || (leraningSpanish = {}));
 //# sourceMappingURL=learnSpanish.js.map
