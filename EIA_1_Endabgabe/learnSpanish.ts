@@ -6,22 +6,21 @@ namespace leraningSpanish {
     let lvlBtnTwo: HTMLButtonElement;
     let lvlBtnThree: HTMLButtonElement;
 
-    interface Sentences {
-        [sentence: string]: string;
-    }
+    // interface Sentences {
+        // [key: number]: string;
+    // }
 
-    let lvlOne: Sentences[] = [];
+
+    let lvlOne: string[][] = [];
     let lvlTwo: string[] = [];
     let lvlThree: string[] = [];
 
     let germanSentences: string[] = [];
     let germanSentenceOutput: HTMLDivElement;
 
-    let spanOutput: string[] = [];
-    let spanOutputArea: HTMLDivElement;
-
-    let tmpSelectWords: string[] = [];
-    let tmpSelectWordsOutput: HTMLDivElement;
+    let chosen: string[] = [];
+    let compare: string[] = [];
+    let selectWords: HTMLDivElement;
 
     function hndLoad(): void {
         lvlBtnOne = <HTMLButtonElement>document.getElementById("levelBtnOne");
@@ -31,26 +30,24 @@ namespace leraningSpanish {
 
         lvlBtn.addEventListener("click", hndClick);
 
-    
-        lvlOne = [{ "1": "Im"}];
-        console.log(lvlOne);
-        
+        lvlOne[0] = ["Im", "driving", "a", "car"];
+        lvlOne[1] = ["I", "drove", "a", "bus"];
+        lvlOne[2] = ["I", "failed", "EIA1", "once"];
 
         lvlTwo = ["Im", "waitn", "for", "the", "bus"];
         console.log(lvlTwo);
-        
+
         lvlThree = ["Im", "driving", "the", "Bus"];
         console.log(lvlThree);
-        
+
 
         germanSentences = ["Ich fahre ein Auto.", "Ich warte auf den Bus.", "Ich fahre einen Bus."];
         germanSentenceOutput = <HTMLDivElement>document.getElementById("GerSentence");
 
-        spanOutput = [];
-        spanOutputArea = <HTMLDivElement>document.getElementById("spanOutput");
 
-        tmpSelectWords = [];
-        tmpSelectWordsOutput = <HTMLDivElement>document.getElementById("rndmSpanSentence");
+
+        selectWords = <HTMLDivElement>document.getElementById("selectWords");
+
     }
 
     function hndClick(_event: Event): void {
@@ -60,45 +57,51 @@ namespace leraningSpanish {
         if (target == lvlBtnOne) {
             console.log("Level One");
             // location.reload();
-            paste("germanSentenceOutput.innerText", "germanSentences", 0);
+            paste(0);
 
         }
 
         if (target == lvlBtnTwo) {
             console.log("Level Two");
             // location.reload();
-            paste("germanSentenceOutput.innerText", "germanSentences", 1);
+            paste(1);
 
         }
 
         if (target == lvlBtnThree) {
             console.log("Level Tree");
             // location.reload();
-            paste("germanSentenceOutput.innerText", "germanSentences", 2);
+            paste(2);
 
         }
 
     }
 
-    function paste(_arrayOutput: string, _array: string, _i: number): void {
-        _arrayOutput = _array[_i];
-        tmpSelectWords.splice(0, 10);
-        console.log(_array[_i]);
-        
-        
+    function paste(_i: number): void {
+        germanSentenceOutput.innerText = germanSentences[_i];
+        // compare.splice(0, 10);
+        compare = lvlOne[_i];
+        console.log(compare);
+
+
         // console.log(tmpSelectWords);
-        
 
-        for (let i: number = 0; i < 1; i++) {
-            tmpSelectWords.push(lvlOne[1]);
-            console.log(tmpSelectWords);
-            // pro WOrt soll ein neues Div erstellt werden, in die das Wort gespasted wird.
+
+        for (let k: number = 0; k < compare.length; k++) {
+            // pro Wort soll ein neues Div erstellt werden, in die das Wort gespasted wird.
+            let div: HTMLDivElement = document.createElement("div");
+            selectWords.appendChild(div);
+            div.innerText = compare[k];
+            selectWords.append(div);
+
         }
-
-        tmpSelectWordsOutput.innerHTML = tmpSelectWords[_i];
-
+        // _arrayOutput: string, _array: string,
     }
 
 }
+
+
+
+
 
 
