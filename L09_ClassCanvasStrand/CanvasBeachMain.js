@@ -5,7 +5,7 @@ var CanvasBeach;
     window.addEventListener("resize", hndResize);
     let clouds = [];
     let palmtrees = [];
-    let peoples = [];
+    let persons = [];
     let ships = [];
     let resizeW;
     let resizeH;
@@ -19,13 +19,29 @@ var CanvasBeach;
         winHeight = document.getElementById("windowHeight");
         reload = document.getElementById("reload");
         reload.addEventListener("click", hndClick);
-        CanvasBeach.canvas.addEventListener("click", hndClick);
+        CanvasBeach.canvas.addEventListener("click", hndMouse);
         hndResize();
         cloud(10);
         palmtree(20);
-        people(3);
+        person(3);
         ship(1);
         window.setInterval(update, 20);
+    }
+    function hndMouse(_event) {
+        let x = _event.pageX;
+        let y = _event.pageY;
+        let i = 0;
+        console.log(x, y);
+        for (let person of persons) {
+            i++;
+            person.isHit(x, y);
+            if (CanvasBeach.hit == true) {
+                die(i);
+            }
+            if (i == persons.length + 1) {
+                i = 0;
+            }
+        }
     }
     function hndClick(_event) {
         let target = _event.target;
@@ -43,6 +59,10 @@ var CanvasBeach;
         winWidth.innerHTML = String(resizeW + " W");
         winHeight.innerHTML = String(resizeH + " H");
     }
+    function die(_i) {
+        persons.splice(_i, 1);
+        console.log("kill");
+    }
     function update() {
         sky();
         sun();
@@ -58,9 +78,9 @@ var CanvasBeach;
         rock();
         water();
         mountain();
-        for (let people of peoples) {
-            people.draw();
-            people.move(1 / 50);
+        for (let person of persons) {
+            person.draw();
+            person.move(1 / 50);
         }
         coast();
         for (let palmtree of palmtrees) {
@@ -178,10 +198,10 @@ var CanvasBeach;
             palmtrees.push(palmtree);
         }
     }
-    function people(_n) {
+    function person(_n) {
         for (let i = 0; i < _n; i++) {
-            let people = new CanvasBeach.People(3);
-            peoples.push(people);
+            let person = new CanvasBeach.Person(3);
+            persons.push(person);
         }
     }
     function ship(_n) {

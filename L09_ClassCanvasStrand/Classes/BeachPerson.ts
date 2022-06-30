@@ -1,5 +1,8 @@
 namespace CanvasBeach {
-    export class People {
+
+    export let hit: boolean;
+
+    export class Person {
         position: Vector;
         velocity: Vector;
         size: number;
@@ -34,6 +37,14 @@ namespace CanvasBeach {
             }
 
 
+        }
+
+        isHit(_x: number, _y: number): void {
+            if (_x > this.position.x && _x < this.position.x + 100) {
+                if (_y > this.position.y && _y < this.position.y + 50) {
+                    hit = true;
+                }
+            } else hit = false;
         }
 
 

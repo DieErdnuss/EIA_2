@@ -1,7 +1,7 @@
 "use strict";
 var CanvasBeach;
 (function (CanvasBeach) {
-    class People {
+    class Person {
         position;
         velocity;
         size;
@@ -31,6 +31,15 @@ var CanvasBeach;
             if (this.position.y > CanvasBeach.canvas.height) {
                 this.position.y -= CanvasBeach.canvas.height;
             }
+        }
+        isHit(_x, _y) {
+            if (_x > this.position.x && _x < this.position.x + 100) {
+                if (_y > this.position.y && _y < this.position.y + 50) {
+                    CanvasBeach.hit = true;
+                }
+            }
+            else
+                CanvasBeach.hit = false;
         }
         draw() {
             CanvasBeach.crc2.save();
@@ -74,6 +83,6 @@ var CanvasBeach;
             CanvasBeach.crc2.restore();
         }
     }
-    CanvasBeach.People = People;
+    CanvasBeach.Person = Person;
 })(CanvasBeach || (CanvasBeach = {}));
-//# sourceMappingURL=BeachPeople.js.map
+//# sourceMappingURL=BeachPerson.js.map
