@@ -1,2 +1,2 @@
 "use strict";
-//# sourceMappingURL=triangle.js.map
+//# sourceMappingURL=Triangle.js.map
