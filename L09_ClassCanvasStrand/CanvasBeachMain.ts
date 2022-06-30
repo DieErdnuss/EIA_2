@@ -7,7 +7,7 @@ namespace CanvasBeach {
 
     let clouds: Cloud[] = [];
     let palmtrees: Palmtree[] = [];
-    let peoples: People[] = [];
+    let persons: Person[] = [];
     let ships: Ship[] = [];
 
 
@@ -27,13 +27,13 @@ namespace CanvasBeach {
         winHeight = <HTMLElement>document.getElementById("windowHeight");
         reload = <HTMLElement>document.getElementById("reload");
         reload.addEventListener("click", hndClick);
-        canvas.addEventListener("click", hndClick);
+        canvas.addEventListener("click", hndMouse);
 
         hndResize();
 
         cloud(10);
         palmtree(20);
-        people(3);
+        person(3);
         ship(1);
 
 
@@ -42,10 +42,33 @@ namespace CanvasBeach {
         window.setInterval(update, 20);
     }
 
-    function hndClick(_event: Event): void {
-        let target: EventTarget = <EventTarget> _event.target;
-        console.log(target);
+    function hndMouse(_event: MouseEvent): void {
+        let x: number = _event.pageX;
+        let y: number = _event.pageY;
+        let i: number = 0;
+
+        console.log(x, y);
         
+
+
+        for (let person of persons) {
+            i++;
+            person.isHit(x, y);
+
+            if (hit == true) {
+                die(i);
+            }
+
+            if (i == persons.length + 1) {
+                i = 0;
+            }
+        }
+    }
+
+    function hndClick(_event: Event): void {
+        let target: EventTarget = <EventTarget>_event.target;
+        console.log(target);
+
     }
 
     // RESIZE
@@ -61,6 +84,12 @@ namespace CanvasBeach {
         canvas.style.width = String(resizeW - 200 + "px");
         winWidth.innerHTML = String(resizeW + " W");
         winHeight.innerHTML = String(resizeH + " H");
+    }
+
+    function die(_i: number): void {
+        persons.splice(_i, 1);
+        console.log("kill");
+        
     }
 
     function update(): void {
@@ -84,9 +113,9 @@ namespace CanvasBeach {
         water();
         mountain();
 
-        for (let people of peoples) {
-            people.draw();
-            people.move(1 / 50);
+        for (let person of persons) {
+            person.draw();
+            person.move(1 / 50);
         }
 
         coast();
@@ -218,10 +247,10 @@ namespace CanvasBeach {
         }
     }
 
-    function people(_n: number): void {
+    function person(_n: number): void {
         for (let i: number = 0; i < _n; i++) {
-            let people: People = new People(3);
-            peoples.push(people);
+            let person: Person = new Person(3);
+            persons.push(person);
         }
     }
 
