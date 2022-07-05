@@ -1,6 +1,6 @@
 namespace CanvasBeach {
 
-    export let hit: boolean;
+    export let PersonHit: boolean;
 
     export class Person {
         position: Vector;
@@ -42,11 +42,11 @@ namespace CanvasBeach {
         isHit(_x: number, _y: number): void {
             if (_x > this.position.x && _x < this.position.x + 100) {
                 if (_y > this.position.y && _y < this.position.y + 50) {
-                    hit = true;
-                    console.log(hit);
-                    
+                    PersonHit = true;
+                    console.log(PersonHit);
+
                 }
-            } else hit = false;
+            } else PersonHit = false;
         }
 
 
@@ -89,6 +89,15 @@ namespace CanvasBeach {
             crc2.lineWidth = 6;
             crc2.stroke();
             crc2.closePath();
+            crc2.restore();
+        }
+
+        dead(): void {
+            crc2.save();
+            crc2.translate(this.position.x, this.position.y);
+            // crc2.beginPath();
+            crc2.arc(0,0,50,0,Math.PI * 2);
+            crc2.stroke();
             crc2.restore();
         }
     }

@@ -1,7 +1,11 @@
 namespace CanvasBeach {
+
+    export let ShipHit: boolean;
+
     export class Ship {
         position: Vector;
         velocity: Vector;
+        
 
         constructor(_size: number) {
             this.position = new Vector(1000 + Math.random() * (1000 - 2000), 500);
@@ -61,5 +65,7 @@ namespace CanvasBeach {
                 this.position.y -= canvas.height;
             }
         }
+
+
     }
 }

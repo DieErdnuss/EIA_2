@@ -43,23 +43,25 @@ namespace CanvasBeach {
     }
 
     function hndMouse(_event: MouseEvent): void {
-        let x: number = _event.pageX;
-        let y: number = _event.pageY;
+        let x: number = _event.offsetX;
+        let y: number = _event.offsetY;
         let i: number = 0;
 
         console.log(x, y);
-        
+
         for (let person of persons) {
-            
+           
             person.isHit(x, y);
-            i++;
-            if (hit == true) {
+
+            if (PersonHit == true) {
                 die(i);
             }
 
             if (i == persons.length + 1) {
                 i = 0;
             }
+
+            i++;
         }
     }
 
@@ -85,13 +87,15 @@ namespace CanvasBeach {
     }
 
     function die(_i: number): void {
-        
+
         persons.splice(_i, 1);
         console.log("kill");
-        alert("kill!")
+
     }
 
     function update(): void {
+        console.log("update");
+
         sky();
         sun();
 
@@ -209,7 +213,7 @@ namespace CanvasBeach {
         crc2.fillStyle = "#242424";
         crc2.fill();
         crc2.strokeStyle = "grey";
-        crc2.stroke();
+        // crc2.stroke();
         crc2.closePath();
         crc2.restore();
     }

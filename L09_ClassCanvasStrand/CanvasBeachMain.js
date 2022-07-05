@@ -28,19 +28,19 @@ var CanvasBeach;
         window.setInterval(update, 20);
     }
     function hndMouse(_event) {
-        let x = _event.pageX;
-        let y = _event.pageY;
+        let x = _event.offsetX;
+        let y = _event.offsetY;
         let i = 0;
         console.log(x, y);
         for (let person of persons) {
             person.isHit(x, y);
-            i++;
-            if (CanvasBeach.hit == true) {
+            if (CanvasBeach.PersonHit == true) {
                 die(i);
             }
             if (i == persons.length + 1) {
                 i = 0;
             }
+            i++;
         }
     }
     function hndClick(_event) {
@@ -62,9 +62,9 @@ var CanvasBeach;
     function die(_i) {
         persons.splice(_i, 1);
         console.log("kill");
-        alert("kill!");
     }
     function update() {
+        console.log("update");
         sky();
         sun();
         // console.log("update");
@@ -168,7 +168,7 @@ var CanvasBeach;
         CanvasBeach.crc2.fillStyle = "#242424";
         CanvasBeach.crc2.fill();
         CanvasBeach.crc2.strokeStyle = "grey";
-        CanvasBeach.crc2.stroke();
+        // crc2.stroke();
         CanvasBeach.crc2.closePath();
         CanvasBeach.crc2.restore();
     }
