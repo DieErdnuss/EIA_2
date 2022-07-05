@@ -16,6 +16,7 @@ namespace CanvasBeach {
 
     let winWidth: HTMLElement;
     let winHeight: HTMLElement;
+    let mousePos: HTMLElement;
 
     let reload: HTMLElement;
 
@@ -25,6 +26,7 @@ namespace CanvasBeach {
 
         winWidth = <HTMLElement>document.getElementById("windowWidth");
         winHeight = <HTMLElement>document.getElementById("windowHeight");
+        mousePos = <HTMLElement>document.getElementById("mousePos");
         reload = <HTMLElement>document.getElementById("reload");
         reload.addEventListener("click", hndClick);
         canvas.addEventListener("click", hndMouse);
@@ -36,11 +38,11 @@ namespace CanvasBeach {
         person(3);
         ship(1);
 
-
-
-
         window.setInterval(update, 20);
     }
+
+
+    // ________________MOUSE EVENT_______________
 
     function hndMouse(_event: MouseEvent): void {
         let x: number = _event.offsetX;
@@ -50,10 +52,10 @@ namespace CanvasBeach {
         console.log(x, y);
 
         for (let person of persons) {
-           
+
             person.isHit(x, y);
 
-            if (PersonHit == true) {
+            if (personHit == true) {
                 die(i);
             }
 
@@ -63,6 +65,8 @@ namespace CanvasBeach {
 
             i++;
         }
+
+        mousePos.innerHTML = String("X" + " " + x + " " + "Y" + " " + y);
     }
 
     function hndClick(_event: Event): void {

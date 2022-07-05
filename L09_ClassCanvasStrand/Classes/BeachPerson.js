@@ -35,12 +35,12 @@ var CanvasBeach;
         isHit(_x, _y) {
             if (_x > this.position.x && _x < this.position.x + 100) {
                 if (_y > this.position.y && _y < this.position.y + 50) {
-                    CanvasBeach.PersonHit = true;
-                    console.log(CanvasBeach.PersonHit);
+                    CanvasBeach.personHit = true;
+                    console.log(CanvasBeach.personHit);
                 }
             }
             else
-                CanvasBeach.PersonHit = false;
+                CanvasBeach.personHit = false;
         }
         draw() {
             CanvasBeach.crc2.save();

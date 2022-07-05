@@ -11,12 +11,14 @@ var CanvasBeach;
     let resizeH;
     let winWidth;
     let winHeight;
+    let mousePos;
     let reload;
     function hndLoad() {
         CanvasBeach.canvas = document.querySelector("canvas");
         CanvasBeach.crc2 = CanvasBeach.canvas.getContext("2d");
         winWidth = document.getElementById("windowWidth");
         winHeight = document.getElementById("windowHeight");
+        mousePos = document.getElementById("mousePos");
         reload = document.getElementById("reload");
         reload.addEventListener("click", hndClick);
         CanvasBeach.canvas.addEventListener("click", hndMouse);
@@ -27,6 +29,7 @@ var CanvasBeach;
         ship(1);
         window.setInterval(update, 20);
     }
+    // ________________MOUSE EVENT_______________
     function hndMouse(_event) {
         let x = _event.offsetX;
         let y = _event.offsetY;
@@ -34,7 +37,7 @@ var CanvasBeach;
         console.log(x, y);
         for (let person of persons) {
             person.isHit(x, y);
-            if (CanvasBeach.PersonHit == true) {
+            if (CanvasBeach.personHit == true) {
                 die(i);
             }
             if (i == persons.length + 1) {
@@ -42,6 +45,7 @@ var CanvasBeach;
             }
             i++;
         }
+        mousePos.innerHTML = String("X" + " " + x + " " + "Y" + " " + y);
     }
     function hndClick(_event) {
         let target = _event.target;
