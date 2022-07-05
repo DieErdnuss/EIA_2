@@ -78,10 +78,10 @@ namespace CanvasBeach {
         // canvas.style.height = String(resizeH - 50 + "px");
         // } else canvas.style.width = String(resizeW - 200 + "px");
 
-        // console.log("W= " + resizeW + " H= " + resizeH);
-        // canvas.style.width = String(resizeW - 200 + "px");
-        // winWidth.innerHTML = String(resizeW + " W");
-        // winHeight.innerHTML = String(resizeH + " H");
+        console.log("W= " + resizeW + " H= " + resizeH);
+        canvas.style.width = String(resizeW - 200 + "px");
+        winWidth.innerHTML = String(resizeW + " W");
+        winHeight.innerHTML = String(resizeH + " H");
     }
 
     function die(_i: number): void {
