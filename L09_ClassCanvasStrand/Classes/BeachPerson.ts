@@ -43,6 +43,8 @@ namespace CanvasBeach {
             if (_x > this.position.x && _x < this.position.x + 100) {
                 if (_y > this.position.y && _y < this.position.y + 50) {
                     hit = true;
+                    console.log(hit);
+                    
                 }
             } else hit = false;
         }

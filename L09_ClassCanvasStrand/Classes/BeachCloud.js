@@ -6,8 +6,8 @@ var CanvasBeach;
         velocity;
         size;
         constructor(_size) {
-            this.position = new CanvasBeach.Vector(1000, 200);
-            this.position.randomPos();
+            this.position = new CanvasBeach.Vector(500, 200);
+            // this.position.random(200,800);
             this.velocity = new CanvasBeach.Vector(0, 0);
             this.velocity.random(20, 100);
             this.size = _size;

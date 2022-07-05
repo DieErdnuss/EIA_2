@@ -5,8 +5,8 @@ namespace CanvasBeach {
         size: number;
 
         constructor(_size: number) {
-            this.position = new Vector(1000, 200);
-            this.position.randomPos();
+            this.position = new Vector(500, 200);
+            // this.position.random(200,800);
             this.velocity = new Vector(0, 0);
             this.velocity.random(20, 100);
 

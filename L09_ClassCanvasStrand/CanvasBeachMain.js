@@ -33,8 +33,8 @@ var CanvasBeach;
         let i = 0;
         console.log(x, y);
         for (let person of persons) {
-            i++;
             person.isHit(x, y);
+            i++;
             if (CanvasBeach.hit == true) {
                 die(i);
             }
@@ -55,13 +55,14 @@ var CanvasBeach;
         // canvas.style.height = String(resizeH - 50 + "px");
         // } else canvas.style.width = String(resizeW - 200 + "px");
         // console.log("W= " + resizeW + " H= " + resizeH);
-        CanvasBeach.canvas.style.width = String(resizeW - 200 + "px");
-        winWidth.innerHTML = String(resizeW + " W");
-        winHeight.innerHTML = String(resizeH + " H");
+        // canvas.style.width = String(resizeW - 200 + "px");
+        // winWidth.innerHTML = String(resizeW + " W");
+        // winHeight.innerHTML = String(resizeH + " H");
     }
     function die(_i) {
         persons.splice(_i, 1);
         console.log("kill");
+        alert("kill!");
     }
     function update() {
         sky();

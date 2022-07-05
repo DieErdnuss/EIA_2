@@ -49,12 +49,10 @@ namespace CanvasBeach {
 
         console.log(x, y);
         
-
-
         for (let person of persons) {
-            i++;
+            
             person.isHit(x, y);
-
+            i++;
             if (hit == true) {
                 die(i);
             }
@@ -81,15 +79,16 @@ namespace CanvasBeach {
         // } else canvas.style.width = String(resizeW - 200 + "px");
 
         // console.log("W= " + resizeW + " H= " + resizeH);
-        canvas.style.width = String(resizeW - 200 + "px");
-        winWidth.innerHTML = String(resizeW + " W");
-        winHeight.innerHTML = String(resizeH + " H");
+        // canvas.style.width = String(resizeW - 200 + "px");
+        // winWidth.innerHTML = String(resizeW + " W");
+        // winHeight.innerHTML = String(resizeH + " H");
     }
 
     function die(_i: number): void {
+        
         persons.splice(_i, 1);
         console.log("kill");
-        
+        alert("kill!")
     }
 
     function update(): void {
