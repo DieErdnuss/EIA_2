@@ -33,14 +33,14 @@ var CanvasBeach;
             }
         }
         isHit(_x, _y) {
-            if (_x > this.position.x && _x < this.position.x - 100) {
-                if (_y > this.position.y && _y < this.position.y - 50) {
-                    CanvasBeach.personHit = true;
-                    console.log(CanvasBeach.personHit);
+            if (_x > this.position.x && _x < this.position.x + 100) {
+                if (_y > this.position.y && _y < this.position.y + 50) {
+                    CanvasBeach.hit = true;
+                    console.log(CanvasBeach.hit);
                 }
             }
             else
-                CanvasBeach.personHit = false;
+                CanvasBeach.hit = false;
         }
         draw() {
             CanvasBeach.crc2.save();

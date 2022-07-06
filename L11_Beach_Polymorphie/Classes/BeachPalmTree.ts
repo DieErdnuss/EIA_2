@@ -1,4 +1,4 @@
-namespace CanvasBeach {
+namespace L11CanvasBeach {
     export class Palmtree {
         position: Vector;
         velocity: Vector;

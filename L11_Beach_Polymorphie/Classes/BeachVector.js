@@ -1,6 +1,6 @@
 "use strict";
-var CanvasBeach;
-(function (CanvasBeach) {
+var L11CanvasBeach;
+(function (L11CanvasBeach) {
     class Vector {
         x;
         y;
@@ -38,6 +38,6 @@ var CanvasBeach;
             this.y += _addEnd.y;
         }
     }
-    CanvasBeach.Vector = Vector;
-})(CanvasBeach || (CanvasBeach = {}));
+    L11CanvasBeach.Vector = Vector;
+})(L11CanvasBeach || (L11CanvasBeach = {}));
 //# sourceMappingURL=BeachVector.js.map

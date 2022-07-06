@@ -1,4 +1,4 @@
-namespace CanvasBeach {
+namespace L11CanvasBeach {
     export class Vector {
         x: number;
         y: number;

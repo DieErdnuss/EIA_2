@@ -37,7 +37,7 @@ var CanvasBeach;
         console.log(x, y);
         for (let person of persons) {
             person.isHit(x, y);
-            if (CanvasBeach.personHit == true) {
+            if (CanvasBeach.hit == true) {
                 die(i);
             }
             if (i == persons.length + 1) {

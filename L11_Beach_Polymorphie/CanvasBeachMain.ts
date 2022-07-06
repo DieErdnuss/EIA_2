@@ -1,4 +1,4 @@
-namespace CanvasBeach {
+namespace L11CanvasBeach {
     window.addEventListener("load", hndLoad);
     window.addEventListener("resize", hndResize);
 
@@ -55,7 +55,7 @@ namespace CanvasBeach {
 
             person.isHit(x, y);
 
-            if (personHit == true) {
+            if (hit == true) {
                 die(i);
             }
 

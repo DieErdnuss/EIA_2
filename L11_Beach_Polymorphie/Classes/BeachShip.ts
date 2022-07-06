@@ -1,6 +1,4 @@
-namespace CanvasBeach {
-
-    export let ShipHit: boolean;
+namespace L11CanvasBeach {
 
     export class Ship {
         position: Vector;

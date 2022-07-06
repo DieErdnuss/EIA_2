@@ -55,7 +55,7 @@ namespace CanvasBeach {
 
             person.isHit(x, y);
 
-            if (personHit == true) {
+            if (hit == true) {
                 die(i);
             }
 
