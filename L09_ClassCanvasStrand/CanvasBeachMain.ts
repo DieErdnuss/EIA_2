@@ -11,11 +11,11 @@ namespace CanvasBeach {
     let ships: Ship[] = [];
 
 
-    let resizeW: number;
-    let resizeH: number;
+    // let resizeW: number;
+    // let resizeH: number;
 
-    let winWidth: HTMLElement;
-    let winHeight: HTMLElement;
+    // let winWidth: HTMLElement;
+    // let winHeight: HTMLElement;
     let mousePos: HTMLElement;
 
     let reload: HTMLElement;
@@ -24,8 +24,8 @@ namespace CanvasBeach {
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
-        winWidth = <HTMLElement>document.getElementById("windowWidth");
-        winHeight = <HTMLElement>document.getElementById("windowHeight");
+        // winWidth = <HTMLElement>document.getElementById("windowWidth");
+        // winHeight = <HTMLElement>document.getElementById("windowHeight");
         mousePos = <HTMLElement>document.getElementById("mousePos");
         reload = <HTMLElement>document.getElementById("reload");
         reload.addEventListener("click", hndClick);
@@ -77,17 +77,17 @@ namespace CanvasBeach {
 
     // RESIZE
     function hndResize(): void {
-        resizeW = window.innerWidth;
-        resizeH = window.innerHeight;
+        // resizeW = window.innerWidth;
+        // resizeH = window.innerHeight;
 
         // if (resizeH >= resizeW) {
         // canvas.style.height = String(resizeH - 50 + "px");
         // } else canvas.style.width = String(resizeW - 200 + "px");
 
-        console.log("W= " + resizeW + " H= " + resizeH);
-        canvas.style.width = String(resizeW - 200 + "px");
-        winWidth.innerHTML = String(resizeW + " W");
-        winHeight.innerHTML = String(resizeH + " H");
+        // console.log("W= " + resizeW + " H= " + resizeH);
+        // canvas.style.width = String(resizeW - 200 + "px");
+        // winWidth.innerHTML = String(resizeW + " W");
+        // winHeight.innerHTML = String(resizeH + " H");
     }
 
     function die(_i: number): void {

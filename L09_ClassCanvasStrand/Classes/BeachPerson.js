@@ -33,8 +33,8 @@ var CanvasBeach;
             }
         }
         isHit(_x, _y) {
-            if (_x > this.position.x && _x < this.position.x + 100) {
-                if (_y > this.position.y && _y < this.position.y + 50) {
+            if (_x > this.position.x && _x < this.position.x - 100) {
+                if (_y > this.position.y && _y < this.position.y - 50) {
                     CanvasBeach.personHit = true;
                     console.log(CanvasBeach.personHit);
                 }
@@ -46,6 +46,9 @@ var CanvasBeach;
             CanvasBeach.crc2.save();
             CanvasBeach.crc2.translate(this.position.x, this.position.y);
             CanvasBeach.crc2.rotate(Math.PI * 1);
+            // Center
+            CanvasBeach.crc2.arc(0, 0, 20, 0, Math.PI * 2);
+            CanvasBeach.crc2.stroke();
             // Head
             CanvasBeach.crc2.moveTo(0, 0);
             CanvasBeach.crc2.beginPath();

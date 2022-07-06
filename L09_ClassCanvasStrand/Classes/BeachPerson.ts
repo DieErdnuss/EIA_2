@@ -40,8 +40,8 @@ namespace CanvasBeach {
         }
 
         isHit(_x: number, _y: number): void {
-            if (_x > this.position.x && _x < this.position.x + 100) {
-                if (_y > this.position.y && _y < this.position.y + 50) {
+            if (_x > this.position.x && _x < this.position.x - 100) {
+                if (_y > this.position.y && _y < this.position.y - 50) {
                     personHit = true;
                     console.log(personHit);
 
@@ -54,6 +54,9 @@ namespace CanvasBeach {
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
             crc2.rotate(Math.PI * 1);
+            // Center
+            crc2.arc(0, 0, 20, 0, Math.PI * 2);
+            crc2.stroke();
             // Head
             crc2.moveTo(0, 0);
             crc2.beginPath();

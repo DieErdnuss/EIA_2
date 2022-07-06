@@ -7,17 +7,17 @@ var CanvasBeach;
     let palmtrees = [];
     let persons = [];
     let ships = [];
-    let resizeW;
-    let resizeH;
-    let winWidth;
-    let winHeight;
+    // let resizeW: number;
+    // let resizeH: number;
+    // let winWidth: HTMLElement;
+    // let winHeight: HTMLElement;
     let mousePos;
     let reload;
     function hndLoad() {
         CanvasBeach.canvas = document.querySelector("canvas");
         CanvasBeach.crc2 = CanvasBeach.canvas.getContext("2d");
-        winWidth = document.getElementById("windowWidth");
-        winHeight = document.getElementById("windowHeight");
+        // winWidth = <HTMLElement>document.getElementById("windowWidth");
+        // winHeight = <HTMLElement>document.getElementById("windowHeight");
         mousePos = document.getElementById("mousePos");
         reload = document.getElementById("reload");
         reload.addEventListener("click", hndClick);
@@ -53,15 +53,15 @@ var CanvasBeach;
     }
     // RESIZE
     function hndResize() {
-        resizeW = window.innerWidth;
-        resizeH = window.innerHeight;
+        // resizeW = window.innerWidth;
+        // resizeH = window.innerHeight;
         // if (resizeH >= resizeW) {
         // canvas.style.height = String(resizeH - 50 + "px");
         // } else canvas.style.width = String(resizeW - 200 + "px");
-        console.log("W= " + resizeW + " H= " + resizeH);
-        CanvasBeach.canvas.style.width = String(resizeW - 200 + "px");
-        winWidth.innerHTML = String(resizeW + " W");
-        winHeight.innerHTML = String(resizeH + " H");
+        // console.log("W= " + resizeW + " H= " + resizeH);
+        // canvas.style.width = String(resizeW - 200 + "px");
+        // winWidth.innerHTML = String(resizeW + " W");
+        // winHeight.innerHTML = String(resizeH + " H");
     }
     function die(_i) {
         persons.splice(_i, 1);
