@@ -40,8 +40,8 @@ namespace L11CanvasBeach {
         }
 
         isHit(_x: number, _y: number): void {
-            if (_x > this.position.x && _x < this.position.x - 100) {
-                if (_y > this.position.y && _y < this.position.y - 50) {
+            if (_x > this.position.x - 100 && _x < this.position.x) {
+                if (_y > this.position.y - 50 && _y < this.position.y + 50) {
                     hit = true;
                     console.log(hit);
 

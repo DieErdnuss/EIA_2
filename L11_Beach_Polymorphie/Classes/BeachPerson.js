@@ -33,8 +33,8 @@ var L11CanvasBeach;
             }
         }
         isHit(_x, _y) {
-            if (_x > this.position.x && _x < this.position.x - 100) {
-                if (_y > this.position.y && _y < this.position.y - 50) {
+            if (_x > this.position.x - 100 && _x < this.position.x) {
+                if (_y > this.position.y - 50 && _y < this.position.y + 50) {
                     L11CanvasBeach.hit = true;
                     console.log(L11CanvasBeach.hit);
                 }
