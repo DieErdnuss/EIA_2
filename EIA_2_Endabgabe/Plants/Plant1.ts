@@ -3,8 +3,8 @@ namespace FieldSimulator {
         name: string = "Plant1";
         waterDrainage: number = 0;
         fertilizerDemand: number = 0;
-        pestsProbability: number = 0;
-        growthSpeed: number = 10;
+        pestsProbability: number = 100;
+        growthSpeed: number = 1;
         
     }
 }

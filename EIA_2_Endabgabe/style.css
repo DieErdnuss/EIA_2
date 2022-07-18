@@ -1,4 +1,263 @@
+body {
+    font-family: Arial;
+    background-color: rgb(120, 190, 120);
+}
+
 span {
-    background-color: lightgray;
     position: fixed;
+}
+
+#wrapper {
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 5, 1fr;
+
+    grid-template-areas:
+        " . . . . . . . "
+        " market fields fields fields fields fields statusBar "
+        " market fields fields fields fields fields statusBar "
+        " market . . . . . statusBar "
+        " market . BtnWater . BtnHarvest . statusBar ";
+
+}
+
+#Fields {
+
+    grid-area: fields;
+    display: grid;
+    place-self: center;
+    grid-template-columns: repeat(8, 120px);
+    grid-template-rows: repeat(5, 120px);
+    grid-gap: 5px;
+    text-align: center;
+}
+
+#market {
+    grid-area: market;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 9, 1fr;
+    grid-template-areas:
+        "headline headline headline"
+        "Item Buy Sell"
+        "BtnPlant1 . . "
+        "BtnPlant2 . . "
+        "BtnPlant3 . . "
+        "BtnPlant4 . . "
+        "BtnPlant5 . . "
+        "BtnPesticide . . "
+        "BtnFertilize . . "
+        "Money . . ";
+
+    grid-gap: 5px;
+
+
+    /* background-color: white; */
+
+}
+
+/* Market */
+
+#market h2 {
+    grid-area: headline;
+}
+
+#market p:nth-child(0) {
+    grid-area: Item;
+}
+
+#market p:nth-child(1) {
+    grid-area: Buy;
+}
+
+#market p:nth-child(2) {
+    grid-area: Sell;
+}
+
+#statusBar {
+    grid-area: statusBar;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+        "typ typ typ"
+        "img img img"
+        "img img img"
+        "discription description description"
+        "description description description"
+        "description description description";
+    background-color: orange;
+}
+
+/* Plants */
+
+#Plant1 {
+    grid-area: BtnPlant1;
+    background-color: blue;
+
+}
+
+#Plant2 {
+    grid-area: BtnPlant2;
+
+}
+
+#Plant3 {
+    grid-area: BtnPlant3;
+
+}
+
+#Plant4 {
+    grid-area: BtnPlant4;
+
+}
+
+#Plant5 {
+    grid-area: BtnPlant5;
+}
+
+/* Status Bar */
+
+#typ {
+    grid-area: typ;
+}
+
+#imgProduct {
+    grid-area: img;
+}
+
+#text {
+    grid-area: description;
+
+}
+
+button {
+    height: 80px;
+    width: 80px;
+    /* background-color: rgb(172, 209, 71); */
+    border: 0;
+}
+
+#Water {
+    grid-area: BtnWater;
+    height: 100px;
+    width: 100px;
+    place-self: center;
+    /* background-color: rgb(104, 157, 255); */
+    background-image: url(../EIA_2_Endabgabe/img/Water.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid rgb(128, 128, 128) 2px;
+    background-color: white;
+
+}
+
+#Fertilize {
+    grid-area: BtnFertilize;
+    place-self: center;
+    background-image: url(../EIA_2_Endabgabe/img/Fertilizer.png);
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid black 2px;
+    background-color: white;
+
+
+}
+
+#Pesticide {
+    grid-area: BtnPesticide;
+    place-self: center;
+    background-image: url(../EIA_2_Endabgabe/img/Pesticide.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid black 2px;
+    background-color: white;
+
+}
+
+#Harvest {
+    grid-area: BtnHarvest;
+    height: 100px;
+    width: 100px;
+    place-self: center;
+    background-image: url(../EIA_2_Endabgabe/img/Harvest.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid black 2px;
+    background-color: white;
+}
+
+#Money {
+    grid-area: Money;
+    background-size: 50px;
+    background-repeat: no-repeat;
+
+}
+
+.seed {
+    background-color: rgb(165, 91, 42);
+}
+
+.grow {
+    background-color: green;
+    background-image: url(../EIA_2_Endabgabe/img/plant_1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+
+}
+
+.ripe {
+    color: white;
+    background-color: rgb(255, 102, 42);
+}
+
+.dead {
+    color: white;
+    background-image: url(../EIA_2_Endabgabe/img/dead.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    background-color: rgb(94, 52, 12);
+}
+
+.empty {
+    color: white;
+    background-image: url(../EIA_2_Endabgabe/img/Empty.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    background-color: rgb(94, 52, 12);
+
+}
+
+.img {
+    position: absolute;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    background-image: url(img/parasit.png);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    /* background-color: pink; */
+}
+
+.infected {
+    background-color: white;
+    background-image: url(img/parasit.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50px;
+}
+
+.center {
+    place-self: center;
 }

@@ -5,8 +5,8 @@ var FieldSimulator;
         name = "Plant1";
         waterDrainage = 0;
         fertilizerDemand = 0;
-        pestsProbability = 0;
-        growthSpeed = 10;
+        pestsProbability = 100;
+        growthSpeed = 1;
     }
     FieldSimulator.Plant1 = Plant1;
 })(FieldSimulator || (FieldSimulator = {}));

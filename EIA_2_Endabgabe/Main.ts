@@ -2,10 +2,6 @@ namespace FieldSimulator {
     export let money: number = 1000;
     export let outputMoney: HTMLDivElement; /*Classes*/
 
-    let posX: number = 0;
-    let posY: number = 0;
-    let parasite: HTMLImageElement;
-
     interface Fields {
         field: Field;
         position: HTMLDivElement;
@@ -16,57 +12,82 @@ namespace FieldSimulator {
     let globalTimer: ReturnType<typeof setInterval> = setInterval(update, 400);
     function update(): void {
         for (let i: number = 0; i < 40; i++) {
+            let posX: number = Math.floor(fields[i].position.getBoundingClientRect().x);
+            let posY: number = Math.floor(fields[i].position.getBoundingClientRect().y);
             fields[i].position.innerHTML = "";
             let fieldParagraph: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
-            fields[i].position.setAttribute("class", "dead"); /*Classes*/
             fields[i].position.appendChild(fieldParagraph);
+            if (fields[i].field.plantType.name == "Plant0"){
+            fields[i].position.setAttribute("class", "empty"); /*Classes*/
+            }
+
 
 
             if (fields[i].field.plantType != new Plant0() || fields[i].field.growthLevel.value <= 100) {
-                if ((fields[i].field.fertilizerLevel.value > 100 || fields[i].field.fertilizerLevel.value < 0) || (fields[i].field.waterLevel.value > 100 || fields[i].field.waterLevel.value < 0) || fields[i].field.pestsLevel.value >= 2) {
+                if ((fields[i].field.fertilizerLevel.value > 100 || fields[i].field.fertilizerLevel.value < 0) || (fields[i].field.waterLevel.value > 100 || fields[i].field.waterLevel.value < 0) || fields[i].field.pestsLevel.value >= 4) {
                     fields[i].field.growthLevel.value = 200;
+                    fields[i].position.setAttribute("class", "dead"); /*Classes*/
                 }
 
 
-                else if (200 > fields[i].field.growthLevel.value && fields[i].field.growthLevel.value > 100) {
+                else if ((200 > fields[i].field.growthLevel.value && fields[i].field.growthLevel.value > 100) || fields[i].field.growthLevel.value == 100 ) {
                     fields[i].field.growthLevel.value = 100;
+                    fields[i].position.setAttribute("class", "ripe"); /*Classes*/
                 }
 
                 else if (fields[i].field.growthLevel.value != 100) {
                     fields[i].field.waterLevel.decrease(fields[i].field.plantType);
                     fields[i].field.fertilizerLevel.decrease(fields[i].field.plantType);
                     fields[i].field.pestsLevel.increase(fields[i].field.plantType);
+                  
+
+                    if (fields[i].field.pestsLevel.value == 1.05) {
+                        attack(posX, posY, fields[i]);
+                    }
+
+                    if (fields[i].field.pestsLevel.value > 1.3) {
+                        fields[i].position.setAttribute("class", "infected"); /*Classes*/
+                    }
+                    
                     fields[i].field.growthLevel.increase(fields[i].field.plantType);
                 }
             }
             fieldParagraph.innerHTML = `${fields[i].field.plantType.name}`;
 
-
-            if (fields[i].field.growthLevel.value == 100) {
-                fields[i].position.setAttribute("class", "ripe"); /*Classes*/
-
-            }
-
-            if (fields[i].field.growthLevel.value > 0 && fields[i].field.growthLevel.value < 100) {
+            if (fields[i].field.growthLevel.value > 0 && fields[i].field.growthLevel.value < 100 && fields[i].field.pestsLevel.value < 1.3  ) {
                 fields[i].position.setAttribute("class", "grow"); /*Classes*/
             }
         }
-
-
     }
 
     // Animation Frames Parasite
 
-    export function move(): void {
-        posX = posX + 5;
-        posY = posY + 5;
-        parasite.style.transform = "translate(" + posX + "px ," + posY + "px)";
-        // console.log(posX);
-        if (posX < 600 && posY < 500) {
-            requestAnimationFrame(move);
-            console.log("moving");
+    function attack(_posX: number, _posY: number, _field: Fields): void { 
+        let parasite: HTMLImageElement = <HTMLImageElement>document.createElement("div");
+        let fieldDiv: HTMLDivElement = <HTMLDivElement>document.getElementById("wrapper");
+        parasite.setAttribute("class", "img");
+        fieldDiv.appendChild(parasite);
+        requestAnimationFrame(move);
+        let parasiteX: number = 0;
+        let parasiteY: number = 0;
+
+        function move(): void {
+            console.log("move");
             
+            parasiteX = parasiteX + _posX / 100;
+            parasiteY = parasiteY + _posY / 100;
+            parasite.style.transform = `translate(${parasiteX}px, ${parasiteY}px)`;
+
+
+            if (parasiteX <= _posX && parasiteY <= _posY){
+            requestAnimationFrame(move);
+            }
+            if (parasiteX >= _posX - 5 && parasiteY >= _posY - 5) {
+                parasite.remove();
+                
+            }
         }
+        // console.log(posX);
     }
 
 
@@ -83,7 +104,6 @@ namespace FieldSimulator {
         // -----------------------------
         outputMoney = <HTMLDivElement>document.getElementById("Money");
         outputMoney.innerHTML = String(money);
-        parasite = <HTMLImageElement>document.getElementById("parasite");
         // -------------------------
 
         let fieldSpace: HTMLDivElement = <HTMLDivElement>document.getElementById("Fields");
@@ -91,7 +111,9 @@ namespace FieldSimulator {
             let fieldDiv: HTMLDivElement = <HTMLDivElement>document.createElement("div");
             let fieldParagraph: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
             fieldDiv.appendChild(fieldParagraph);
-            let testfield: Fields = { field: new Field(), position: fieldDiv };
+            // let fieldRect: DOMRect = fieldDiv.getBoundingClientRect();
+            let testfield: Fields = { field: new Field(), position: fieldDiv};
+            
             fields.push(testfield);
             fields[i].position.addEventListener("click", function (): void { act(action); });
             function act(_action: string): void {
@@ -127,7 +149,7 @@ namespace FieldSimulator {
             fieldParagraph.innerHTML = `${fields[i].field.plantType.name}`;
             fieldSpace.appendChild(fieldDiv);
         }
-
+        console.log(fields);
 
     });
 
