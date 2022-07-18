@@ -3,13 +3,6 @@ body {
     background-color: rgb(120, 190, 120);
 }
 
-canvas {
-    z-index: 2;
-    /* position: fixed; */
-
-    
-}
-
 #wrapper {
     z-index: 1;
     display: grid;
@@ -158,4 +151,12 @@ button {
     background-position: center;
     background-size: 100%;
     background-color: rgb(94, 52, 12);
+}
+
+#parasite {
+    /* position:absolute; */
+    left: 40px;
+    top: 200px;
+    z-index: 2;
+    height: 30px;
 }

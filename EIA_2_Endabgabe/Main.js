@@ -2,8 +2,9 @@
 var FieldSimulator;
 (function (FieldSimulator) {
     FieldSimulator.money = 1000;
-    let canvas;
-    let crc;
+    let posX = 0;
+    let posY = 0;
+    let parasite;
     let fields = [];
     let action;
     let globalTimer = setInterval(update, 400);
@@ -11,7 +12,7 @@ var FieldSimulator;
         for (let i = 0; i < 40; i++) {
             fields[i].position.innerHTML = "";
             let fieldParagraph = document.createElement("p");
-            fields[i].position.setAttribute("class", "dead");
+            fields[i].position.setAttribute("class", "dead"); /*Classes*/
             fields[i].position.appendChild(fieldParagraph);
             if (fields[i].field.plantType != new FieldSimulator.Plant0() || fields[i].field.growthLevel.value <= 100) {
                 if ((fields[i].field.fertilizerLevel.value > 100 || fields[i].field.fertilizerLevel.value < 0) || (fields[i].field.waterLevel.value > 100 || fields[i].field.waterLevel.value < 0) || fields[i].field.pestsLevel.value >= 2) {
@@ -29,13 +30,25 @@ var FieldSimulator;
             }
             fieldParagraph.innerHTML = `${fields[i].field.plantType.name}`;
             if (fields[i].field.growthLevel.value == 100) {
-                fields[i].position.setAttribute("class", "ripe");
+                fields[i].position.setAttribute("class", "ripe"); /*Classes*/
             }
             if (fields[i].field.growthLevel.value > 0 && fields[i].field.growthLevel.value < 100) {
-                fields[i].position.setAttribute("class", "grow");
+                fields[i].position.setAttribute("class", "grow"); /*Classes*/
             }
         }
     }
+    // Animation Frames Parasite
+    function move() {
+        posX = posX + 5;
+        posY = posY + 5;
+        parasite.style.transform = "translate(" + posX + "px ," + posY + "px)";
+        // console.log(posX);
+        if (posX < 600 && posY < 500) {
+            requestAnimationFrame(move);
+            console.log("moving");
+        }
+    }
+    FieldSimulator.move = move;
     window.addEventListener("load", function () {
         document.getElementById("Water")?.addEventListener("click", function () { action = "water"; console.log("water"); });
         document.getElementById("Fertilize")?.addEventListener("click", function () { action = "fertilize"; });
@@ -46,12 +59,11 @@ var FieldSimulator;
         document.getElementById("Plant3")?.addEventListener("click", function () { action = "Plant3"; });
         document.getElementById("Plant4")?.addEventListener("click", function () { action = "Plant4"; });
         document.getElementById("Plant5")?.addEventListener("click", function () { action = "Plant5"; });
+        // -----------------------------
         FieldSimulator.outputMoney = document.getElementById("Money");
         FieldSimulator.outputMoney.innerHTML = String(FieldSimulator.money);
-        canvas = document.getElementById("canvas");
-        crc = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        parasite = document.getElementById("parasite");
+        // -------------------------
         let fieldSpace = document.getElementById("Fields");
         for (let i = 0; i < 40; i++) {
             let fieldDiv = document.createElement("div");

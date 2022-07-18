@@ -1,8 +1,11 @@
 namespace FieldSimulator {
     export let money: number = 1000;
-    export let outputMoney: HTMLDivElement;
-    let canvas: HTMLCanvasElement;
-    let crc: CanvasRenderingContext2D;
+    export let outputMoney: HTMLDivElement; /*Classes*/
+
+    let posX: number = 0;
+    let posY: number = 0;
+    let parasite: HTMLImageElement;
+
     interface Fields {
         field: Field;
         position: HTMLDivElement;
@@ -15,7 +18,7 @@ namespace FieldSimulator {
         for (let i: number = 0; i < 40; i++) {
             fields[i].position.innerHTML = "";
             let fieldParagraph: HTMLParagraphElement = <HTMLParagraphElement>document.createElement("p");
-            fields[i].position.setAttribute("class", "dead");
+            fields[i].position.setAttribute("class", "dead"); /*Classes*/
             fields[i].position.appendChild(fieldParagraph);
 
 
@@ -40,13 +43,29 @@ namespace FieldSimulator {
 
 
             if (fields[i].field.growthLevel.value == 100) {
-                fields[i].position.setAttribute("class", "ripe");
+                fields[i].position.setAttribute("class", "ripe"); /*Classes*/
 
             }
 
             if (fields[i].field.growthLevel.value > 0 && fields[i].field.growthLevel.value < 100) {
-                fields[i].position.setAttribute("class", "grow");
+                fields[i].position.setAttribute("class", "grow"); /*Classes*/
             }
+        }
+
+
+    }
+
+    // Animation Frames Parasite
+
+    export function move(): void {
+        posX = posX + 5;
+        posY = posY + 5;
+        parasite.style.transform = "translate(" + posX + "px ," + posY + "px)";
+        // console.log(posX);
+        if (posX < 600 && posY < 500) {
+            requestAnimationFrame(move);
+            console.log("moving");
+            
         }
     }
 
@@ -61,15 +80,11 @@ namespace FieldSimulator {
         document.getElementById("Plant3")?.addEventListener("click", function (): void { action = "Plant3"; });
         document.getElementById("Plant4")?.addEventListener("click", function (): void { action = "Plant4"; });
         document.getElementById("Plant5")?.addEventListener("click", function (): void { action = "Plant5"; });
+        // -----------------------------
         outputMoney = <HTMLDivElement>document.getElementById("Money");
         outputMoney.innerHTML = String(money);
-
-        canvas = <HTMLCanvasElement>document.getElementById("canvas");
-        crc = <CanvasRenderingContext2D>canvas.getContext("2d");
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
+        parasite = <HTMLImageElement>document.getElementById("parasite");
+        // -------------------------
 
         let fieldSpace: HTMLDivElement = <HTMLDivElement>document.getElementById("Fields");
         for (let i: number = 0; i < 40; i++) {
