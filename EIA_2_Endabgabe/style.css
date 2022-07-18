@@ -1,11 +1,18 @@
 body {
     font-family: Arial;
     background-color: #82c749;
+    background-image: url(img/gardenOrtho.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 30px;
+
 }
 
 h1 {
     color: whitesmoke;
     font-size: 50px;
+    text-align: center;
 }
 
 span {
@@ -103,7 +110,7 @@ span {
 
 #Plant1 {
     grid-area: BtnPlant1;
-    background-image: url(img/salat.png);
+    background-image: url(img/salad.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 50px;
@@ -111,7 +118,7 @@ span {
 
 #Plant2 {
     grid-area: BtnPlant2;
-    background-image: url(img/erdnuss.png);
+    background-image: url(img/peanut.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 50px;
@@ -119,7 +126,7 @@ span {
 
 #Plant3 {
     grid-area: BtnPlant3;
-    background-image: url(img/Gurke.png);
+    background-image: url(img/cucumber.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 70px;
@@ -127,7 +134,7 @@ span {
 
 #Plant4 {
     grid-area: BtnPlant4;
-    background-image: url(img/aubergine.png);
+    background-image: url(img/eggplant.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 60px;
@@ -215,6 +222,7 @@ button:hover {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    
 }
 
 #Pesticide:hover {
@@ -246,8 +254,8 @@ button:hover {
 }
 
 .grow {
-    background-color: green;
-    background-image: url(../EIA_2_Endabgabe/img/plant_1.png);
+    background-color: wheat;
+    background-image: url(../EIA_2_Endabgabe/img/grow.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -257,7 +265,8 @@ button:hover {
 
 .ripe {
     color: white;
-    background-color: rgb(255, 102, 42);
+    background-color: rgb(80, 145, 0);
+    border-radius: 10px
 }
 
 .dead {
@@ -266,7 +275,8 @@ button:hover {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
-    background-color: rgb(94, 52, 12);
+    background-color: wheat;
+    border-radius: 10px
 }
 
 .empty {
@@ -293,11 +303,12 @@ button:hover {
 }
 
 .infected {
-    background-color: white;
+    background-color: rgb(255, 152, 152);
     background-image: url(img/parasit.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 50px;
+    border-radius: 10px
 }
 
 .center {
