@@ -1,6 +1,6 @@
 body {
     font-family: Arial;
-    background-color: rgb(120, 190, 120);
+    background-color: #35682d;
 }
 
 span {
@@ -8,9 +8,8 @@ span {
 }
 
 #wrapper {
-
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: grid; 
+    /* grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 5, 1fr;
 
     grid-template-areas:
@@ -18,24 +17,28 @@ span {
         " market fields fields fields fields fields statusBar "
         " market fields fields fields fields fields statusBar "
         " market . . . . . statusBar "
-        " market . BtnWater . BtnHarvest . statusBar ";
+        " market . BtnWater . BtnHarvest . statusBar "; */ 
+
+    grid-template-columns: 400px 1fr 1fr 400px;
+    grid-template-rows: 5, 1fr;
+
+    grid-template-areas:
+        " . . . . "
+        " market fields fields statusBar "
+        " market fields fields statusBar "
+        " market . . statusBar "
+        " market BtnWater BtnHarvest statusBar ";
 
 }
 
 #Fields {
-
     grid-area: fields;
     display: grid;
     place-self: center;
     grid-template-columns: repeat(8, 120px);
     grid-template-rows: repeat(5, 120px);
     grid-gap: 5px;
-}
-#Fields p{
-    margin-top: 88%;
-    font-size: 8pt;
     text-align: center;
-    overflow: hidden;
 }
 
 #market {
@@ -54,12 +57,13 @@ span {
         "BtnPlant5 . . "
         "BtnPesticide . . "
         "BtnFertilize . . "
-        "Money . . ";
+        " . Money . ";
 
     grid-gap: 5px;
 
 
-    /* background-color: white; */
+    background-color: white;
+    padding: 20px;
 
 }
 
@@ -69,15 +73,15 @@ span {
     grid-area: headline;
 }
 
-#market:nth-child(1) {
+#market:nth-child(0) {
     grid-area: Item;
 }
 
-#market:nth-child(2) {
+#market:nth-child(1) {
     grid-area: Buy;
 }
 
-#market:nth-child(3) {
+#market:nth-child(2) {
     grid-area: Sell;
 }
 
@@ -94,33 +98,49 @@ span {
         "description description description"
         "description description description";
     background-color: orange;
+    padding: 20px;
 }
 
 /* Plants */
 
 #Plant1 {
     grid-area: BtnPlant1;
-    background-color: blue;
-
+    background-image: url(img/Gurke.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80px;
 }
 
 #Plant2 {
     grid-area: BtnPlant2;
-
+    background-image: url(img/salat.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50px;
 }
 
 #Plant3 {
     grid-area: BtnPlant3;
-
+    background-image: url(img/aubergine.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60px;
 }
 
 #Plant4 {
     grid-area: BtnPlant4;
-
+    background-image: url(img/erdnuss.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50px;
 }
 
 #Plant5 {
     grid-area: BtnPlant5;
+    background-image: url(img/ananas.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60px;
 }
 
 /* Status Bar */
@@ -143,6 +163,16 @@ button {
     width: 80px;
     /* background-color: rgb(172, 209, 71); */
     border: 0;
+    border-radius: 10px;
+    /* background-color: rgb(67, 164, 67); */
+    place-self: center;
+    background-color: rgb(224, 224, 224);
+}
+
+button:hover {
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1);
+    color: white;
+    background-color: rgb(26, 133, 26);
 }
 
 #Water {
@@ -152,37 +182,40 @@ button {
     place-self: center;
     /* background-color: rgb(104, 157, 255); */
     background-image: url(../EIA_2_Endabgabe/img/Water.png);
-    background-size: 50px;
+    background-size: 70px;
     background-repeat: no-repeat;
     background-position: center;
-    border: solid rgb(128, 128, 128) 2px;
-    background-color: white;
+}
 
+#Water:hover {
+    background-color: rgb(54, 107, 177);
 }
 
 #Fertilize {
     grid-area: BtnFertilize;
     place-self: center;
     background-image: url(../EIA_2_Endabgabe/img/Fertilizer.png);
-    background-size: 40px;
+    background-size: 50px;
     background-repeat: no-repeat;
     background-position: center;
-    border: solid black 2px;
-    background-color: white;
+    background-color: rgb(224, 224, 224);
+}
 
-
+#Fertilize:hover {
+    background-color:rgb(232, 203, 56) ;
 }
 
 #Pesticide {
     grid-area: BtnPesticide;
     place-self: center;
-    background-image: url(../EIA_2_Endabgabe/img/Pesticide.jpg);
+    background-image: url(../EIA_2_Endabgabe/img/Pesticide.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border: solid black 2px;
-    background-color: white;
+}
 
+#Pesticide:hover {
+    background-color: rgb(249, 141, 121);
 }
 
 #Harvest {
@@ -190,15 +223,15 @@ button {
     height: 100px;
     width: 100px;
     place-self: center;
-    background-image: url(../EIA_2_Endabgabe/img/Harvest.png);
-    background-size: contain;
+    background-image: url(../EIA_2_Endabgabe/img/basket.png);
+    background-size: 60px;
     background-repeat: no-repeat;
     background-position: center;
-    border: solid black 2px;
-    background-color: white;
+    
 }
 
 #Money {
+    place-self: center;
     grid-area: Money;
     background-size: 50px;
     background-repeat: no-repeat;
@@ -220,10 +253,12 @@ button {
 }
 
 .ripe {
+    color: white;
     background-color: rgb(255, 102, 42);
 }
 
 .dead {
+    color: white;
     background-image: url(../EIA_2_Endabgabe/img/dead.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -232,11 +267,13 @@ button {
 }
 
 .empty {
+    color: white;
     background-image: url(../EIA_2_Endabgabe/img/Empty.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
-    background-color: rgb(94, 52, 12);
+    background-color: wheat;
+    border-radius: 10px
 
 }
 
