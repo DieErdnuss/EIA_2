@@ -1,6 +1,11 @@
 body {
     font-family: Arial;
-    background-color: #35682d;
+    background-color: #82c749;
+}
+
+h1 {
+    color: whitesmoke;
+    font-size: 50px;
 }
 
 span {
@@ -9,15 +14,6 @@ span {
 
 #wrapper {
     display: grid; 
-    /* grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 5, 1fr;
-
-    grid-template-areas:
-        " . . . . . . . "
-        " market fields fields fields fields fields statusBar "
-        " market fields fields fields fields fields statusBar "
-        " market . . . . . statusBar "
-        " market . BtnWater . BtnHarvest . statusBar "; */ 
 
     grid-template-columns: 400px 1fr 1fr 400px;
     grid-template-rows: 5, 1fr;
@@ -64,9 +60,24 @@ span {
 
     background-color: white;
     padding: 20px;
+    border-radius: 20px;
 
 }
 
+#statusBar {
+    grid-area: statusBar;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 200px 300px;
+    grid-template-areas:
+        "typ typ typ"
+        "img img img"
+        "description description description";
+
+    background-color: orange;
+    padding: 20px;
+    border-radius: 20px;
+}
 /* Market */
 
 #market h2 {
@@ -85,35 +96,20 @@ span {
     grid-area: Sell;
 }
 
-#statusBar {
-    grid-area: statusBar;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-areas:
-        "typ typ typ"
-        "img img img"
-        "img img img"
-        "discription description description"
-        "description description description"
-        "description description description";
-    background-color: orange;
-    padding: 20px;
-}
-
 /* Plants */
+
 
 #Plant1 {
     grid-area: BtnPlant1;
-    background-image: url(img/Gurke.png);
+    background-image: url(img/salat.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 80px;
+    background-size: 50px;
 }
 
 #Plant2 {
     grid-area: BtnPlant2;
-    background-image: url(img/salat.png);
+    background-image: url(img/erdnuss.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 50px;
@@ -121,18 +117,18 @@ span {
 
 #Plant3 {
     grid-area: BtnPlant3;
-    background-image: url(img/aubergine.png);
+    background-image: url(img/Gurke.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 60px;
+    background-size: 70px;
 }
 
 #Plant4 {
     grid-area: BtnPlant4;
-    background-image: url(img/erdnuss.png);
+    background-image: url(img/aubergine.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 50px;
+    background-size: 60px;
 }
 
 #Plant5 {
@@ -140,21 +136,26 @@ span {
     background-image: url(img/ananas.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 60px;
+    background-size: 70px;
 }
 
 /* Status Bar */
 
 #typ {
     grid-area: typ;
+    color: white;
+    font-size: 30px;
+    margin: 0;
 }
 
 #imgProduct {
     grid-area: img;
+
 }
 
 #text {
     grid-area: description;
+
 
 }
 
@@ -299,4 +300,9 @@ button:hover {
 
 .center {
     place-self: center;
+}
+
+.status {
+    font-size: 10px;
+    text-justify: bottom;
 }
