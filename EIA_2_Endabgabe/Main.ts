@@ -1,15 +1,28 @@
 namespace FieldSimulator {
-    export let money: number = 1000;
-    export let outputMoney: HTMLDivElement; /*Classes*/
-
+    export let market: Market;
+    let difficulty: string;
     interface Fields {
         field: Field;
         position: HTMLDivElement;
     }
 
+    let settings: FormDataEntryValue [] = [];
     let fields: Fields[] = [];
     let action: string;
-    let globalTimer: ReturnType<typeof setInterval> = setInterval(update, 400);
+
+    let globalTimer: ReturnType<typeof setInterval>;
+
+    window.addEventListener("load", hndLoad);
+    function hndLoad(): void { 
+        document.getElementById("startButton")?.addEventListener("click", hndStart);
+    }
+    function hndStart(): void {
+        let formData: FormData = new FormData(document.forms[0]);
+        for (let value of formData.values())
+        settings.push(value);
+        console.log(settings);
+        createGame(parseInt(`${settings[0]}`), `${settings[1]}`);        
+    }
     function update(): void {
         for (let i: number = 0; i < 40; i++) {
             let posX: number = Math.floor(fields[i].position.getBoundingClientRect().x);
@@ -64,6 +77,9 @@ namespace FieldSimulator {
                 fields[i].position.setAttribute("class", "grow"); /*Classes*/
             }
         }
+        let moneyParagraph: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("Money");
+        moneyParagraph.innerHTML = `${market.money}`;
+        market.fluctuate(difficulty);
     }
 
     // Animation Frames Parasite
@@ -97,23 +113,25 @@ namespace FieldSimulator {
     }
 
 
-    window.addEventListener("load", function (): void {
+    function createGame(_startingMoney: number, _difficulty: string): void {
+        globalTimer = setInterval(update, 400);
+        market = new Market(_startingMoney, _difficulty);
+        difficulty = _difficulty;
         let statusName: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("typ");
         let statusImage: HTMLDivElement = <HTMLDivElement> document.getElementById("imgProduct");
-        let statusText: HTMLParagraphElement = <HTMLParagraphElement> this.document.getElementById("text")
-        document.getElementById("Water")?.addEventListener("click", function (): void { action = "water"; console.log("water");  statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "Every plant needs water and for you it's free. Don't overdo it!"; });
-        document.getElementById("Fertilize")?.addEventListener("click", function (): void { action = "fertilize"; statusName.innerHTML = "Fertilizer"; statusImage.setAttribute("class", "Fertilizer"); statusText.innerHTML = "Almost every plant needs fertilizer. Without it your plant wont grow to it's fullest, but don't use too much of it."; });
-        document.getElementById("Pesticide")?.addEventListener("click", function (): void { action = "pesticide"; statusName.innerHTML = "Pesticede"; statusImage.setAttribute("class", "Pesticede"); statusText.innerHTML = "The best way to kill those nasty bugs, unfortunately not usable for coding."; });
-        document.getElementById("Harvest")?.addEventListener("click", function (): void { action = "harvest"; statusName.innerHTML = "Harvest"; statusImage.setAttribute("class", "Harvest"); statusText.innerHTML = "Harvest your goods or remove your dead crops"; });
-        document.getElementById("Plant1")?.addEventListener("click", function (): void { action = "Plant1"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "Easy for beginners, this plant only uses water and can't get infested by parasites"; });
-        document.getElementById("Plant2")?.addEventListener("click", function (): void { action = "Plant2"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "A good common plant. It needs fertilizer and water and has a small chance for parasites"; });
-        document.getElementById("Plant3")?.addEventListener("click", function (): void { action = "Plant3"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "This plant needs alot of water and has a medium chance for parasites"; });
-        document.getElementById("Plant4")?.addEventListener("click", function (): void { action = "Plant4"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "This plant is very fertilizer intensive and has a high chance for parasites"; });
-        document.getElementById("Plant5")?.addEventListener("click", function (): void { action = "Plant5"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "This plant is very hard to care for, but it pays out. Look out for those parasites"; });
-        // -----------------------------
-        outputMoney = <HTMLDivElement>document.getElementById("Money");
-        outputMoney.innerHTML = String(money);
-        // -------------------------
+        let statusText: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("text")
+        document.getElementById("settings")?.classList.add("hidden");
+        document.getElementById("game")?.classList.remove("hidden");
+        document.getElementById("Water")?.addEventListener("click", function (): void { action = "water"; console.log("water");  statusName.innerHTML = "Water"; statusImage.setAttribute("id", "Water"); statusText.innerHTML = "Every plant needs water and for you it's free. Don't overdo it!"; });
+        document.getElementById("Fertilize")?.addEventListener("click", function (): void { action = "fertilize"; statusName.innerHTML = "Fertilizer"; statusImage.setAttribute("id", "Fertilizer"); statusText.innerHTML = "Almost every plant needs fertilizer. Without it your plant wont grow to it's fullest, but don't use too much of it."; });
+        document.getElementById("Pesticide")?.addEventListener("click", function (): void { action = "pesticide"; statusName.innerHTML = "Pesticede"; statusImage.setAttribute("id", "Pesticede"); statusText.innerHTML = "The best way to kill those nasty bugs, unfortunately not usable for coding."; });
+        document.getElementById("Harvest")?.addEventListener("click", function (): void { action = "harvest"; statusName.innerHTML = "Harvest"; statusImage.setAttribute("id", "Harvest"); statusText.innerHTML = "Harvest your goods or remove your dead crops"; });
+        document.getElementById("Plant1")?.addEventListener("click", function (): void { action = "Plant1"; statusName.innerHTML = "Salad"; statusImage.setAttribute("id", "Plant1"); statusText.innerHTML = "Easy for beginners, this plant only uses water and can't get infested by parasites"; });
+        document.getElementById("Plant2")?.addEventListener("click", function (): void { action = "Plant2"; statusName.innerHTML = "Peanuts"; statusImage.setAttribute("id", "Plant2"); statusText.innerHTML = "A good common plant. It needs fertilizer and water and has a small chance for parasites"; });
+        document.getElementById("Plant3")?.addEventListener("click", function (): void { action = "Plant3"; statusName.innerHTML = "Cucumber"; statusImage.setAttribute("id", "Plant3"); statusText.innerHTML = "This plant needs alot of water and has a medium chance for parasites"; });
+        document.getElementById("Plant4")?.addEventListener("click", function (): void { action = "Plant4"; statusName.innerHTML = "Eggplant"; statusImage.setAttribute("id", "Plant4"); statusText.innerHTML = "This plant is very fertilizer intensive and has a high chance for parasites"; });
+        document.getElementById("Plant5")?.addEventListener("click", function (): void { action = "Plant5"; statusName.innerHTML = "Ananas"; statusImage.setAttribute("id", "Plant5"); statusText.innerHTML = "This plant is very hard to care for, but it pays out. Look out for those parasites"; });
+
 
         let fieldSpace: HTMLDivElement = <HTMLDivElement>document.getElementById("Fields");
         for (let i: number = 0; i < 40; i++) {
@@ -131,11 +149,11 @@ namespace FieldSimulator {
                     case "fertilize": fields[i].field.fertilize(); break;
                     case "pesticide": fields[i].field.killPests(); break;
                     case "harvest": fields[i].field.harvest(); break;
-                    case "Plant1": fields[i].field.plant(new Plant1()); break;
-                    case "Plant2": fields[i].field.plant(new Plant2()); break;
-                    case "Plant3": fields[i].field.plant(new Plant3()); break;
-                    case "Plant4": fields[i].field.plant(new Plant4()); break;
-                    case "Plant5": fields[i].field.plant(new Plant5()); break;
+                    case "Plant1": if (market.money > market.buyPrice[2] && fields[i].field.plantType.name == "Plant0") {market.buy("plant1"); fields[i].field.plant(new Plant1()); } break;
+                    case "Plant2": if (market.money > market.buyPrice[3] && fields[i].field.plantType.name == "Plant0") {market.buy("plant2"); fields[i].field.plant(new Plant2()); } break;
+                    case "Plant3": if (market.money > market.buyPrice[4] && fields[i].field.plantType.name == "Plant0") {market.buy("plant3"); fields[i].field.plant(new Plant3()); } break;
+                    case "Plant4": if (market.money > market.buyPrice[5] && fields[i].field.plantType.name == "Plant0") {market.buy("plant4"); fields[i].field.plant(new Plant4()); } break;
+                    case "Plant5": if (market.money > market.buyPrice[6] && fields[i].field.plantType.name == "Plant0") {market.buy("plant5"); fields[i].field.plant(new Plant5()); } break;
                 }
             }
             let waterLevel: string = `${fields[i].field.waterLevel.value}`;
@@ -144,6 +162,6 @@ namespace FieldSimulator {
             fieldParagraph.innerHTML = `W:${waterLevel}%, F:${fertilizerLevel}%, G:${growthLevel}%`;
             fieldSpace.appendChild(fieldDiv);
         }
-    });
+    }
 
 }

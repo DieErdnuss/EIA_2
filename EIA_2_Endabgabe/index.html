@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endabgabe Jason Hühne</title>
     <link rel="stylesheet" href="style.css">
+    <script src="Market.js"></script>
     <script src="Plant.js"></script>
     <script src="Plants/Plant0.js"></script>
     <script src="Plants/Plant1.js"></script>
@@ -19,13 +20,37 @@
     <script src="TimeBased/Water.js"></script>
     <script src="TimeBased/Growth.js"></script>
     <script src="TimeBased/Pests.js"></script>
-    <script src="Market.js"></script>
     <script src="Field.js"></script>
     <script src="Main.js"></script>
 </head>
 
 <body>
     <h1>VEGAN HEAVEN</h1>
+    <div id="settings">
+        <form>
+            <fieldset>
+                <legend>Starting Money</legend>
+                5000$
+                <input type="range" name="startingMoney" min="5000" max="10000" step="50" value="7500">
+                10000$
+            </fieldset>
+            <fieldset>
+                <legend>Difficulty</legend>
+                <label for="Easy">Easy</label>
+                <input type="radio" name="difficulty" value="Easy">
+                <br>
+                <label for="Medium" id="fontTimesNewRomanLabel">Medium</label>
+                <input type="radio" name="difficulty" value="Medium" checked>
+                <br>
+                <label for="Hard" id="fontCourier">Hard</label>
+                <input type="radio" name="difficulty" value="Hard">
+            </fieldset>
+        </form>
+        <br>
+        <input type="submit" id="startButton" value="Start">
+    </div>
+    <div id="game" class="hidden">
+    <h1>Gemüse Garten</h1>
     <div id="wrapper">
         <div id="Fields"></div>
         <button id="Water"></button>
@@ -53,4 +78,5 @@
         </div>
 
     </div>
+</div>
 </body>

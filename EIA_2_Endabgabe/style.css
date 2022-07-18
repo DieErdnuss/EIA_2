@@ -33,7 +33,9 @@ span {
         " market BtnWater BtnHarvest statusBar ";
 
 }
-
+.hidden {
+    display: none;
+}
 #Fields {
     grid-area: fields;
     display: grid;
