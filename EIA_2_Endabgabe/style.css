@@ -30,7 +30,12 @@ span {
     grid-template-columns: repeat(8, 120px);
     grid-template-rows: repeat(5, 120px);
     grid-gap: 5px;
+}
+#Fields p{
+    margin-top: 88%;
+    font-size: 8pt;
     text-align: center;
+    overflow: hidden;
 }
 
 #market {
@@ -64,15 +69,15 @@ span {
     grid-area: headline;
 }
 
-#market p:nth-child(0) {
+#market:nth-child(1) {
     grid-area: Item;
 }
 
-#market p:nth-child(1) {
+#market:nth-child(2) {
     grid-area: Buy;
 }
 
-#market p:nth-child(2) {
+#market:nth-child(3) {
     grid-area: Sell;
 }
 
@@ -215,12 +220,10 @@ button {
 }
 
 .ripe {
-    color: white;
     background-color: rgb(255, 102, 42);
 }
 
 .dead {
-    color: white;
     background-image: url(../EIA_2_Endabgabe/img/dead.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -229,7 +232,6 @@ button {
 }
 
 .empty {
-    color: white;
     background-image: url(../EIA_2_Endabgabe/img/Empty.png);
     background-repeat: no-repeat;
     background-position: center;

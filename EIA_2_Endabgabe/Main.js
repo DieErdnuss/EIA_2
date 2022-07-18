@@ -19,15 +19,21 @@ var FieldSimulator;
                 if ((fields[i].field.fertilizerLevel.value > 100 || fields[i].field.fertilizerLevel.value < 0) || (fields[i].field.waterLevel.value > 100 || fields[i].field.waterLevel.value < 0) || fields[i].field.pestsLevel.value >= 4) {
                     fields[i].field.growthLevel.value = 200;
                     fields[i].position.setAttribute("class", "dead"); /*Classes*/
+                    fieldParagraph.innerHTML = `Dead`;
                 }
                 else if ((200 > fields[i].field.growthLevel.value && fields[i].field.growthLevel.value > 100) || fields[i].field.growthLevel.value == 100) {
                     fields[i].field.growthLevel.value = 100;
                     fields[i].position.setAttribute("class", "ripe"); /*Classes*/
+                    fieldParagraph.innerHTML = ``;
                 }
                 else if (fields[i].field.growthLevel.value != 100) {
+                    let waterLevel = `${fields[i].field.waterLevel.value}`;
+                    let fertilizerLevel = `${fields[i].field.fertilizerLevel.value}`;
+                    let growthLevel = `${fields[i].field.growthLevel.value}`;
                     fields[i].field.waterLevel.decrease(fields[i].field.plantType);
                     fields[i].field.fertilizerLevel.decrease(fields[i].field.plantType);
                     fields[i].field.pestsLevel.increase(fields[i].field.plantType);
+                    fieldParagraph.innerHTML = `W:${waterLevel}%, F:${fertilizerLevel}%, G:${growthLevel}%`;
                     if (fields[i].field.pestsLevel.value == 1.05) {
                         attack(posX, posY, fields[i]);
                     }
@@ -37,7 +43,6 @@ var FieldSimulator;
                     fields[i].field.growthLevel.increase(fields[i].field.plantType);
                 }
             }
-            fieldParagraph.innerHTML = `${fields[i].field.plantType.name}`;
             if (fields[i].field.growthLevel.value > 0 && fields[i].field.growthLevel.value < 100 && fields[i].field.pestsLevel.value < 1.3) {
                 fields[i].position.setAttribute("class", "grow"); /*Classes*/
             }
@@ -67,15 +72,18 @@ var FieldSimulator;
         // console.log(posX);
     }
     window.addEventListener("load", function () {
-        document.getElementById("Water")?.addEventListener("click", function () { action = "water"; console.log("water"); });
-        document.getElementById("Fertilize")?.addEventListener("click", function () { action = "fertilize"; });
-        document.getElementById("Pesticide")?.addEventListener("click", function () { action = "pesticide"; });
-        document.getElementById("Harvest")?.addEventListener("click", function () { action = "harvest"; });
-        document.getElementById("Plant1")?.addEventListener("click", function () { action = "Plant1"; console.log("Plant1"); });
-        document.getElementById("Plant2")?.addEventListener("click", function () { action = "Plant2"; });
-        document.getElementById("Plant3")?.addEventListener("click", function () { action = "Plant3"; });
-        document.getElementById("Plant4")?.addEventListener("click", function () { action = "Plant4"; });
-        document.getElementById("Plant5")?.addEventListener("click", function () { action = "Plant5"; });
+        let statusName = document.getElementById("typ");
+        let statusImage = document.getElementById("imgProduct");
+        let statusText = this.document.getElementById("text");
+        document.getElementById("Water")?.addEventListener("click", function () { action = "water"; console.log("water"); statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "Every plant needs water and for you it's free. Don't overdo it!"; });
+        document.getElementById("Fertilize")?.addEventListener("click", function () { action = "fertilize"; statusName.innerHTML = "Fertilizer"; statusImage.setAttribute("class", "Fertilizer"); statusText.innerHTML = "Almost every plant needs fertilizer. Without it your plant wont grow to it's fullest, but don't use too much of it."; });
+        document.getElementById("Pesticide")?.addEventListener("click", function () { action = "pesticide"; statusName.innerHTML = "Pesticede"; statusImage.setAttribute("class", "Pesticede"); statusText.innerHTML = "The best way to kill those nasty bugs, unfortunately not usable for coding."; });
+        document.getElementById("Harvest")?.addEventListener("click", function () { action = "harvest"; statusName.innerHTML = "Harvest"; statusImage.setAttribute("class", "Harvest"); statusText.innerHTML = "Harvest your goods or remove your dead crops"; });
+        document.getElementById("Plant1")?.addEventListener("click", function () { action = "Plant1"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "Easy for beginners, this plant only uses water and can't get infested by parasites"; });
+        document.getElementById("Plant2")?.addEventListener("click", function () { action = "Plant2"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "A good common plant. It needs fertilizer and water and has a small chance for parasites"; });
+        document.getElementById("Plant3")?.addEventListener("click", function () { action = "Plant3"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "This plant needs alot of water and has a medium chance for parasites"; });
+        document.getElementById("Plant4")?.addEventListener("click", function () { action = "Plant4"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "This plant is very fertilizer intensive and has a high chance for parasites"; });
+        document.getElementById("Plant5")?.addEventListener("click", function () { action = "Plant5"; statusName.innerHTML = "Water"; statusImage.setAttribute("class", "Water"); statusText.innerHTML = "This plant is very hard to care for, but it pays out. Look out for those parasites"; });
         // -----------------------------
         FieldSimulator.outputMoney = document.getElementById("Money");
         FieldSimulator.outputMoney.innerHTML = String(FieldSimulator.money);
@@ -120,28 +128,12 @@ var FieldSimulator;
                         break;
                 }
             }
-            fields[i].position.addEventListener("mouseover", display);
-            function display(_event) {
-                let span = document.querySelector("span");
-                let plantType = `${fields[i].field.plantType.name}`;
-                let waterLevel = `${fields[i].field.waterLevel.value}`;
-                let fertilizerLevel = `${fields[i].field.fertilizerLevel.value}`;
-                let growthLevel = `${fields[i].field.growthLevel.value}`;
-                let posXoffset = 10 + _event.clientX;
-                let posYoffset = 10 + _event.clientY;
-                if (fields[i].field.growthLevel.value != 200) {
-                    span.innerHTML = `Plant: ${plantType}, Water: ${waterLevel}% , Fertilizer: ${fertilizerLevel}% , Growth: ${growthLevel}%`;
-                }
-                else {
-                    span.innerHTML = `Plant: ${plantType}, Water: ${waterLevel}% , Fertilizer: ${fertilizerLevel}% , Growth: DEAD`;
-                }
-                span.style.left = posXoffset + "px";
-                span.style.top = posYoffset + "px";
-            }
-            fieldParagraph.innerHTML = `${fields[i].field.plantType.name}`;
+            let waterLevel = `${fields[i].field.waterLevel.value}`;
+            let fertilizerLevel = `${fields[i].field.fertilizerLevel.value}`;
+            let growthLevel = `${fields[i].field.growthLevel.value}`;
+            fieldParagraph.innerHTML = `W:${waterLevel}%, F:${fertilizerLevel}%, G:${growthLevel}%`;
             fieldSpace.appendChild(fieldDiv);
         }
-        console.log(fields);
     });
 })(FieldSimulator || (FieldSimulator = {}));
 //# sourceMappingURL=Main.js.map

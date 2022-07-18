@@ -27,7 +27,7 @@ namespace FieldSimulator {
             this.fertilizerLevel.increase(); }
         }
         killPests (): void {
-            if (this.plantType.name != "Plant0" && this.growthLevel.value != 200) {
+            if (this.plantType.name != "Plant0" && this.growthLevel.value != 200 && this.pestsLevel.value != 0) {
             this.pestsLevel.decrease(); 
             this.plantType.pestsProbability = 0;
         }
