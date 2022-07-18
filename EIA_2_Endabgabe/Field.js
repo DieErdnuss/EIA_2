@@ -24,21 +24,21 @@ var FieldSimulator;
             }
         }
         fertilize() {
-            if (this.plantType.name != "Plant0" && this.growthLevel.value != 200) {
+            if (this.plantType.name != "Plant0" && this.growthLevel.value != 200 && FieldSimulator.market.money > FieldSimulator.market.buyPrice[0]) {
+                FieldSimulator.market.buy("fertilizer");
                 this.fertilizerLevel.increase();
             }
         }
         killPests() {
-            if (this.plantType.name != "Plant0" && this.growthLevel.value != 200 && this.pestsLevel.value != 0) {
+            if (this.plantType.name != "Plant0" && this.growthLevel.value != 200 && FieldSimulator.market.money > FieldSimulator.market.buyPrice[1]) {
+                FieldSimulator.market.buy("pesticede");
                 this.pestsLevel.decrease();
                 this.plantType.pestsProbability = 0;
             }
         }
         harvest() {
             if (this.growthLevel.value == 100) {
-                FieldSimulator.money++;
-                FieldSimulator.outputMoney.innerHTML = String(FieldSimulator.money);
-                console.log(FieldSimulator.money);
+                FieldSimulator.market.sell(this.plantType.name);
             }
             this.reset();
         }
