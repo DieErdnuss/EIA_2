@@ -23,7 +23,7 @@ span {
 #wrapper {
     display: grid; 
 
-    grid-template-columns: 400px 1fr 1fr 200px 200px;
+    grid-template-columns: 350px 1fr 1fr 200px 200px;
     grid-template-rows: 5, 1fr;
 
     grid-template-areas:
