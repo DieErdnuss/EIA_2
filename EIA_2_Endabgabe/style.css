@@ -260,7 +260,7 @@ button:hover {
     width: 100px;
     place-self: center;
     /* background-color: rgb(104, 157, 255); */
-    background-image: url(../EIA_2_Endabgabe/img/Water.png);
+    background-image: url(img/Water.png);
     background-size: 70px;
     background-repeat: no-repeat;
     background-position: center;
@@ -277,7 +277,7 @@ button:hover {
     width: 90px;
     grid-area: BtnFertilize;
     place-self: center;
-    background-image: url(../EIA_2_Endabgabe/img/Fertilizer.png);
+    background-image: url(img/Fertilizer.png);
     background-size: 50px;
     background-repeat: no-repeat;
     background-position: center;
@@ -294,7 +294,7 @@ button:hover {
     width: 90px;
     grid-area: BtnPesticide;
     place-self: center;
-    background-image: url(../EIA_2_Endabgabe/img/Pesticide.png);
+    background-image: url(img/Pesticide.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -312,7 +312,7 @@ button:hover {
     height: 100px;
     width: 100px;
     place-self: center;
-    background-image: url(../EIA_2_Endabgabe/img/basket.png);
+    background-image: url(img/basket.png);
     background-size: 60px;
     background-repeat: no-repeat;
     background-position: center;
@@ -333,7 +333,7 @@ button:hover {
 
 .grow {
     background-color: wheat;
-    background-image: url(../EIA_2_Endabgabe/img/grow.png);
+    background-image: url(img/grow.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -385,7 +385,7 @@ button:hover {
 
 
 .dead {
-    background-image: url(../EIA_2_Endabgabe/img/dead.png);
+    background-image: url(img/dead.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
@@ -394,7 +394,7 @@ button:hover {
 }
 
 .empty {
-    background-image: url(../EIA_2_Endabgabe/img/Empty.png);
+    background-image: url(img/Empty.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
