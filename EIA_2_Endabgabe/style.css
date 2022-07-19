@@ -246,6 +246,7 @@ button {
     /* background-color: rgb(67, 164, 67); */
     place-self: center;
     background-color: rgb(224, 224, 224);
+    cursor: pointer;
 }
 
 button:hover {

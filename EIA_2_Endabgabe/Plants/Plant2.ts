@@ -4,7 +4,7 @@ namespace FieldSimulator {
         waterDrainage: number = 0.5;
         fertilizerDemand: number = 0.5;
         pestsProbability: number = 1;
-        growthSpeed: number = 1;
+        growthSpeed: number = 1.5;
         
     }
 }
