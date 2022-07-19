@@ -35,7 +35,7 @@ var FieldSimulator;
                 }
                 else if ((200 > fields[i].field.growthLevel.value && fields[i].field.growthLevel.value > 100) || fields[i].field.growthLevel.value == 100) {
                     fields[i].field.growthLevel.value = 100;
-                    fields[i].position.setAttribute("class", "ripe"); /*Classes*/
+                    fields[i].position.setAttribute("class", `${fields[i].field.plantType.name}ripe`); /*Classes*/
                     fieldParagraph.innerHTML = ``;
                 }
                 else if (fields[i].field.growthLevel.value != 100) {
@@ -56,11 +56,11 @@ var FieldSimulator;
                 }
             }
             if (fields[i].field.growthLevel.value > 0 && fields[i].field.growthLevel.value < 100 && fields[i].field.pestsLevel.value < 1.3) {
-                fields[i].position.setAttribute("class", "grow"); /*Classes*/
+                fields[i].position.setAttribute("class", `grow`); /*Classes*/
             }
         }
         let moneyParagraph = document.getElementById("Money");
-        moneyParagraph.innerHTML = `${FieldSimulator.market.money}`;
+        moneyParagraph.innerHTML = `Money ${FieldSimulator.market.money}$`;
         FieldSimulator.market.fluctuate(difficulty);
     }
     // Animation Frames Parasite
@@ -91,19 +91,19 @@ var FieldSimulator;
         FieldSimulator.market = new FieldSimulator.Market(_startingMoney, _difficulty);
         difficulty = _difficulty;
         let statusName = document.getElementById("typ");
-        let statusImage = document.getElementById("imgProduct");
+        let statusImage = document.getElementById("imageProduct");
         let statusText = document.getElementById("text");
         document.getElementById("settings")?.classList.add("hidden");
         document.getElementById("game")?.classList.remove("hidden");
         document.getElementById("Water")?.addEventListener("click", function () { action = "water"; console.log("water"); statusName.innerHTML = "Water"; statusImage.setAttribute("id", "Water"); statusText.innerHTML = "Every plant needs water and for you it's free. Don't overdo it!"; });
-        document.getElementById("Fertilize")?.addEventListener("click", function () { action = "fertilize"; statusName.innerHTML = "Fertilizer"; statusImage.setAttribute("id", "Fertilizer"); statusText.innerHTML = "Almost every plant needs fertilizer. Without it your plant wont grow to it's fullest, but don't use too much of it."; });
-        document.getElementById("Pesticide")?.addEventListener("click", function () { action = "pesticide"; statusName.innerHTML = "Pesticede"; statusImage.setAttribute("id", "Pesticede"); statusText.innerHTML = "The best way to kill those nasty bugs, unfortunately not usable for coding."; });
-        document.getElementById("Harvest")?.addEventListener("click", function () { action = "harvest"; statusName.innerHTML = "Harvest"; statusImage.setAttribute("id", "Harvest"); statusText.innerHTML = "Harvest your goods or remove your dead crops"; });
-        document.getElementById("Plant1")?.addEventListener("click", function () { action = "Plant1"; statusName.innerHTML = "Salad"; statusImage.setAttribute("id", "Plant1"); statusText.innerHTML = "Easy for beginners, this plant only uses water and can't get infested by parasites"; });
-        document.getElementById("Plant2")?.addEventListener("click", function () { action = "Plant2"; statusName.innerHTML = "Peanuts"; statusImage.setAttribute("id", "Plant2"); statusText.innerHTML = "A good common plant. It needs fertilizer and water and has a small chance for parasites"; });
-        document.getElementById("Plant3")?.addEventListener("click", function () { action = "Plant3"; statusName.innerHTML = "Cucumber"; statusImage.setAttribute("id", "Plant3"); statusText.innerHTML = "This plant needs alot of water and has a medium chance for parasites"; });
-        document.getElementById("Plant4")?.addEventListener("click", function () { action = "Plant4"; statusName.innerHTML = "Eggplant"; statusImage.setAttribute("id", "Plant4"); statusText.innerHTML = "This plant is very fertilizer intensive and has a high chance for parasites"; });
-        document.getElementById("Plant5")?.addEventListener("click", function () { action = "Plant5"; statusName.innerHTML = "Ananas"; statusImage.setAttribute("id", "Plant5"); statusText.innerHTML = "This plant is very hard to care for, but it pays out. Look out for those parasites"; });
+        document.getElementById("Fertilize")?.addEventListener("click", function () { action = "fertilize"; statusName.innerHTML = "Fertilizer"; statusImage.setAttribute("id", "Fertilize"); statusText.innerHTML = "Almost every plant needs fertilizer. Without it your plant wont grow to it's fullest, but don't use too much of it."; });
+        document.getElementById("Pesticide")?.addEventListener("click", function () { action = "pesticide"; statusName.innerHTML = "Pesticide"; statusImage.setAttribute("id", "Pesticide"); statusText.innerHTML = "The best way to kill those nasty bugs, unfortunately not usable for coding."; });
+        document.getElementById("Harvest")?.addEventListener("click", function () { action = "harvest"; statusName.innerHTML = "Harvest"; statusImage.setAttribute("id", "Harvest"); statusText.innerHTML = "Harvest your goods or remove your dead crops."; });
+        document.getElementById("Plant1")?.addEventListener("click", function () { action = "Plant1"; statusName.innerHTML = "Salad"; statusImage.setAttribute("id", "Plant1"); statusText.innerHTML = "Easy for beginners, this plant only uses water and can't get infested by parasites."; });
+        document.getElementById("Plant2")?.addEventListener("click", function () { action = "Plant2"; statusName.innerHTML = "Peanuts"; statusImage.setAttribute("id", "Plant2"); statusText.innerHTML = "A good common plant. It needs fertilizer and water and has a small chance for parasites."; });
+        document.getElementById("Plant3")?.addEventListener("click", function () { action = "Plant3"; statusName.innerHTML = "Cucumber"; statusImage.setAttribute("id", "Plant3"); statusText.innerHTML = "This plant needs alot of water and has a medium chance for parasites."; });
+        document.getElementById("Plant4")?.addEventListener("click", function () { action = "Plant4"; statusName.innerHTML = "Eggplant"; statusImage.setAttribute("id", "Plant4"); statusText.innerHTML = "This plant is very fertilizer intensive and has a high chance for parasites."; });
+        document.getElementById("Plant5")?.addEventListener("click", function () { action = "Plant5"; statusName.innerHTML = "Ananas"; statusImage.setAttribute("id", "Plant5"); statusText.innerHTML = "This plant is very hard to care for, but it pays out. Look out for those parasites."; });
         let fieldSpace = document.getElementById("Fields");
         for (let i = 0; i < 40; i++) {
             let fieldDiv = document.createElement("div");

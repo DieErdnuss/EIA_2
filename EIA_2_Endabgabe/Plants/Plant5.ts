@@ -1,9 +1,9 @@
 namespace FieldSimulator {
     export class Plant5 extends Plant {
         name: string = "Plant5";
-        waterDrainage: number = 0.5;
-        fertilizerDemand: number = 0.5;
-        pestsProbability: number = 10;
+        waterDrainage: number = 2;
+        fertilizerDemand: number = 2;
+        pestsProbability: number = 2;
         growthSpeed: number = 1;
         
     }

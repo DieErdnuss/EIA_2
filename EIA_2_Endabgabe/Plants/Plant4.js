@@ -4,8 +4,8 @@ var FieldSimulator;
     class Plant4 extends FieldSimulator.Plant {
         name = "Plant4";
         waterDrainage = 0.5;
-        fertilizerDemand = 10;
-        pestsProbability = 1;
+        fertilizerDemand = 2;
+        pestsProbability = 2;
         growthSpeed = 1;
     }
     FieldSimulator.Plant4 = Plant4;

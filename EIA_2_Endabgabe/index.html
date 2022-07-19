@@ -28,13 +28,13 @@
     <div id="settings">
         <h1>VEGAN HEAVEN</h1>
         <form>
-            <fieldset>
+            <fieldset id="choseMoney">
                 <legend>Starting Money</legend>
-                5000$
-                <input type="range" name="startingMoney" min="5000" max="10000" step="50" value="7500">
-                10000$
+                500$
+                <input type="range" name="startingMoney" min="500" max="2000" step="50" value="1000">
+                2000$
             </fieldset>
-            <fieldset>
+            <fieldset id="difficulty">
                 <legend>Difficulty</legend>
                 <label for="Easy">Easy</label>
                 <input type="radio" name="difficulty" value="Easy">
@@ -46,11 +46,10 @@
                 <input type="radio" name="difficulty" value="Hard">
             </fieldset>
         </form>
-        <br>
         <input type="submit" id="startButton" value="Start">
     </div>
     <div id="game" class="hidden">
-    <h1>Gemüse Garten</h1>
+    
     <div id="wrapper">
         <div id="Fields"></div>
         <button id="Water"></button>
@@ -59,21 +58,21 @@
        
         <span></span>
         <div id="market">
-            <h2>MARKET</h2>
+            <h2>Market</h2>
             <p class="center">Item</p><p class="center" >Buy</p><p class="center" >Sell</p>
-            <button id="Fertilize"></button><p class="center" id="FertilizerPrice">5</p>
-            <button id="Pesticide"></button><p class="center" id="PesticedePrice">5</p>
-            <button id="Plant1">Plant1</button><p class="center" id="Plant1Buy">5</p><p class="center" id="Plant1Sell">10</p>
-            <button id="Plant2">Plant2</button><p class="center" id="Plant2Buy">5</p><p class="center" id="Plant2Sell">10</p>
-            <button id="Plant3">Plant3</button><p class="center" id="Plant3Buy">5</p><p class="center" id="Plant3Sell">10</p>
-            <button id="Plant4">Plant4</button><p class="center" id="Plant4Buy">5</p><p class="center" id="Plant4Sell">10</p>
-            <button id="Plant5">Plant5</button><p class="center" id="Plant5Buy">5</p><p class="center" id="Plant5Sell">10</p>
+            <button id="Fertilize"></button><p class="center" id="FertilizerPrice"></p>
+            <button id="Pesticide"></button><p class="center" id="PesticedePrice"></p>
+            <button id="Plant1"></button><p class="center" id="Plant1Buy"></p><p class="center" id="Plant1Sell"></p>
+            <button id="Plant2"></button><p class="center" id="Plant2Buy"></p><p class="center" id="Plant2Sell"></p>
+            <button id="Plant3"></button><p class="center" id="Plant3Buy"></p><p class="center" id="Plant3Sell"></p>
+            <button id="Plant4"></button><p class="center" id="Plant4Buy"></p><p class="center" id="Plant4Sell"></p>
+            <button id="Plant5"></button><p class="center" id="Plant5Buy"></p><p class="center" id="Plant5Sell"></p>
             <p id="Money"></p>
         </div>
 
         <div id="statusBar">
             <p id="typ"></p>
-            <div id="imgProduct"></div>
+            <div id="imgProduct"><div class="center" id="imageProduct"></div></div>
             <p id="text"></p>
         </div>
 

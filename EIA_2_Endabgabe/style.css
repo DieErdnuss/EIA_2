@@ -1,15 +1,16 @@
 body {
-    font-family: Arial;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #82c749;
     background-image: url(img/gardenOrtho.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 30px;
-
+    overflow: hidden;
+    margin: 50px;
 }
 
 h1 {
+    margin-top: 0;
     color: whitesmoke;
     font-size: 50px;
     text-align: center;
@@ -22,15 +23,16 @@ span {
 #wrapper {
     display: grid; 
 
-    grid-template-columns: 400px 1fr 1fr 400px;
+    grid-template-columns: 400px 1fr 1fr 200px 200px;
     grid-template-rows: 5, 1fr;
 
     grid-template-areas:
-        " . . . . "
-        " market fields fields statusBar "
-        " market fields fields statusBar "
-        " market . . statusBar "
-        " market BtnWater BtnHarvest statusBar ";
+        
+        " market fields fields statusBar statusBar "
+        " market fields fields BtnWater BtnHarvest"
+        " market . . . . "
+        " market . . . . "
+        " market . . . . ";
 
 }
 .hidden {
@@ -45,6 +47,11 @@ span {
     grid-gap: 5px;
     text-align: center;
 }
+#Fields p {
+    color: white;
+    margin-top: 80%;
+    font-size: 8pt;
+}
 
 #market {
     grid-area: market;
@@ -55,13 +62,13 @@ span {
     grid-template-areas:
         "headline headline headline"
         "Item Buy Sell"
-        "BtnPlant1 . . "
-        "BtnPlant2 . . "
-        "BtnPlant3 . . "
-        "BtnPlant4 . . "
-        "BtnPlant5 . . "
-        "BtnPesticide . . "
-        "BtnFertilize . . "
+        "BtnPlant1 Plant1Buy Plant1Sell "
+        "BtnPlant2 Plant2Buy Plant2Sell "
+        "BtnPlant3 Plant3Buy Plant3Sell "
+        "BtnPlant4 Plant4Buy Plant4Sell "
+        "BtnPlant5 Plant5Buy Plant5Sell "
+        "BtnPesticide PesticedePrice . "
+        "BtnFertilize FertilizerPrice . "
         " . Money . ";
 
     grid-gap: 5px;
@@ -77,10 +84,10 @@ span {
     grid-area: statusBar;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50px 200px 300px;
+    grid-template-rows: 50px 100px 100px;
     grid-template-areas:
         "typ typ typ"
-        "img img img"
+        " img img img "
         "description description description";
 
     background-color: orange;
@@ -91,6 +98,7 @@ span {
 
 #market h2 {
     grid-area: headline;
+    font-size: 30px;
 }
 
 #market:nth-child(0) {
@@ -109,6 +117,8 @@ span {
 
 
 #Plant1 {
+    height: 90px;
+    width: 90px;
     grid-area: BtnPlant1;
     background-image: url(img/salad.png);
     background-position: center;
@@ -117,6 +127,8 @@ span {
 }
 
 #Plant2 {
+    height: 90px;
+    width: 90px;
     grid-area: BtnPlant2;
     background-image: url(img/peanut.png);
     background-position: center;
@@ -125,6 +137,8 @@ span {
 }
 
 #Plant3 {
+    height: 90px;
+    width: 90px;
     grid-area: BtnPlant3;
     background-image: url(img/cucumber.png);
     background-position: center;
@@ -133,6 +147,8 @@ span {
 }
 
 #Plant4 {
+    height: 90px;
+    width: 90px;
     grid-area: BtnPlant4;
     background-image: url(img/eggplant.png);
     background-position: center;
@@ -141,11 +157,61 @@ span {
 }
 
 #Plant5 {
+    height: 90px;
+    width: 90px;
     grid-area: BtnPlant5;
     background-image: url(img/ananas.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 70px;
+}
+
+#Plant1Buy {
+    grid-area: Plant1Buy;
+}
+
+#Plant2Buy {
+    grid-area: Plant2Buy;
+}
+
+#Plant3Buy {
+    grid-area: Plant3Buy;
+}
+
+#Plant4Buy {
+    grid-area: Plant4Buy;
+}
+
+#Plant5Buy {
+    grid-area: Plant5Buy;
+}
+
+#PesticedePrice {
+    grid-area: PesticedePrice;
+}
+
+#FertilizerPrice {
+    grid-area: FertilizerPrice;
+}
+
+#Plant1Sell {
+    grid-area: Plant1Sell;
+}
+
+#Plant2Sell {
+    grid-area: Plant2Sell;
+}
+
+#Plant3Sell {
+    grid-area: Plant3Sell;
+}
+
+#Plant4Sell {
+    grid-area: Plant4Sell;
+}
+
+#Plant5Sell {
+    grid-area: Plant5Sell;
 }
 
 /* Status Bar */
@@ -159,18 +225,21 @@ span {
 
 #imgProduct {
     grid-area: img;
-
+    background-color: wheat;
+    place-self: center;
+    border-radius: 10px;
 }
 
 #text {
     grid-area: description;
+    padding: 0 60px 0 60px;
 
 
 }
 
 button {
-    height: 80px;
-    width: 80px;
+    height: 90px;
+    width: 90px;
     /* background-color: rgb(172, 209, 71); */
     border: 0;
     border-radius: 10px;
@@ -199,23 +268,30 @@ button:hover {
 
 #Water:hover {
     background-color: rgb(54, 107, 177);
+    border-radius: 10px;
+
 }
 
 #Fertilize {
+    height: 90px;
+    width: 90px;
     grid-area: BtnFertilize;
     place-self: center;
     background-image: url(../EIA_2_Endabgabe/img/Fertilizer.png);
     background-size: 50px;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgb(224, 224, 224);
+    
 }
 
 #Fertilize:hover {
     background-color:rgb(232, 203, 56) ;
+    border-radius: 10px;
 }
 
 #Pesticide {
+    height: 90px;
+    width: 90px;
     grid-area: BtnPesticide;
     place-self: center;
     background-image: url(../EIA_2_Endabgabe/img/Pesticide.png);
@@ -227,6 +303,8 @@ button:hover {
 
 #Pesticide:hover {
     background-color: rgb(249, 141, 121);
+    border-radius: 10px;
+
 }
 
 #Harvest {
@@ -244,8 +322,8 @@ button:hover {
 #Money {
     place-self: center;
     grid-area: Money;
-    background-size: 50px;
     background-repeat: no-repeat;
+    font-weight: 700;
 
 }
 
@@ -259,18 +337,54 @@ button:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
-
+    border-radius: 10px;
 
 }
 
-.ripe {
-    color: white;
-    background-color: rgb(80, 145, 0);
-    border-radius: 10px
+.Plant1ripe {
+    background-color: wheat;
+    background-image: url(img/saladRipe.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 10px;
 }
+.Plant2ripe {
+    background-color: wheat;
+    background-image: url(img/peanutRipe.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 10px;
+}
+.Plant3ripe {
+    background-color: wheat;
+    background-image: url(img/cucumberRipe.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 10px;
+}
+.Plant4ripe {
+    background-color: wheat;
+    background-image: url(img/eggplantRipe.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 10px;
+}
+.Plant5ripe {
+    background-color: wheat;
+    background-image: url(img/ananasRipe.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 10px;
+}
+
+
 
 .dead {
-    color: white;
     background-image: url(../EIA_2_Endabgabe/img/dead.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -280,7 +394,6 @@ button:hover {
 }
 
 .empty {
-    color: white;
     background-image: url(../EIA_2_Endabgabe/img/Empty.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -315,7 +428,67 @@ button:hover {
     place-self: center;
 }
 
-.status {
-    font-size: 10px;
-    text-justify: bottom;
+.hidden {
+    display: none !important;
+
+}
+
+#settings form {
+    display: grid;
+    grid-template-columns: 3, 1fr;
+    grid-template-rows: 100px 150px 100px 100px 100px;
+    grid-template-areas: 
+        " . h1 . "
+        " . money ."
+        " . difficulty . "
+        " . startGame ."
+        " . . . ";
+}
+
+#settings h1 {
+    grid-area: h1;
+}
+
+#choseMoney {
+    grid-area: money;
+    color: rgb(50, 82, 0);
+    height: 120px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    text-align: center;
+    
+}
+
+#difficulty {
+    grid-area: difficulty;
+    color: rgb(50, 82, 0);
+    height: 120px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    
+    text-align: center;
+
+}
+
+#startButton {
+    grid-area: startGame;
+    width: 100px;
+    text-align: center;
+    position: absolute;
+    left: 920px;
+    top: 550px;
+    place-self: center;
+    border: none;
+    background-color: green;
+    padding: 20px;
+    border-radius: 50px;
+    color: wheat;
+    font-size: 20px;
+}
+
+legend {
+    font-size: 20px;
+    padding-top: 30px;
 }

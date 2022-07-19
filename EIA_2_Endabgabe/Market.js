@@ -3,8 +3,8 @@ var FieldSimulator;
 (function (FieldSimulator) {
     class Market {
         money;
-        buyPrice = [50, 50, 100, 150, 125, 175, 200];
-        sellPrice = [150, 200, 200, 300, 500];
+        buyPrice = [30, 30, 50, 100, 150, 150, 250];
+        sellPrice = [100, 200, 300, 350, 750];
         fertilizerPrice = document.getElementById("FertilizerPrice");
         pesticedePrice = document.getElementById("PesticedePrice");
         plant1Buy = document.getElementById("Plant1Buy");
@@ -67,30 +67,30 @@ var FieldSimulator;
             }
         }
         fluctuate(_difficulty) {
-            this.fertilizerPrice.innerHTML = `${this.buyPrice[0]}`;
-            this.pesticedePrice.innerHTML = `${this.buyPrice[1]}`;
-            this.plant1Buy.innerHTML = `${this.buyPrice[2]}`;
-            this.plant2Buy.innerHTML = `${this.buyPrice[3]}`;
-            this.plant3Buy.innerHTML = `${this.buyPrice[4]}`;
-            this.plant4Buy.innerHTML = `${this.buyPrice[5]}`;
-            this.plant5Buy.innerHTML = `${this.buyPrice[6]}`;
-            this.plant1Sell.innerHTML = `${this.sellPrice[0]}`;
-            this.plant2Sell.innerHTML = `${this.sellPrice[1]}`;
-            this.plant3Sell.innerHTML = `${this.sellPrice[2]}`;
-            this.plant4Sell.innerHTML = `${this.sellPrice[3]}`;
-            this.plant5Sell.innerHTML = `${this.sellPrice[4]}`;
+            this.fertilizerPrice.innerHTML = `${this.buyPrice[0]}$`;
+            this.pesticedePrice.innerHTML = `${this.buyPrice[1]}$`;
+            this.plant1Buy.innerHTML = `${this.buyPrice[2]}$`;
+            this.plant2Buy.innerHTML = `${this.buyPrice[3]}$`;
+            this.plant3Buy.innerHTML = `${this.buyPrice[4]}$`;
+            this.plant4Buy.innerHTML = `${this.buyPrice[5]}$`;
+            this.plant5Buy.innerHTML = `${this.buyPrice[6]}$`;
+            this.plant1Sell.innerHTML = `${this.sellPrice[0]}$`;
+            this.plant2Sell.innerHTML = `${this.sellPrice[1]}$`;
+            this.plant3Sell.innerHTML = `${this.sellPrice[2]}$`;
+            this.plant4Sell.innerHTML = `${this.sellPrice[3]}$`;
+            this.plant5Sell.innerHTML = `${this.sellPrice[4]}$`;
             switch (_difficulty) {
                 case "Easy":
-                    this.buyPrice = this.buyPrice.map(x => x + Math.floor(2 + 0.5 - Math.random()));
-                    this.sellPrice = this.sellPrice.map(x => x + Math.floor(5 * (0.5 - Math.random())));
+                    this.buyPrice = this.buyPrice.map(x => x + Math.floor(1 * (1.5 * Math.random() - Math.random())));
+                    this.sellPrice = this.sellPrice.map(x => x + Math.floor(1 * (1.5 * Math.random() - Math.random())));
                     break;
                 case "Medium":
-                    this.buyPrice = this.buyPrice.map(x => x + Math.floor(1 + Math.random()));
-                    this.sellPrice = this.sellPrice.map(x => x + Math.floor(5 * (0.5 - Math.random())));
+                    this.buyPrice = this.buyPrice.map(x => x + Math.floor(1.75 * (1.5 * Math.random() - Math.random())));
+                    this.sellPrice = this.sellPrice.map(x => x + Math.floor(1.75 * (1.5 * Math.random() - Math.random())));
                     break;
                 case "Hard":
-                    this.buyPrice = this.buyPrice.map(x => x + Math.floor(2.5 * Math.random()));
-                    this.sellPrice = this.sellPrice.map(x => x + Math.floor(5 * (0.25 - Math.random())));
+                    this.buyPrice = this.buyPrice.map(x => x + Math.floor(2.5 * (1.5 * Math.random() - Math.random())));
+                    this.sellPrice = this.sellPrice.map(x => x + Math.floor(2.5 * (1.5 * Math.random() - Math.random())));
                     break;
             }
         }
