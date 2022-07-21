@@ -81,16 +81,16 @@ var FieldSimulator;
             this.plant5Sell.innerHTML = `${this.sellPrice[4]}$`;
             switch (_difficulty) {
                 case "Easy":
-                    this.buyPrice = this.buyPrice.map(x => x + Math.floor(1 * (1.5 * Math.random() - Math.random())));
-                    this.sellPrice = this.sellPrice.map(x => x + Math.floor(1 * (1.5 * Math.random() - Math.random())));
+                    this.buyPrice = this.buyPrice.map(x => Math.floor(Math.random() * (1.01 * x - 0.99 * x + 1) + 0.99 * x));
+                    this.sellPrice = this.sellPrice.map(x => Math.floor(Math.random() * (1.015 * x - 0.99 * x + 1) + 0.99 * x));
                     break;
                 case "Medium":
-                    this.buyPrice = this.buyPrice.map(x => x + Math.floor(1.75 * (1.5 * Math.random() - Math.random())));
-                    this.sellPrice = this.sellPrice.map(x => x + Math.floor(1.75 * (1.5 * Math.random() - Math.random())));
+                    this.buyPrice = this.buyPrice.map(x => Math.floor(Math.random() * (1.01 * x - 0.99 * x + 1) + 0.99 * x));
+                    this.sellPrice = this.sellPrice.map(x => Math.floor(Math.random() * (1.01 * x - 0.99 * x + 1) + 0.99 * x));
                     break;
                 case "Hard":
-                    this.buyPrice = this.buyPrice.map(x => x + Math.floor(2.5 * (1.5 * Math.random() - Math.random())));
-                    this.sellPrice = this.sellPrice.map(x => x + Math.floor(2.5 * (1.5 * Math.random() - Math.random())));
+                    this.buyPrice = this.buyPrice.map(x => Math.floor(Math.random() * ((1.01 * x - 0.99 * x + 1)) + 0.99 * x));
+                    this.sellPrice = this.sellPrice.map(x => Math.floor(Math.random() * ((1.005 * x - 0.99 * x + 1)) + 0.99 * x));
                     break;
             }
         }

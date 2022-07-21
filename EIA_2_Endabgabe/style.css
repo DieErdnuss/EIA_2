@@ -47,6 +47,11 @@ span {
     grid-gap: 5px;
     text-align: center;
 }
+
+#Fields :active {
+    background-color: rgb(187, 169, 137);
+}
+
 #Fields p {
     color: white;
     margin-top: 80%;

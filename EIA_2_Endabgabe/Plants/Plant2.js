@@ -6,7 +6,7 @@ var FieldSimulator;
         waterDrainage = 0.5;
         fertilizerDemand = 0.5;
         pestsProbability = 1;
-        growthSpeed = 1;
+        growthSpeed = 1.5;
     }
     FieldSimulator.Plant2 = Plant2;
 })(FieldSimulator || (FieldSimulator = {}));

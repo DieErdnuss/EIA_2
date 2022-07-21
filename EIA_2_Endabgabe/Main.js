@@ -17,6 +17,7 @@ var FieldSimulator;
         console.log(settings);
         createGame(parseInt(`${settings[0]}`), `${settings[1]}`);
     }
+    // Stadium der Pflanzen
     function update() {
         for (let i = 0; i < 40; i++) {
             let posX = Math.floor(fields[i].position.getBoundingClientRect().x);
@@ -24,21 +25,21 @@ var FieldSimulator;
             fields[i].position.innerHTML = "";
             let fieldParagraph = document.createElement("p");
             fields[i].position.appendChild(fieldParagraph);
-            if (fields[i].field.plantType.name == "Plant0") {
-                fields[i].position.setAttribute("class", "empty"); /*Classes*/
+            if (fields[i].field.plantType.name == "Plant0") { /* Wenn Feld nicht bepflanzt ist*/
+                fields[i].position.setAttribute("class", "empty");
             }
-            if (fields[i].field.plantType != new FieldSimulator.Plant0() || fields[i].field.growthLevel.value <= 100) {
-                if ((fields[i].field.fertilizerLevel.value > 100 || fields[i].field.fertilizerLevel.value < 0) || (fields[i].field.waterLevel.value > 100 || fields[i].field.waterLevel.value < 0) || fields[i].field.pestsLevel.value >= 4) {
+            if (fields[i].field.plantType != new FieldSimulator.Plant0() || fields[i].field.growthLevel.value <= 100) { /* Feld bepflanzt || Pflanze wächst/reif*/
+                if ((fields[i].field.fertilizerLevel.value > 100 || fields[i].field.fertilizerLevel.value < 0) || (fields[i].field.waterLevel.value > 100 || fields[i].field.waterLevel.value < 0) || fields[i].field.pestsLevel.value >= 4) { /* zu viel/wenig, - Dünger, Wasser, viel Pestizide*/
                     fields[i].field.growthLevel.value = 200;
-                    fields[i].position.setAttribute("class", "dead"); /*Classes*/
+                    fields[i].position.setAttribute("class", "dead");
                     fieldParagraph.innerHTML = `Dead`;
                 }
-                else if ((200 > fields[i].field.growthLevel.value && fields[i].field.growthLevel.value > 100) || fields[i].field.growthLevel.value == 100) {
-                    fields[i].field.growthLevel.value = 100;
-                    fields[i].position.setAttribute("class", `${fields[i].field.plantType.name}ripe`); /*Classes*/
-                    fieldParagraph.innerHTML = ``;
+                else if ((200 > fields[i].field.growthLevel.value && fields[i].field.growthLevel.value > 100) || fields[i].field.growthLevel.value == 100) { /* Pflanze reif */
+                    fields[i].field.growthLevel.value = 100; /* Warum wird es hier auf 100 gesetzt, wenn bedingung nur mit 100 stimmt?*/
+                    fields[i].position.setAttribute("class", `${fields[i].field.plantType.name}ripe`);
+                    fieldParagraph.innerHTML = `Ripe`;
                 }
-                else if (fields[i].field.growthLevel.value != 100) {
+                else if (fields[i].field.growthLevel.value != 100) { /* Pflanze noch im Wachstum*/
                     let waterLevel = `${fields[i].field.waterLevel.value}`;
                     let fertilizerLevel = `${fields[i].field.fertilizerLevel.value}`;
                     let growthLevel = `${fields[i].field.growthLevel.value}`;
@@ -50,18 +51,18 @@ var FieldSimulator;
                         attack(posX, posY, fields[i]);
                     }
                     if (fields[i].field.pestsLevel.value > 1.3) {
-                        fields[i].position.setAttribute("class", "infected"); /*Classes*/
+                        fields[i].position.setAttribute("class", "infected");
                     }
                     fields[i].field.growthLevel.increase(fields[i].field.plantType);
                 }
             }
-            if (fields[i].field.growthLevel.value > 0 && fields[i].field.growthLevel.value < 100 && fields[i].field.pestsLevel.value < 1.3) {
-                fields[i].position.setAttribute("class", `grow`); /*Classes*/
+            if (fields[i].field.growthLevel.value > 0 && fields[i].field.growthLevel.value < 100 && fields[i].field.pestsLevel.value < 1.3) { /* Pflanze im Wachstum & nicht infiziert */
+                fields[i].position.setAttribute("class", `grow`);
             }
         }
         let moneyParagraph = document.getElementById("Money");
-        moneyParagraph.innerHTML = `Money ${FieldSimulator.market.money}$`;
-        FieldSimulator.market.fluctuate(difficulty);
+        moneyParagraph.innerHTML = `Money ${FieldSimulator.market.money}$`; /*Update von Kapital*/
+        FieldSimulator.market.fluctuate(difficulty); /*Markt passt sich schwierigkeitsgrad an*/
     }
     // Animation Frames Parasite
     function attack(_posX, _posY, _field) {
